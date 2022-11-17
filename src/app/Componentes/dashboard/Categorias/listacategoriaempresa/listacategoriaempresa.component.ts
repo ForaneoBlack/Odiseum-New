@@ -55,49 +55,6 @@ export class ListacategoriaempresaComponent implements OnInit {
       this.categorias = dato;
     },error => console.log(error));
   }
-/*
-  eliminarcategoria(categoria:Categoria):void{
-    swal({
-      title: '¿Estas seguro?',
-      text: "la categoria : ${categoria.catnombre}",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Eliminar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: true
-    }).then((result) => {
-      if(result.value){
-        this.categoriaServicio.eliminarcategoria(this.categorias).subscribe(dato => {
 
-          console.log(dato);
-
-          swal(
-            'Empleado eliminado',
-            'El empleado ha sido eliminado con exito',
-            'success'
-          )
-
-        })
-
-        console.log('llega');
-        //window.location.reload()
-                  console.log('pasoo');
-
-      } else if (
-
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          ' ',
-          'error'
-        )
-      }
-    })
-*/
   }
 
