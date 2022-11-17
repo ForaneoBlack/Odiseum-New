@@ -1,0 +1,159 @@
+
+
+
+    <br>
+    <h2 class="text-center">Lista de Productos</h2>
+    <br>
+
+    <div class="container">
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarproducto">Agregar Producto</button>
+        </div>
+        <br>
+        <table class="table table-hover" >
+
+            <thead class="table-dark">
+                <tr>
+                    <th></th>
+                    <th class="text-center">Producto</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Stock</th>
+                    <th class="text-center">Configuración</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td style=" width:150px">
+                        <a href="assets/images.jpg" data-fancybox>
+                        <img src="assets/images.jpg" alt="" class="img-thumbnail w-100"/></a>
+                    </td>
+                    <td class="text-center">
+                        <div class="fs-5 fw-bold">Llanta Rin 13</div>
+                        <p class="text-muted small" >$68,99</p>
+                    </td>
+                    <td class="text-center">
+                        <div>
+                        <span class="badge rounded-pill bg-ligth text-dark me-1" >Automotriz</span>
+
+                        </div>
+                        <span class="badge rounded-pill bg-ligth text-dark me-1">Comercio</span>
+
+                    </td>
+                    <td class="text-center">
+                        <p>17</p>
+                    </td>
+
+                    <td class="d-grid gap-2 col-3 mx-auto">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarproducto">Editar Producto</button>
+                        <button  class="btn btn-danger ms-3" >Eliminar</button>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="agregarproducto" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true"
+        style="margin-left: -12%;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 150%">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Agregar Producto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"><div class="modal-body">
+                    <form class="form-control" #productoForm>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="nombreproducto">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre del Producto " id="nombreproducto" name="nombreproducto" required minlength="2" maxlength="25">
+                            </div>
+                            <div class="col-sm">
+                                <label for="lote">N° Lote</label>
+                                <input type="number" class="form-control" placeholder="Número de lote" id="lote" name="lote" required minlength="10" maxlength="10" >
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="precio">Precio</label>
+                                <input type="number" class="form-control" placeholder="0,00" id="precio" name="precio" required  >
+                            </div>
+                            <div class="col-sm">
+                                <label for="fecha">Fecha de vencimiento</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" >
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="stock">Stock</label>
+                                <input type="Number" class="form-control" placeholder="Stock" id="stock" name="stock" required  >
+                            </div>
+                            <div class="col-sm">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" placeholder="Descripcion del producto" id="descripcion" name="descripcion" required minlength="25" maxlength="500"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <div class="form-grow">
+                                    <label for="categoria" class="form-label">Categoría </label>
+                                    <select id="categoria" class="form-control" disabled>
+                                        <option>Automotríz</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-grow">
+                                    <label for="categoria" class="form-label">Subcategoría </label>
+                                    <select id="categoria" class="form-control" >
+                                        <option>Mecánica</option>
+                                        <option>Latonería</option>
+                                        <option>Comercio</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="url">Link de la imagen</label>
+                                <input type="url" class="form-control" placeholder="URL" id="url" name="url" required >
+                            </div>
+
+
+                        </div>
+                        <br>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-success">Agregar Producto</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                          </div>
+
+
+
+                    </form>
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+

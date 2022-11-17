@@ -1,0 +1,155 @@
+<br>
+<h2 class="text-center">USUARIOS</h2>
+<br>
+
+<div class="container">
+    <div class="col order-last">
+        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarusuario">Agregar</button>
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Cedula</th>
+                <th>Rol</th>
+                <th>acciones</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>Alberto Vallejo</td>
+                <td>alberto2208</td>
+                <td>0107948333</td>
+                <td>Administrador</td>
+
+                <td style="width: 30%">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#agregarusuario">Editar</button>
+
+                    <button class="btn btn-danger " style="margin-left : 5px">Eliminar</button>
+
+
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="agregarusuario" tabindex="-1" aria-labelledby="agregarusuario" aria-hidden="true"
+    style="margin-left: -12%;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Agregar Usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <form class="form-control" #usuarioForm>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre " id="nombre"
+                                    name="nombre" required minlength="2" maxlength="25">
+                            </div>
+                            <div class="col-sm">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el apellido " id="apellido"
+                                    name="apellido" required minlength="2" maxlength="25">
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="cedula">Cédula</label>
+                                <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]"
+                                    required minlength="10" maxlength="10" placeholder="Digite su cédula sin guiones">
+
+                            </div>
+                            <div class="col-sm">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                                    required placeholder="Digite su Email">
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="Número de celular">Celular</label>
+                                <input type="text" class="form-control" id="celular" name="celular" pattern="[0-9]"
+                                    required minlength="10" maxlength="10" placeholder="Digite su número de celular">
+
+                            </div>
+                            <hr>
+
+                            <div class="row g-3">
+                                <div class="col-sm">
+                                    <label for="usuario">Usuario</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
+                                        id="usuario" name="usuario" required minlength="2" maxlength="25">
+                                </div>
+                                <div class="col-sm">
+                                    <label for="rol" class="form-label">Rol </label>
+                                    <select id="rol" class="form-control">
+                                        <option>Administrador</option>
+                                        <option>Colaborador</option>
+                                        <option>Ministro</option>
+                                        <option>Emprendedor</option>
+    
+                                    </select>
+                                </div>
+    
+
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-sm">
+                                    <label>Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required
+                                        minlength="8" maxlength="50" placeholder="Digite la contraseña">
+                                </div>
+                                <div class="col-sm">
+                                    <label>Repetir Contraseña:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required
+                                        minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez">
+    
+    
+                                </div>
+    
+
+                            </div>
+                            
+                            
+
+
+
+                        </div>
+                        <br>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-success">Agregar</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+
+
+
+                    </form>
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
