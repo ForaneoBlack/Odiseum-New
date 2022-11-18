@@ -6,7 +6,7 @@
    <div class="container">
        <div class="text-center">
            <button type="button" id="btnagregar" class="btn btn-primary" data-bs-toggle="modal"
-           data-bs-target="#agregarcat" (click)="abrirmodalagregar(categorias)">Agregar Categoría</button>
+           data-bs-target="#agregarcat" (click)="cleanModal()" >Agregar Categoría</button>
        </div>
        <br>
        <table class="table table-hover">
@@ -20,14 +20,14 @@
                </tr>
            </thead>
            <tbody>
-               <tr *ngFor="let categoria of categoria">
+               <tr *ngFor="let categorias of categoria">
                    <td class="text-center">
-                       <p class="fw-semibold">{{categoria.catnombre}}</p>
+                       <p class="fw-semibold">{{categorias.catnombre}}</p>
 
                    </td>
 
                    <td>
-                       <p class="lh-sm">{{categoria.catdescripcion}}</p>
+                       <p class="lh-sm">{{categorias.catdescripcion}}</p>
                    </td>
 
                    <td class="text-end">
@@ -43,10 +43,12 @@
                            <ul class="dropdown-menu ">
 
                                <button class=" dropdown-item " data-bs-toggle="modal"
-                                   data-bs-target="#editarcat" (click)="abrirmodaleditar(categoria)">Editar</button>
-                               <button class=" dropdown-item " data-bs-toggle="modal"
-                                   data-bs-target="#editarcat">Detalles</button>
-                               <button class=" dropdown-item ">Eliminar</button>
+                                   data-bs-target="#editarcat" (click)="abrirmodaleditar(categorias)" >Editar</button>
+                               <a class="dropdown-item"  aria-current="page" [routerLink]="['/dashboard/detallescategoria',categorias.idcatemp]">Detalles</a>
+                               <!-- (click)="verDetallesDelaCategoria(categorias)" -->
+                               <!-- aria-current="page"  -->
+                               <!-- aria-current="page" routerLink="/dashboard/detallescategoria" -->
+                               <button class=" dropdown-item " (click)="delete(categorias)">Eliminar</button>
 
 
                            </ul>
@@ -72,10 +74,10 @@
            <div class="modal-content" style="width: 150%">
                <div class="modal-header" >
                    <h1 class="modal-title" id="titulomodal">Agregar Categoria</h1>
-                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   <button id="closeM1" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                   <form class="form-control"  (ngSubmit)= "onSubmit()" #categoriaForm = "ngForm">
+                   <form class="form-control"  #categoriaForm = "ngForm">
                        <div class="row g-3">
                            <div class="col-sm">
                                <label for="nombrecate">Nombre</label>
@@ -103,7 +105,7 @@
                            <div class="col-sm">
                                <label for="descripcion">Descripción</label>
                                <textarea class="form-control" placeholder="Descripcion de la Categoría" id="descripcion"
-                                   name="descripcion" required minlength="25" maxlength="500" [(ngModel)]="categorias.catdescripcion" #descripcion = "ngModel"></textarea>
+                                   name="descripcion" required minlength="25" maxlength="100" [(ngModel)]="categorias.catdescripcion" #descripcion = "ngModel"></textarea>
                                    <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
                                     <div *ngIf = "descripcion?.errors?.['required']">
                                        Digite la categoría por favor
@@ -122,7 +124,7 @@
                        <br>
 
                        <div class="d-grid gap-2 col-3 mx-auto">
-                           <button class="btn btn-success" type="submit"[disabled]="!categoriaForm.form.valid">Agregar </button>
+                           <button class="btn btn-success" type="submit"[disabled]="!categoriaForm.form.valid" (click)="agregarCategoria()">Agregar </button>
                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                          </div>
 
@@ -151,10 +153,10 @@
            <div class="modal-content" style="width: 150%">
                <div class="modal-header" >
                    <h1 class="modal-title" >Editar Categoria</h1>
-                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   <button type="button" id="closeM2" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                   <form class="form-control" ngNavigateValidate (ngSubmit)= "onSubmit()" #categoriaeditForm = "ngForm">
+                   <form class="form-control" ngNavigateValidate  #categoriaeditForm = "ngForm">
                        <div class="row g-3">
                            <div class="col-sm">
                                <label for="nombrecateedit">Nombre</label>
@@ -182,7 +184,7 @@
                            <div class="col-sm">
                                <label for="descripcionedit">Descripción</label>
                                <textarea class="form-control" placeholder="Descripcion de la Categoría" id="descripcionedit"
-                                   name="descripcionedit" required minlength="25" maxlength="500" [(ngModel)]="categorias.catdescripcion" #descripcionedit = "ngModel"></textarea>
+                                   name="descripcionedit" required minlength="25" maxlength="100" [(ngModel)]="categorias.catdescripcion" #descripcionedit = "ngModel"></textarea>
                                    <div class="alert alert-danger" *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
                                     <div *ngIf = "descripcionedit?.errors?.['required']">
                                        Digite la categoría por favor
@@ -201,7 +203,7 @@
                        <br>
 
                        <div class="d-grid gap-2 col-3 mx-auto">
-                           <button class="btn btn-success" type="submit"[disabled]="!categoriaeditForm.form.valid">Agregar </button>
+                           <button class="btn btn-success" type="button" (click)="actualizarCategoria()" [disabled]="!categoriaeditForm.form.valid">Agregar </button>
                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                          </div>
 
