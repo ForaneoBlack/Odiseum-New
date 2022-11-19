@@ -12,6 +12,9 @@ import { ListarServicioComponent } from './Servicio/listar-servicio/listar-servi
 import { ListausuariosComponent } from './Usuario/listausuarios/listausuarios.component';
 import { IngresosolicitudComponent } from './Solicitud/ingresosolicitud/ingresosolicitud.component';
 import { SolicitudregistroComponent } from './Solicitud/solicitudregistro/solicitudregistro.component';
+import { CategoriaProducto } from 'src/app/Models/categoriaProducto';
+import { ListacategoriaproductoComponent } from './Categorias/listacategoriaproducto/listacategoriaproducto.component';
+import { DetallescategoriaproductoComponent } from './Categorias/detallescategoriaproducto/detallescategoriaproducto.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent, children:[
@@ -25,7 +28,10 @@ const routes: Routes = [
       {path:'listaservicio',component:ListarServicioComponent},
       {path:'listausuario',component:ListausuariosComponent},
       {path:'ingresosolicitud',component:IngresosolicitudComponent},
-      {path:'solicitudregistro',component:SolicitudregistroComponent}
+      {path:'solicitudregistro',component:SolicitudregistroComponent},
+      {path:'categoriaproductos',component:ListacategoriaproductoComponent},
+      {path:'detallescategoriaproductos',component:DetallescategoriaproductoComponent},
+      {path:'detallescategoriaproductos/:catproid',component:DetallescategoriaproductoComponent}
 
 
     ]}

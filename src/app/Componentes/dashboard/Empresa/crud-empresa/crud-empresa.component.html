@@ -25,8 +25,10 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <button class="btn btn-info" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Detalles</button>
+                    <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#detalleEmpresa"
+                        (click)="abrirdetalle(empresa)">Detalles</button>
+
+
                 </td>
             </tr>
         </tbody>
@@ -34,13 +36,13 @@
 
 </div>
 
-<!-- Modal para agregar empresas -->
-<!-- <div class="modal fade" id="agregarempresa" tabindex="-1" aria-labelledby="agregar" aria-hidden="true"
+<!-- Modal para detalle de empresas -->
+<div class="modal fade" id="detalleEmpresa" tabindex="-1" aria-labelledby="detalleEmpresa" aria-hidden="true"
     style="margin-left: -12%;">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 150%">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Nueva Empresa</h1>
+                <h1 class="modal-title fs-5">Detalles de la empresa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -48,12 +50,12 @@
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="ruc">RUC</label>
-                            <input type="text" class="form-control" placeholder="" id="ruc" name="ruc"
+                            <input disabled type="text" class="form-control" placeholder="" id="ruc" name="ruc"
                                 [(ngModel)]="empresaNueva.empruc">
                         </div>
                         <div class="col-sm">
                             <label for="representante">Representante legal</label>
-                            <input type="text" class="form-control" placeholder="" id="representante"
+                            <input disabled type="text" class="form-control" placeholder="" id="representante"
                                 name="representante" [(ngModel)]="empresaNueva.emprepresentante">
                         </div>
 
@@ -61,12 +63,12 @@
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="razon">Razón Social</label>
-                            <input type="text" class="form-control" placeholder="" id="razon" name="razon"
+                            <input disabled type="text" class="form-control" placeholder="" id="razon" name="razon"
                                 [(ngModel)]="empresaNueva.emprazon">
                         </div>
                         <div class="col-sm">
                             <label for="telefono">Teléfono</label>
-                            <input type="text" class="form-control" placeholder="" id="telefono" name="telefono"
+                            <input disabled type="text" class="form-control" placeholder="" id="telefono" name="telefono"
                                 [(ngModel)]="empresaNueva.emptelefono">
                         </div>
                     </div>
@@ -74,12 +76,12 @@
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="direccion">Dirección</label>
-                            <input type="text" class="form-control" placeholder="" id="direccion" name="direccion"
+                            <input disabled type="text" class="form-control" placeholder="" id="direccion" name="direccion"
                                 [(ngModel)]="empresaNueva.empdireccion">
                         </div>
                         <div class="col-sm">
                             <label for="nomcomercial">Nombre Comercial</label>
-                            <input type="text" class="form-control" placeholder="" id="nomcomercial" name="nomcomercial"
+                            <input disabled type="text" class="form-control" placeholder="" id="nomcomercial" name="nomcomercial"
                                 [(ngModel)]="empresaNueva.empnombre">
                         </div>
 
@@ -87,44 +89,50 @@
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="correo">Correo</label>
-                            <input type="text" class="form-control" placeholder="" id="correo" name="correo" required
+                            <input disabled type="text" class="form-control" placeholder="" id="correo" name="correo" required
                                 [(ngModel)]="empresaNueva.empcorreo">
                         </div>
                         <div class="col-sm">
                             <div class="form-grow">
-                                <label for="estado" class="form-label">Estado</label>
-                                <select id="estado" class="form-control">
+                                <label for="estado">Estado</label>
+                                <select disabled id="estado" class="form-control">
                                     <option>Activo</option>
                                     <option>Rechazado</option>
                                     <option>Pendiente</option>
-
                                 </select>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="trabajadores">N° Trabajadores</label>
+                            <input disabled type="text" class="form-control" placeholder="" id="trabajadores" name="trabajadores"
+                                [(ngModel)]="empresaNueva.empnumtrabajadores">
+                        </div>
+                        <div class="col-sm">
+                            <label for="ciudad">Ciudad</label>
+                            <input disabled type="text" class="form-control" placeholder="" id="ciudad" name="ciudad"
+                                [(ngModel)]="empresaNueva.empciudad">
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="ingreso">Ingreso anual</label>
+                            <input disabled type="text" class="form-control" placeholder="" id="ingreso" name="ingreso"
+                                [(ngModel)]="empresaNueva.empingresoanual">
+                        </div>
+                        <div class="col-sm">
+                            
+                        </div>
+
+                    </div>
+
                     <br>
                 </form>
             </div>
         </div>
-    </div>
-</div> -->
-
-<!-- OffCanvas Detalles -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Detalles de la empresa</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <ul class="list-group">
-            <li class="list-group-item">RUC:</li>
-            <li class="list-group-item">Representante legal:</li>
-            <li class="list-group-item">Razón social:</li>
-            <li class="list-group-item">Teléfono:</li>
-            <li class="list-group-item">Estado:</li>
-            <li class="list-group-item">---</li>
-            <li class="list-group-item">--</li>
-            <li class="list-group-item">---</li>
-        </ul>
     </div>
 </div>

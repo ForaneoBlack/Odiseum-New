@@ -18,4 +18,12 @@ export class EmpresaService {
   crearEmpresa(empresa: empresa): Observable<empresa>{
     return this.http.post<empresa>(this.url+'/crear',empresa);
   }
+
+  obtenerEmpresa(id: number): Observable<empresa>{
+    return this.http.get<empresa>(this.url+'/listar/'+id);
+  }
+
+  updateEmpresa(empresa: empresa): Observable<empresa>{
+    return this.http.put<empresa>(this.url+'/editar/'+empresa.idempresa,empresa);
+  }
 }

@@ -14,5 +14,6 @@ export class empresa{
     empingresoanual!: number;
     empobservaciones!: string;
     empfecha!: Date;
+    usu_id!: number;
 
 }

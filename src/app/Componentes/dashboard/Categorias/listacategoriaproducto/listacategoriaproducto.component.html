@@ -1,0 +1,225 @@
+<br>
+<h2 class="text-center">Lista de Categorías de Productos</h2>
+<br>
+
+<div class="container">
+    <div class="text-center">
+        <button type="button" id="btnagregar" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#agregarcat" (click)="cleanModal()">Agregar Categoría</button>
+    </div>
+    <br>
+    <table class="table table-hover">
+
+        <thead class="table-dark">
+            <tr>
+
+                <th class="text-center">Categoria</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Configuración</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let categorias of categoria">
+                <td class="text-center">
+                    <p class="fw-semibold">{{categorias.catpronombre}}</p>
+
+                </td>
+
+                <td>
+                    <p class="lh-sm">{{categorias.catprodescripcion}}</p>
+                </td>
+
+                <td class="text-end">
+
+
+
+
+                    <div class="btn-group ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Opciones
+                        </button>
+                        <ul class="dropdown-menu ">
+
+                            <button class=" dropdown-item " data-bs-toggle="modal" data-bs-target="#editarcat"
+                                (click)="abrirmodaleditar(categorias)">Editar</button>
+                            <a class="dropdown-item" aria-current="page"
+                                [routerLink]="['/dashboard/detallescategoriaproductos',categorias.catproid]">Detalles</a>
+                            <!-- (click)="verDetallesDelaCategoria(categorias)" -->
+                            <!-- aria-current="page"  -->
+                            <!-- aria-current="page" routerLink="/dashboard/detallescategoria" -->
+                            <button class=" dropdown-item " (click)="delete(categorias)">Eliminar</button>
+
+
+                        </ul>
+                    </div>
+
+
+
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="agregarcat" tabindex="-1" aria-labelledby="agregarcat" aria-hidden="true"
+    style="margin-left: -12%;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h1 class="modal-title" id="titulomodal">Agregar Categoria</h1>
+                <button id="closeM1" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-control" #categoriaForm="ngForm">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="nombrecate">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre de la Categoría "
+                                id="nombrecate" name="nombrecate" required minlength="3" maxlength="25"
+                                [(ngModel)]="categorias.catpronombre" #nombrecate="ngModel">
+                            <div class="alert alert-danger"
+                                *ngIf="nombrecate.invalid && (nombrecate.dirty || nombrecate.touched)">
+                                <div *ngIf="nombrecate?.errors?.['required']">
+                                    Digite la categoría por favor
+                                </div>
+                                <div *ngIf="nombrecate?.errors?.['minlength']">
+                                    La categoría debe tener mínimo 4 caracteres
+                                </div>
+                                <div *ngIf="nombrecate?.errors?.['maxlength']">
+                                    La categoría debe tener máximo 25 caracteres
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <div class="row g-3">
+
+                        <div class="col-sm">
+                            <label for="descripcion">Descripción</label>
+                            <textarea class="form-control" placeholder="Descripcion de la Categoría" id="descripcion"
+                                name="descripcion" required minlength="25" maxlength="100"
+                                [(ngModel)]="categorias.catprodescripcion" #descripcion="ngModel"></textarea>
+                            <div class="alert alert-danger"
+                                *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                                <div *ngIf="descripcion?.errors?.['required']">
+                                    Digite la categoría por favor
+                                </div>
+                                <div *ngIf="descripcion?.errors?.['minlength']">
+                                    La descripción debe tener mínimo 25 caracteres
+                                </div>
+                                <div *ngIf="descripcion?.errors?.['maxlength']">
+                                    La descripción debe tener máximo 100 caracteres
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <button class="btn btn-success" type="submit" [disabled]="!categoriaForm.form.valid"
+                            (click)="agregarCategoria()">Agregar </button>
+                        <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+
+
+
+
+                </form>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal editar -->
+<div class="modal fade" id="editarcat" tabindex="-1" aria-labelledby="editarcat" aria-hidden="true"
+    style="margin-left: -12%;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h1 class="modal-title">Editar Categoria</h1>
+                <button type="button" id="closeM2" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-control" ngNavigateValidate #categoriaeditForm="ngForm">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="nombrecateedit">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre de la Categoría "
+                                id="nombrecateedit" name="nombrecateedit" required minlength="3" maxlength="25"
+                                [(ngModel)]="categorias.catpronombre" #nombrecateedit="ngModel">
+                            <div class="alert alert-danger"
+                                *ngIf="nombrecateedit.invalid && (nombrecateedit.dirty || nombrecateedit.touched)">
+                                <div *ngIf="nombrecateedit?.errors?.['required']">
+                                    Digite la categoría por favor
+                                </div>
+                                <div *ngIf="nombrecateedit?.errors?.['minlength']">
+                                    La categoría debe tener mínimo 4 caracteres
+                                </div>
+                                <div *ngIf="nombrecateedit?.errors?.['maxlength']">
+                                    La categoría debe tener máximo 25 caracteres
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <div class="row g-3">
+
+                        <div class="col-sm">
+                            <label for="descripcionedit">Descripción</label>
+                            <textarea class="form-control" placeholder="Descripcion de la Categoría"
+                                id="descripcionedit" name="descripcionedit" required minlength="25" maxlength="100"
+                                [(ngModel)]="categorias.catprodescripcion" #descripcionedit="ngModel"></textarea>
+                            <div class="alert alert-danger"
+                                *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
+                                <div *ngIf="descripcionedit?.errors?.['required']">
+                                    Digite la categoría por favor
+                                </div>
+                                <div *ngIf="descripcionedit?.errors?.['minlength']">
+                                    La descripción debe tener mínimo 25 caracteres
+                                </div>
+                                <div *ngIf="descripcionedit?.errors?.['maxlength']">
+                                    La descripción debe tener máximo 100 caracteres
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <button class="btn btn-success" type="button" (click)="actualizarCategoria()"
+                            [disabled]="!categoriaeditForm.form.valid">Agregar </button>
+                        <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
