@@ -18,6 +18,8 @@ import { DetallescategoriaempresaComponent } from './Categorias/detallescategori
 import { ListacategoriaempresaComponent } from './Categorias/listacategoriaempresa/listacategoriaempresa.component';
 import { IngresosolicitudComponent } from './Solicitud/ingresosolicitud/ingresosolicitud.component';
 import { SolicitudregistroComponent } from './Solicitud/solicitudregistro/solicitudregistro.component';
+import { ListacategoriaproductoComponent } from './Categorias/listacategoriaproducto/listacategoriaproducto.component';
+import { DetallescategoriaproductoComponent } from './Categorias/detallescategoriaproducto/detallescategoriaproducto.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { SolicitudregistroComponent } from './Solicitud/solicitudregistro/solici
     ListacategoriaempresaComponent,
     IngresosolicitudComponent,
     SolicitudregistroComponent,
+    ListacategoriaproductoComponent,
+    DetallescategoriaproductoComponent,
   ],
   imports: [
     CommonModule,
