@@ -43,7 +43,7 @@ export class ListausuariosComponent implements OnInit {
     this.userService.crearUser(this.user)
         .subscribe(response => {
             console.log('exito');
-            console.log(response);``
+            console.log(response);
           this.users.push(response);
           document.getElementById("closeM1").click();
         })
