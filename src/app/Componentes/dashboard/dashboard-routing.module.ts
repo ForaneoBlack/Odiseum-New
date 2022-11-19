@@ -22,6 +22,7 @@ const routes: Routes = [
       {path:'rol',component:RolComponent},
       {path:'listacategoria',component:ListacategoriaempresaComponent},
       {path:'detallescategoria',component:DetallescategoriaempresaComponent},
+      {path:'detallescategoria/:idcatemp',component:DetallescategoriaempresaComponent},
       {path:'listaempresa',component:CrudEmpresaComponent},
       {path:'formempresa',component:DatosEmpresaComponent},
       {path:'listaproductos',component:ListarproductoComponent},

@@ -1,10 +1,8 @@
 <div class="container">
     <br>
-    <h2 class="text-center">CATEGORÍA</h2>
-    <br>
-    <h4 class="fw-bold">Textil</h4> 
-    <p class="lh-sm">La industria textil es el sector de la industria dedicado a la producción de fibras —fibra natural y sintética—, hilados, telas y productos relacionados con la
-        confección de ropa</p>       
+    <h2 class="text-center" >{{categorias.catnombre}}</h2>
+    <br>    
+    <p class="lh-sm"><b>Descripcion: </b>{{categorias.catdescripcion}}</p>       
     
     
     <br>
@@ -12,10 +10,22 @@
     <br>
 
     <div class="container">
-        <div class="text-end">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#agregarcat">Agregar Subcategoría</button>
+        <div class="row g-3">
+            <div class="col-sm">
+                <div class="text-start">
+                    <button type="button" class="btn btn-secondary" aria-current="page" routerLink="/dashboard/listacategoria">Regresar</button>
+                </div>
+               
+            </div>
+            <div class="col-sm">
+                <div class="text-end">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#agregarcat">Agregar Subcategoría</button>
+                </div>
+            </div>
+
         </div>
+        
         <br>
         <table class="table table-hover">
 
@@ -28,10 +38,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr  *ngFor="let categorias of categoria">
 
                     <td class="text-center">
-                        <p class="fw-semibold">Confección</p>
+                        <p class="fw-semibold">{{categorias.catnombre}}</p>
 
                     </td>
 
@@ -105,6 +115,7 @@
                             <div class="form-grow">
                                 <label for="categoria" class="form-label">Categoría</label>
                                 <select id="categoria" class="form-control" disabled>
+                                    <option value="{{categorias.idcatemp}}" >{{categorias.catnombre}}</option>
                                     <option>Textil</option>                                                          
                 
                                 </select>
@@ -113,7 +124,7 @@
                         <br>
 
                         <div class="d-grid gap-2 col-3 mx-auto">
-                            <button class="btn btn-success">Agregar Subcategoria</button>
+                            <button class="btn btn-success">Agregar</button>
                             <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
