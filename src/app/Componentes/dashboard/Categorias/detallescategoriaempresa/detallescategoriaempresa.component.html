@@ -115,6 +115,7 @@
                             <div class="form-grow">
                                 <label for="categoria" class="form-label">Categoría</label>
                                 <select id="categoria" class="form-control" disabled>
+                                    <option value="{{categorias.idcatemp}}" >{{categorias.catnombre}}</option>
                                     <option>Textil</option>                                                          
                 
                                 </select>
@@ -123,7 +124,7 @@
                         <br>
 
                         <div class="d-grid gap-2 col-3 mx-auto">
-                            <button class="btn btn-success">Agregar Subcategoria</button>
+                            <button class="btn btn-success">Agregar</button>
                             <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                     </form>

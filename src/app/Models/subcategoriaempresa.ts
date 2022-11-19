@@ -1,4 +1,4 @@
-export class subcategoriaempresa{
+export class Subcategoriaempresa{
     
     idsubcatemp!: number;
     cat_id!: number;

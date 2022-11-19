@@ -9,9 +9,9 @@ import { Categoria } from '../Models/categoria';
 })
 export class CategoriaService {
 
-    url: string ='http://localhost:8080/api/categoriaempresa'
+    //url: string ='http://localhost:8080/api/categoriaempresa'
 
-  // url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaempresa';
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaempresa';
 
   constructor(private http: HttpClient) { }
 
