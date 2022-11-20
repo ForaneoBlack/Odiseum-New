@@ -20,7 +20,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let roles of rol">
-      <td>{{roles.rolNombre}}</td>
+      <td>{{roles.rol}}</td>
       <td>{{roles.descripcion}}</td>
       <td>
         <button class="edit btn " style="background: #00DA9D; color: white; width: 100px; border-radius: 20px"
@@ -54,7 +54,7 @@
             <label for="rol" class="form-label">ROL:</label>
             <input type="text" class="form-control"
                    style="background: #D9D9D9;border-radius: 0px;"
-                   id="rol" [(ngModel)]="roles.rolNombre" name="rol">
+                   id="rol" [(ngModel)]="roles.rol" name="rol">
           </div>
           <div class="mb-3">
             <label for="descripcion" class="form-label">DESCRIPCION:</label>
@@ -95,7 +95,7 @@
             <label for="rol" class="form-label">ROL:</label>
             <input type="text" class="form-control"
                    style="background: #D9D9D9;border-radius: 0px;"
-                   id="rolS" [(ngModel)]="roles.rolNombre" name="rol">
+                   id="rolS" [(ngModel)]="roles.rol" name="rol">
           </div>
           <div class="mb-3">
             <label for="descripcion" class="form-label">DESCRIPCION:</label>

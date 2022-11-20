@@ -7,5 +7,4 @@ export class Usuario {
     usu_contrasena!: string;
     rol!: Rol;
     persona!: Persona;
-
 }

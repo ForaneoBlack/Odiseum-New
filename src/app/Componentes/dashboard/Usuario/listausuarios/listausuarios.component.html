@@ -28,7 +28,7 @@
             <td>{{user.persona.nombre}}</td>
             <td>{{user.persona.celular}}</td>
             <td>{{user.usuusuario}}</td>
-            <td>{{user.rol}}</td>
+            <td >{{user.rol}}</td>
             <td style="width: 30%">
                 <button type="button" class="btn btn-info"
                         data-bs-toggle="modal"
@@ -119,8 +119,8 @@
                                     <!--required minlength="2" maxlength="25"-->
                                 </div>
                                 <div class="col-sm">
-                                    <label for="rol" class="form-label">Rol </label>
-                                    <select id="rol" class="form-control" [ngModel]="user?.rol.rolNombre"
+                                    <label for="rolNombre" class="form-label">Rol </label>
+                                    <select id="rolNombre" class="form-control" [ngModel]="user.rol?.rol"
                                             [ngModelOptions]="{standalone: true }">
                                         <option>Administrador</option>
                                         <option>Colaborador</option>

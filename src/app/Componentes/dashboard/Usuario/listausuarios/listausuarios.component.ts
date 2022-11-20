@@ -3,6 +3,8 @@ import {Usuario} from "../../../../Models/usuario";
 import {UsuarioService} from "../../../../Service/usuario.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ActivatedRoute, Router} from "@angular/router";
+import {RolService} from "../../../../Service/rol.service";
+import {Rol} from "../../../../Models/rol";
 
 
 @Component({
@@ -13,13 +15,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ListausuariosComponent implements OnInit {
 
   user: Usuario = new Usuario();
-  users: Usuario[] = [];
+  users: Usuario [] = [];
+    rol: Rol [] = [];
 
-  constructor(private modalService: NgbModal,private userService: UsuarioService,private activedRoute: ActivatedRoute) { }
+  constructor(private modalService: NgbModal,private userService: UsuarioService,private activedRoute: ActivatedRoute,private rolService: RolService) { }
 
   ngOnInit(): void {
     this.getUsers();
-
+    this.getRoles();
     this.activedRoute.params
         .subscribe(params => {
           let usu_id: number = params['usu_id'];
@@ -34,6 +37,11 @@ export class ListausuariosComponent implements OnInit {
     this.userService.getUser()
         .subscribe(response => this.users = response)
   }
+
+    getRoles() {
+        this.rolService.getRol()
+            .subscribe(response => this.rol = response);
+    }
 
   abrirmodaleditar(user: Usuario){
     this.user = {...user};
