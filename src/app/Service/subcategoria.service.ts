@@ -10,7 +10,7 @@ export class SubcategoriaService {
 
   //url: string ='http://localhost:8080/api/categoriaempresa'
 
-   url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaempresa';
+   url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/subcategoriaempresa';
 
   constructor(private http: HttpClient) { }
 
