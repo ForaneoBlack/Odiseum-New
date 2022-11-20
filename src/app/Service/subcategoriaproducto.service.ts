@@ -8,7 +8,9 @@ import { subcategoriaProducto } from '../Models/subcategoriaProducto';
 })
 export class SubcategoriaproductoService {
 
-  url: string ='http://localhost:8080/api/categoriaproducto'
+  //url: string ='http://localhost:8080/api/categoriaproducto'
+
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/subcategoriaproducto';
 
   constructor(private http: HttpClient) { }
 
