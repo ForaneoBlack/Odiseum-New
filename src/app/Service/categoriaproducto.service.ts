@@ -19,7 +19,7 @@ export class CategoriaproductoService {
     return this.http.post<CategoriaProducto>(this.url+'/crear',categoriapro);
   }
   obtenerCategoria(catproid: number): Observable<CategoriaProducto>{
-    return this.http.get<CategoriaProducto>(this.url+'/listar/'+catproid);
+    return this.http.get<CategoriaProducto>(this.url+'/listar id/'+catproid);
   }
   updateCategoria(categoria: CategoriaProducto): Observable<CategoriaProducto>{
     return this.http.put<CategoriaProducto>(this.url+'/editar/'+categoria.catproid,categoria);
