@@ -23,6 +23,8 @@ export class DetallescategoriaproductoComponent implements OnInit {
   constructor(private activedRoute: ActivatedRoute, private categoriaproductoService:CategoriaproductoService, private subcategoriaService: SubcategoriaproductoService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getSubcategorias();
+    this.getCategorias();
     console.log()
 
     this.activedRoute.params
@@ -34,7 +36,16 @@ export class DetallescategoriaproductoComponent implements OnInit {
             .subscribe(response => this.categorias = response)
         }
       })
+      
+
+
   }
+
+  getCategorias() {
+    this.categoriaproductoService.getCategoria()
+      .subscribe(response => this.categoria = response);
+  }
+
   getSubcategorias() {
     this.subcategoriaService.getSubcategoria()
       .subscribe(response => this.subcategoria = response);

@@ -7,8 +7,13 @@ import { CategoriaProducto } from "../Models/categoriaProducto";
   providedIn: "root",
 })
 export class CategoriaproductoService {
+<<<<<<< HEAD
   //url = "http://localhost:8080/api/categoriaproducto";
   url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaproducto';
+=======
+  url = "http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaproducto";
+
+>>>>>>> origin/alberto
   constructor(private http: HttpClient) {}
 
   getCategoria(): Observable<CategoriaProducto[]> {
