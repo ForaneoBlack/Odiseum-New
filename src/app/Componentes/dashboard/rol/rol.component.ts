@@ -84,7 +84,7 @@ export class RolComponent implements OnInit{
 
     swalWithBootstrapButtons.fire({
       title: 'Esta seguro de eliminar!',
-      text: `la categoria : ${rol.rolNombre}`,
+      text: `la categoria : ${rol.rolnombre}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
@@ -98,7 +98,7 @@ export class RolComponent implements OnInit{
           this.rol = this.rol.filter(del => del.idrol != rol.idrol)
           swalWithBootstrapButtons.fire(
             'Eliminado!',
-            `Categoría eliminada ${rol.rolNombre}`,
+            `Categoría eliminada ${rol.rolnombre}`,
             'success'
           );
 

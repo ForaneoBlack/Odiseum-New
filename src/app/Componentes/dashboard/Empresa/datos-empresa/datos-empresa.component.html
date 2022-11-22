@@ -1,26 +1,26 @@
-<br>
-
-<h3 style="text-align: center">
+<div class="container-fluid text-black mt-5 text-center">
+<h3>
     <strong>
         INGRESO DATOS DE EMPRESA
     </strong>
 </h3>
+</div>
 
-<br>
 
 <div class="container">
     <br>
     <form class="form-control">
-        <br><strong>DATOS GENERALES ——————————————————————————————————————————————————————————</strong>
-        <br>
-        <br>
+        <div class="container-fluid text-black mt-2 text-center">
+            <h4>DATOS GENERALES</h4>
+        </div>
+    <div class="container mt-2">
         <div class="row g-3">
             <div class="col-sm">
                 <label for="ruc">RUC:</label>
                 <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
-                    maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
+                       maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
                 <div class="alert alert-danger"
-                    *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+                     *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
                     <div *ngIf="ruc?.errors?.['required']">
                         Digite el RUC por favor
                     </div>
@@ -36,7 +36,7 @@
             <div class="col-sm">
                 <label for="comercial">Nombre Comercial:</label>
                 <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial"
-                    [(ngModel)]="empresas.empnombre">
+                       [(ngModel)]="empresas.empnombre">
             </div>
         </div>
 
@@ -44,12 +44,12 @@
             <div class="col-sm">
                 <label for="rlegal">Representante Legal:</label>
                 <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal" name="rlegal"
-                    [(ngModel)]="empresas.emprepresentante">
+                       [(ngModel)]="empresas.emprepresentante">
             </div>
             <div class="col-sm">
                 <label for="email">Correo:</label>
                 <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email"
-                    [(ngModel)]="empresas.empcorreo">
+                       [(ngModel)]="empresas.empcorreo">
             </div>
         </div>
 
@@ -60,24 +60,24 @@
             <div class="col-sm">
                 <label for="social">Razon Social:</label>
                 <input type="text" class="form-control" placeholder="" id="social" name="social"
-                    [(ngModel)]="empresas.emprazon">
+                       [(ngModel)]="empresas.emprazon">
             </div>
             <div class="col-sm">
                 <label for="direccion">Direccion:</label>
                 <input type="text" class="form-control" id="direccion" name="direccion"
-                    [(ngModel)]="empresas.empdireccion">
+                       [(ngModel)]="empresas.empdireccion">
             </div>
         </div>
         <div class="row g-3">
             <div class="col-sm">
                 <label for="telefono">Telefono: </label>
                 <input type="text" class="form-control" id="telefono" name="telefono"
-                    [(ngModel)]="empresas.emptelefono">
+                       [(ngModel)]="empresas.emptelefono">
             </div>
             <div class="col-sm">
                 <label for="ingreso">Ingreso anual: </label>
                 <input type="number" class="form-control" id="ingreso" name="ingreso"
-                    [(ngModel)]="empresas.empingresoanual">
+                       [(ngModel)]="empresas.empingresoanual">
             </div>
 
         </div>
@@ -86,7 +86,7 @@
             <div class="col-sm">
                 <label for="trabajadores">N° Trabajadores:</label>
                 <input type="number" class="form-control" id="trabajadores" name="trabajadores"
-                    [(ngModel)]="empresas.empnumtrabajadores">
+                       [(ngModel)]="empresas.empnumtrabajadores">
             </div>
             <div class="col-sm">
                 <label for="ciudad">Ciudad:</label>
@@ -105,7 +105,7 @@
                 </select>
             </div>
             <div class="col-sm">
-                <label for="estado">Estado:</label>
+                <label for="empestado">Estado:</label>
                 <select [(ngModel)]="empresas.empestado" name="empestado" id="empestado" class="form-control">
 
                     <option>Activo</option>
@@ -125,9 +125,11 @@
             <div class="col-sm">
                 <label for="observaciones">Observaciones:</label>
                 <input type="text" class="form-control" id="observaciones" name="observaciones"
-                    [(ngModel)]="empresas.empobservaciones">
+                       [(ngModel)]="empresas.empobservaciones">
             </div>
         </div>
+    </div>
+
 
         <br>
 
@@ -175,7 +177,8 @@
 
         <br>
         <div class="mx-2 text-center ">
-            <button class="btn btn-success col-md-4" type="submit" (click)="agregarEmpresa()">Guardar</button>
+            <button class="btn btn-color col-md-4" type="submit" (click)="agregarEmpresa()" style="background:
+            #42A133; color: white; border-radius: 20px">Guardar</button>
         </div>
         <br>
     </form>

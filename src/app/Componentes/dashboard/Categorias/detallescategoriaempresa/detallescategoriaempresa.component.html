@@ -1,37 +1,37 @@
-<div class="container">
+<div class="container-fluid text-black mt-5 text-center">
     <br>
     <h2 class="text-center" >{{categorias.catnombre}}</h2>
     <br>    
-    <p class="lh-sm"><b>Descripcion: </b>{{categorias.catdescripcion}}</p>       
-    
-    
-    <br>
-    <h2 class="text-center">Subcategorías</h2>
-    <br>
-
+    <h4 class="lh-sm"><b>Descripción: </b>{{categorias.catdescripcion}}</h4>
+</div>
+<div class="container-fluid text-black mt-5 text-center">
+    <h2>Subcategorías</h2>
     <div class="container">
         <div class="row g-3">
             <div class="col-sm">
                 <div class="text-start">
-                    <button type="button" class="btn btn-secondary" aria-current="page" routerLink="/dashboard/listacategoria">Regresar</button>
+                    <button type="button" class="btn btn-color" aria-current="page"
+                            routerLink="/dashboard/listacategoria"
+                    style="background-color: #FD8900;border-radius: 20px; color: white">Regresar</button>
                 </div>
                
             </div>
             <div class="col-sm">
                 <div class="text-end">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#agregarsubcat" (click)="cleanModal()">Agregar Subcategoría</button>
+                    <button type="button" class="btn btn-color" data-bs-toggle="modal"
+                        data-bs-target="#agregarsubcat" (click)="cleanModal()"
+                            style="background: #5CCB4A; color: white; border-radius: 20px; width:220px">Agregar
+                        Subcategoría</button>
                 </div>
             </div>
 
         </div>
         
         <br>
-        <table class="table table-hover">
+        <table class="table text-center table-striped table-hover">
 
-            <thead class="table-dark">
+            <thead style="background: #FFA084; color: white">
                 <tr>
-
                     <th class="text-center">Subcategoria</th>
                     <th class="text-center">Descripción</th>
                     <th class="text-center">Configuración</th>
@@ -39,45 +39,32 @@
             </thead>
             <tbody>
                 <tr  *ngFor="let subcategorias of subcategoria">
-
                     <td class="text-center">
                         <p class="fw-semibold">{{categorias.catnombre}}</p>
-
                     </td>
-
                     <td>
-                        <p class="lh-sm">Arreglo de prendas textiles de vestimenta para hombres y mujeres</p>
+                        <p class="lh-sm text-center">Arreglo de prendas textiles de vestimenta para hombres y mujeres</p>
                     </td>
-
-                    <td class="text-end">
+                    <td class="text-center">
                         <div class="btn-group ">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-color dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" style="background: #5CCB4A; color: white;">
                                 Opciones
                             </button>
-                            <ul class="dropdown-menu ">
-
+                            <ul class="dropdown-menu btn-color" style="border: none; background: none">
                                 <button class=" dropdown-item " data-bs-toggle="modal"
-                                    data-bs-target="#agregarcat">Editar</button>
+                                    data-bs-target="#agregarcat" style="background: #FD8900; color: white;">Editar</button>
                                 <button class=" dropdown-item " data-bs-toggle="modal"
-                                    data-bs-target="#agregarproducto">Detalles</button>
-                                <button class=" dropdown-item ">Eliminar</button>
-
-
+                                    data-bs-target="#agregarproducto"  style="background: #00DA9D; color: white;">Detalles</button>
+                                <button class=" dropdown-item " style="background: #FF0F0F; color: white;">Eliminar</button>
                             </ul>
                         </div>
-
-
-
                     </td>
-
                 </tr>
             </tbody>
         </table>
 
     </div>
-
-
 
 
     <!-- Modal -->
