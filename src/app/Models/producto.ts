@@ -1,4 +1,6 @@
+import { CategoriaProducto } from "./categoriaProducto";
 import { empresa } from "./empresa";
+import { subcategoriaProducto } from "./subcategoriaProducto";
 
 export class Producto{
     idproducto! : number;
@@ -9,6 +11,12 @@ export class Producto{
     nombre! : string;
     imagen : string;
     fecha_vencimiento! : Date;
+<<<<<<< HEAD
+=======
+    catproid! : CategoriaProducto;
+    subcatproid! :subcategoriaProducto;
+    
+>>>>>>> origin/juan
     
 
 
