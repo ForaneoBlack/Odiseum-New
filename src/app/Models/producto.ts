@@ -11,10 +11,13 @@ export class Producto{
     nombre! : string;
     imagen : string;
     fecha_vencimiento! : Date;
+<<<<<<< HEAD
+=======
     catproid! : CategoriaProducto;
     subcatproid! :subcategoriaProducto;
     descripcion! : string;
     
+>>>>>>> origin/juan
     
 
 

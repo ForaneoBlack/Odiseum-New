@@ -17,7 +17,7 @@ export class CrudEmpresaComponent implements OnInit {
   constructor(private modalService: NgbModal, private empresaService: EmpresaService, private activedRoute: ActivatedRoute, router: Router) { }
 
   getEmpresas() {
-    this.empresaService.getEmpresas()
+    this.empresaService.getEmpresa()
       .subscribe(response => this.empresas = response);
   }
 

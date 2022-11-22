@@ -23,7 +23,7 @@
                 <td>{{empresa.empnombre}}</td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>{{empresa.empestado}}</td>
                 <td>
                     <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#detalleEmpresa"
                         (click)="abrirdetalle(empresa)">Detalles</button>
@@ -95,11 +95,8 @@
                         <div class="col-sm">
                             <div class="form-grow">
                                 <label for="estado">Estado</label>
-                                <select disabled id="estado" class="form-control">
-                                    <option>Activo</option>
-                                    <option>Rechazado</option>
-                                    <option>Pendiente</option>
-                                </select>
+                                <input disabled type="text" class="form-control" placeholder="" id="estado" name="estado" required
+                                [(ngModel)]="empresaNueva.empestado">
                             </div>
                         </div>
                     </div>
