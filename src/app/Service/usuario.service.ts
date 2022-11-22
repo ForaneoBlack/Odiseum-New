@@ -21,8 +21,8 @@ export class UsuarioService {
     return this.http.post<Usuario>(this.url+'/crear',user);
   }
 
-  obtenerUser(id: number): Observable<Usuario>{
-    return this.http.get<Usuario>(this.url+'/listar/'+id);
+  obtenerUser(usu_id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(this.url+'/listar id/'+usu_id);
   }
   updateUser(user: Usuario): Observable<Usuario>{
     return this.http.put<Usuario>(this.url+'/editar/'+user.usu_id,user);

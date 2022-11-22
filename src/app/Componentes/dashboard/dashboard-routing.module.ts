@@ -44,7 +44,8 @@ const routes: Routes = [
             {path: 'detallescategoriaproductos/:catproid', component: DetallescategoriaproductoComponent},
             {path: 'listacategoriaservicios', component: ListacategoriaservicioComponent},
             {path: 'detallescategoriaservicio', component: DetallescategoriaservicioComponent},
-            {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent}
+            {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent},
+            {path: 'formempresa/:usu_id', component: DatosEmpresaComponent}
 
 
         ]
