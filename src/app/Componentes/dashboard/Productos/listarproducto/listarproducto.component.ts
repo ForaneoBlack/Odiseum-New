@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Categoria } from 'src/app/Models/categoria';
+import { CategoriaProducto } from 'src/app/Models/categoriaProducto';
+import { subcategoriaProducto } from 'src/app/Models/subcategoriaProducto';
+import { CategoriaproductoService } from 'src/app/Service/categoriaproducto.service';
 import { ProductoService } from 'src/app/Service/producto.service';
+import { SubcategoriaproductoService } from 'src/app/Service/subcategoriaproducto.service';
 import Swal from 'sweetalert2';
 import { Producto } from '../../../../Models/producto';
+import { empresa } from '../../../../Models/empresa';
+import { EmpresaService } from '../../../../Service/empresa.service';
 
 @Component({
   selector: 'app-listarproducto',
@@ -15,9 +22,16 @@ export class ListarproductoComponent implements OnInit {
   productos: Producto = new Producto();
   producto: Producto [] = [];
 
+  categoria: CategoriaProducto [] = [];
+  subcategoria: subcategoriaProducto [] = [];
+  empresa : empresa [] = [];
+
   ngOnInit(): void {
 
     this.getProducto();
+    this.getSubcategorias();
+    this.getCategorias();
+    this.getEmpresas();
 
     this.activedRoute.params
       .subscribe(params => {
@@ -30,12 +44,24 @@ export class ListarproductoComponent implements OnInit {
   }
 
 
-  constructor(private modalService: NgbModal, private productoService: ProductoService, private activedRoute: ActivatedRoute, private router: Router) {
+  constructor(private modalService: NgbModal,private empresaService:EmpresaService, private subcategoriaService: SubcategoriaproductoService, private categoriaproductoService: CategoriaproductoService , private productoService: ProductoService, private activedRoute: ActivatedRoute, private router: Router) {
+  }
+  getEmpresas() {
+    this.empresaService.getEmpresa()
+      .subscribe(response => this.empresa = response);
   }
 
   getProducto() {
     this.productoService.getProducto()
       .subscribe(response => this.producto = response);
+  }
+  getCategorias() {
+    this.categoriaproductoService.getCategoria()
+      .subscribe(response => this.categoria = response);
+  }
+  getSubcategorias() {
+    this.subcategoriaService.getSubcategoria()
+      .subscribe(response => this.subcategoria = response);
   }
 
 
@@ -53,7 +79,7 @@ export class ListarproductoComponent implements OnInit {
   cleanModal(){
     this.productos = new Producto();
   }
-  actualizarCategoria() {
+  actualizarProducto() {
     this.productoService.updateProducto(this.productos)
       .subscribe(response => {
         console.log('actualizado');
@@ -116,6 +142,17 @@ export class ListarproductoComponent implements OnInit {
         )
       }
     })
+  }
+
+  compararcategoria(o1: Categoria, o2: Categoria): boolean{
+    if(o1==undefined &&o2 == undefined)return true;
+    return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.idcatemp == o2.idcatemp;
+
+  }
+  compararsubcategoria(o1: subcategoriaProducto, o2: subcategoriaProducto): boolean{
+    if(o1==undefined &&o2 == undefined)return true;
+    return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.catsubproid == o2.catsubproid;
+
   }
 
 

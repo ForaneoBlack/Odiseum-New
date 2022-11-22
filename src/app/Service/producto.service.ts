@@ -8,7 +8,7 @@ import { Producto } from '../Models/producto';
 })
 export class ProductoService {
 
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaempresa';
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/prodcuto';
 
   constructor(private http: HttpClient) { }
 

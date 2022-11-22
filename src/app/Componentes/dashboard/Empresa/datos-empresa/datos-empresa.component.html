@@ -1,15 +1,15 @@
-<br>
-
-<h3 style="text-align: center">
+<div class="container-fluid text-black mt-5 text-center">
+<h3>
     <strong>
         INGRESO DATOS DE EMPRESA
     </strong>
 </h3>
+</div>
 
-<br>
 
 <div class="container">
     <br>
+<<<<<<< HEAD
     <form class="form-control" #datosEmpresa = "ngForm">
         <br><strong>DATOS GENERALES ——————————————————————————————————————————————————————————</strong>
         <br>
@@ -20,6 +20,20 @@
                 <input type="text" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
                     maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
                 <div class="alert alert-danger" *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+=======
+    <form class="form-control">
+        <div class="container-fluid text-black mt-2 text-center">
+            <h4>DATOS GENERALES</h4>
+        </div>
+    <div class="container mt-2">
+        <div class="row g-3">
+            <div class="col-sm">
+                <label for="ruc">RUC:</label>
+                <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
+                       maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
+                <div class="alert alert-danger"
+                     *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+>>>>>>> origin/juan
                     <div *ngIf="ruc?.errors?.['required']">
                         Digite el RUC por favor
                     </div>
@@ -35,6 +49,7 @@
             <div class="col-sm">
                 <label for="comercial">Nombre Comercial:</label>
                 <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial"
+<<<<<<< HEAD
                     required minlength="3" maxlength="50" [(ngModel)]="empresas.empnombre" #comercial="ngModel">
                 <div class="alert alert-danger" *ngIf="comercial.invalid && (comercial.dirty || comercial.touched)">
                     <div *ngIf="comercial?.errors?.['required']">
@@ -48,6 +63,9 @@
                     </div>
 
                 </div>
+=======
+                       [(ngModel)]="empresas.empnombre">
+>>>>>>> origin/juan
             </div>
         </div>
 
@@ -55,6 +73,7 @@
             <div class="col-sm">
                 <label for="rlegal">Representante Legal:</label>
                 <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal" name="rlegal"
+<<<<<<< HEAD
                     required minlength="3" maxlength="50" [(ngModel)]="empresas.emprepresentante" #rlegal="ngModel">
                     <div class="alert alert-danger" *ngIf="rlegal.invalid && (rlegal.dirty || rlegal.touched)">
                         <div *ngIf="rlegal?.errors?.['required']">
@@ -85,6 +104,14 @@
                         </div>
     
                     </div>
+=======
+                       [(ngModel)]="empresas.emprepresentante">
+            </div>
+            <div class="col-sm">
+                <label for="email">Correo:</label>
+                <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email"
+                       [(ngModel)]="empresas.empcorreo">
+>>>>>>> origin/juan
             </div>
         </div>
 
@@ -94,6 +121,7 @@
         <div class="row g-3">
             <div class="col-sm">
                 <label for="social">Razon Social:</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" placeholder="" id="social" name="social" required minlength="2" maxlength="25"
                     [(ngModel)]="empresas.emprazon" #social="ngModel">
                     <div class="alert alert-danger" *ngIf="social.invalid && (social.dirty || social.touched)">
@@ -125,11 +153,21 @@
                         </div>
     
                     </div>
+=======
+                <input type="text" class="form-control" placeholder="" id="social" name="social"
+                       [(ngModel)]="empresas.emprazon">
+            </div>
+            <div class="col-sm">
+                <label for="direccion">Direccion:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion"
+                       [(ngModel)]="empresas.empdireccion">
+>>>>>>> origin/juan
             </div>
         </div>
         <div class="row g-3">
             <div class="col-sm">
                 <label for="telefono">Telefono: </label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="telefono" name="telefono" required minlength="10" maxlength="10"
                     [(ngModel)]="empresas.emptelefono" #telefono="ngModel">
                     <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
@@ -161,6 +199,15 @@
                         </div>
     
                     </div>
+=======
+                <input type="text" class="form-control" id="telefono" name="telefono"
+                       [(ngModel)]="empresas.emptelefono">
+            </div>
+            <div class="col-sm">
+                <label for="ingreso">Ingreso anual: </label>
+                <input type="number" class="form-control" id="ingreso" name="ingreso"
+                       [(ngModel)]="empresas.empingresoanual">
+>>>>>>> origin/juan
             </div>
 
         </div>
@@ -168,6 +215,7 @@
         <div class="row g-3">
             <div class="col-sm">
                 <label for="trabajadores">N° Trabajadores:</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="trabajadores" name="trabajadores" required minlength="1" maxlength="4"
                     [(ngModel)]="empresas.empnumtrabajadores" #trabajadores="ngModel">
                     <div class="alert alert-danger" *ngIf="trabajadores.invalid && (trabajadores.dirty || trabajadores.touched)">
@@ -182,6 +230,10 @@
                         </div>
     
                     </div>
+=======
+                <input type="number" class="form-control" id="trabajadores" name="trabajadores"
+                       [(ngModel)]="empresas.empnumtrabajadores">
+>>>>>>> origin/juan
             </div>
             <div class="col-sm">
                 <label for="ciudad">Ciudad:</label>
@@ -217,8 +269,13 @@
                 </div>
             </div>
             <div class="col-sm">
+<<<<<<< HEAD
                 <label for="estado">Estado:</label>
                 <select [(ngModel)]="empresas.empestado" name="empestado" required id="empestado" class="form-control" #estado="ngModel">
+=======
+                <label for="empestado">Estado:</label>
+                <select [(ngModel)]="empresas.empestado" name="empestado" id="empestado" class="form-control">
+>>>>>>> origin/juan
 
                     <option>Activo</option>
                     <option>Pendiente</option>
@@ -246,6 +303,7 @@
             </div>
             <div class="col-sm">
                 <label for="observaciones">Observaciones:</label>
+<<<<<<< HEAD
                 <input type="text" class="form-control" id="observaciones" name="observaciones" required minlength="2" maxlength="50"
                     [(ngModel)]="empresas.empobservaciones" #observaciones="ngModel">
                     <div class="alert alert-danger" *ngIf="observaciones.invalid && (observaciones.dirty || observaciones.touched)">
@@ -260,8 +318,14 @@
                         </div>
     
                     </div>
+=======
+                <input type="text" class="form-control" id="observaciones" name="observaciones"
+                       [(ngModel)]="empresas.empobservaciones">
+>>>>>>> origin/juan
             </div>
         </div>
+    </div>
+
 
         <br>
 
@@ -309,7 +373,12 @@
 
         <br>
         <div class="mx-2 text-center ">
+<<<<<<< HEAD
             <button class="btn btn-success col-md-4" type="submit" [disabled]="!datosEmpresa.form.valid" (click)="agregarEmpresa()">Guardar</button>
+=======
+            <button class="btn btn-color col-md-4" type="submit" (click)="agregarEmpresa()" style="background:
+            #42A133; color: white; border-radius: 20px">Guardar</button>
+>>>>>>> origin/juan
         </div>
         <br>
     </form>

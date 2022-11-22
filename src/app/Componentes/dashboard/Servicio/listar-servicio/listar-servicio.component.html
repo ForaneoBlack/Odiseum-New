@@ -1,29 +1,30 @@
-<body>
-<br>
-<h2 class="text-center">Lista de Servicios</h2>
-<br>
+<div class="container-fluid text-black mt-5 text-center">
+    <h1 class="text-center">Lista de Servicios</h1>
+</div>
+
 
 <div class="container">
-    <div class="text-center">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarproducto">Agregar
-            Servicio
+    <div class="d-flex mt-3 mx-3 justify-content-end">
+        <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target="#agregarproducto"
+                style="background: #5CCB4A; color: white; border-radius: 20px; width:
+     200px">Agregar Servicio
         </button>
     </div>
     <br>
-    <table class="table table-hover">
+    <table class="table mt-3 table-hover table-striped">
 
-        <thead class="table-dark">
+        <thead style="background: #FFA084; color: white">
         <tr>
             <th></th>
-            <th class="text-center">Producto</th>
-            <th class="text-center">Categoria</th>
-            <th class="text-center">Descripción</th>
-            <th class="text-center">Configuración</th>
+            <th scope="col" class="text-center">Producto</th>
+            <th scope="col" class="text-center">Categoria</th>
+            <th scope="col" class="text-center">Descripción</th>
+            <th scope="col" class="text-center">Configuración</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td style=" width:150px">
+            <td class="text-center" style=" width:150px">
                 <a data-fancybox>
                     <img alt="" class="img-thumbnail w-100"/></a>
             </td>
@@ -40,15 +41,26 @@
                 <span class="badge rounded-pill bg-ligth text-dark me-1">Reparacion</span>
 
             </td>
-            <td>
+            <td class="text-center">
                 <p>El chasis es el principal elemento de la estructura de un vehículo si se daña se jodió</p>
             </td>
 
-            <td class="text-end">
-                <button style="width:75%" type="button" class="btn btn-info" data-bs-toggle="modal"
-                        data-bs-target="#agregarproducto">Editar
-                </button>
-                <button style="width:75%" class="btn btn-danger ms-3">Eliminar</button>
+            <td class="text-center">
+                <div class="btn-group ">
+                    <button class="btn btn-color dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="background: #5CCB4A; color: white;">
+                        Opciones
+                    </button>
+                    <ul class="dropdown-menu btn-color" style="border: none; background: none">
+                        <button class="btn-color dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#agregarproducto"
+                                style="background: #FD8900; color: white;">Editar
+                        </button>
+                        <button class="btn-color dropdown-item "
+                                style="background: #FF0F0F; color: white;">Eliminar
+                        </button>
+                    </ul>
+                </div>
             </td>
         </tr>
         </tbody>
@@ -58,39 +70,41 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="agregarproducto" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true"
-     style="margin-left: -12%;">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 150%">
-            <div class="modal-header">
+<div class="modal fade" id="agregarproducto" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header align-items-center" style="background: #42A133; color: white">
                 <h1 class="modal-title fs-5">Agregar Servicio</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-control" #productoForm>
+                <form class="form-control" #productoForm style="border: none">
                     <div class="row g-3">
                         <div class="col-sm">
-                            <label for="nombreservicio">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre del Servicio "
+                            <label for="nombreservicio">Nombre del Servicio:</label>
+                            <input type="text" class="form-control"
+                                   style="background: #D9D9D9;border-radius: 0px;"
                                    id="nombreservicio" name="nombreservicio" required minlength="2" maxlength="25">
                         </div>
                         <div class="col-sm">
-                            <label for="duracion">Duracion</label>
-                            <input type="text" class="form-control" placeholder="Duracion del Servicio" id="duracion"
+                            <label for="duracion">Duracion del Servicio:</label>
+                            <input type="text" class="form-control" id="duracion"
+                                   style="background: #D9D9D9;border-radius: 0px;"
                                    name="duracion" required maxlength="10">
                         </div>
 
                     </div>
                     <div class="row g-3">
                         <div class="col-sm">
-                            <label for="precio">Precio</label>
+                            <label for="precio">Precio:</label>
                             <input type="number" class="form-control" placeholder="0,00" id="precio" name="precio"
-                                   required>
+                                   style="background: #D9D9D9;border-radius: 0px;" required>
                         </div>
                         <div class="col-sm">
-                            <label for="descripcion">Descripción</label>
-                            <textarea class="form-control" placeholder="Descripcion del Servicio" id="descripcion"
-                                      name="descripcion" required minlength="25" maxlength="500"></textarea>
+                            <label for="descripcion">Descripción del Servicio:</label>
+                            <textarea class="form-control" id="descripcion"
+                                      style="background: #D9D9D9;border-radius: 0px;" name="descripcion" required
+                                      minlength="25" maxlength="500"></textarea>
                         </div>
 
                     </div>
@@ -98,8 +112,8 @@
                     <div class="row g-3">
                         <div class="col-sm">
                             <div class="form-grow">
-                                <label for="categoria" class="form-label">Categoría </label>
-                                <select id="categoria" class="form-control" disabled>
+                                <label for="categoria" class="form-label">Categoría:</label>
+                                <select id="categoria" class="form-control" disabled style="background: #D9D9D9;border-radius: 0px;">
                                     <option>Automotríz</option>
 
                                 </select>
@@ -107,8 +121,8 @@
                         </div>
                         <div class="col-sm">
                             <div class="form-grow">
-                                <label for="subcategoria" class="form-label">Subcategoría </label>
-                                <select id="subcategoria" class="form-control">
+                                <label for="subcategoria" class="form-label">Subcategoría: </label>
+                                <select id="subcategoria" class="form-control" style="background: #D9D9D9;border-radius: 0px;">
                                     <option>Reparación</option>
                                     <option>Pintura</option>
                                     <option>Tunear</option>
@@ -119,15 +133,22 @@
                     </div>
                     <div class="row g-3">
                         <div class="col-sm">
-                            <label for="url">Link de la imagen</label>
-                            <input type="url" class="form-control" placeholder="URL" id="url" name="url" required>
+                            <label for="url">Link de la imagen:</label>
+                            <input type="url" class="form-control" placeholder="URL" id="url" name="url" required
+                                   style="background: #D9D9D9;border-radius: 0px;">
                         </div>
                     </div>
-
                     <br>
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-success">Agregar Servicio</button>
-                        <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    <div class="container text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <button class="btn btn-color"  style="background: #42A133; color: white">Agregar Servicio</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-color" type="button" data-bs-dismiss="modal" style="background:
+                                #FF0000; color: white">Cancelar</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -136,4 +157,3 @@
 </div>
 
 
-</body>
