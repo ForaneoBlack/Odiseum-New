@@ -23,7 +23,7 @@ export class CategoriaservicioService {
     }
 
     obtenerServicio(idcatser: number): Observable<Categoriaservicio> {
-        return this.http.get<Categoriaservicio>(this.url + '/listar/' + idcatser);
+        return this.http.get<Categoriaservicio>(this.url + '/listar id/' + idcatser);
     }
 
     updateServicio(catservicio: Categoriaservicio): Observable<Categoriaservicio> {
