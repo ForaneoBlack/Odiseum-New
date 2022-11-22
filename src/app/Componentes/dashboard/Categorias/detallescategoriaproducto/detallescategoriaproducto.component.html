@@ -98,13 +98,13 @@
                                     id="nombresubcate" name="nombresubcate" required minlength="3" maxlength="25" [(ngModel)]="subcategorias.subcatpronombre" #nombresubcate = "ngModel">
                                     <div class="alert alert-danger" *ngIf="nombresubcate.invalid && (nombresubcate.dirty || nombresubcate.touched)">
                                         <div *ngIf = "nombresubcate?.errors?.['required']">
-                                           Digite la categoría por favor
+                                           Digite la subcategoría por favor
                                         </div>
                                         <div *ngIf = "nombresubcate?.errors?.['minlength']">
-                                           La categoría debe tener mínimo 4 caracteres
+                                           La subcategoría debe tener mínimo 4 caracteres
                                         </div>
                                         <div *ngIf = "nombresubcate?.errors?.['maxlength']">
-                                            La categoría debe tener máximo 25 caracteres
+                                            La subcategoría debe tener máximo 25 caracteres
                                         </div>
     
                                        </div>
@@ -122,7 +122,7 @@
                                     maxlength="100" [(ngModel)]="subcategorias.subcatprodescripcion" #subcatdescripcion = "ngModel"></textarea>
                                     <div class="alert alert-danger" *ngIf="subcatdescripcion.invalid && (subcatdescripcion.dirty || subcatdescripcion.touched)">
                                         <div *ngIf = "subcatdescripcion?.errors?.['required']">
-                                           Digite la categoría por favor
+                                           Digite la descripción por favor
                                         </div>
                                         <div *ngIf = "subcatdescripcion?.errors?.['minlength']">
                                            La descripción debe tener mínimo 25 caracteres
@@ -138,11 +138,16 @@
                         <div class="col-sm">                                
                             <div class="form-grow">
                                 <label for="catproid" class="form-label">Categoría</label>
-                                <select [(ngModel)]="subcategorias.catproid" name="catproid" id="catproid" class="form-control" >
+                                <select [(ngModel)]="subcategorias.catproid" name="catproid" id="catproid" required class="form-control" #catproid="ngModel">
                                     
                                     <option *ngFor="let categorias of categoria" [ngValue]="categorias">{{categorias.catpronombre}}</option>                                                          
                 
                                 </select>
+                                <div class="alert alert-danger" *ngIf="catproid.invalid && (catproid.dirty || catproid.touched)">
+                                    <div *ngIf="catproid?.errors?.['required']">
+                                        Ingrese la categoría asignar en la subcategoría por favor
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <br>
