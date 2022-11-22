@@ -47,7 +47,7 @@ export class ListarproductoComponent implements OnInit {
   constructor(private modalService: NgbModal,private empresaService:EmpresaService, private subcategoriaService: SubcategoriaproductoService, private categoriaproductoService: CategoriaproductoService , private productoService: ProductoService, private activedRoute: ActivatedRoute, private router: Router) {
   }
   getEmpresas() {
-    this.empresaService.getEmpresas()
+    this.empresaService.getEmpresa()
       .subscribe(response => this.empresa = response);
   }
 
