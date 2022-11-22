@@ -7,7 +7,8 @@ import { empresa } from '../Models/empresa';
   providedIn: 'root',
 })
 export class EmpresaService {
-  url: string = 'http://localhost:8080/api/empresa';
+  // url: string = 'http://localhost:8080/api/empresa';
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/empresa';
 
   constructor(private http: HttpClient) {}
 

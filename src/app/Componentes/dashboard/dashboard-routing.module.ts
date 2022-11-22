@@ -45,6 +45,8 @@ const routes: Routes = [
             {path: 'listacategoriaservicios', component: ListacategoriaservicioComponent},
             {path: 'detallescategoriaservicio', component: DetallescategoriaservicioComponent},
             {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent}
+            
+            
 
 
         ]

@@ -13,6 +13,7 @@ export class Producto{
     fecha_vencimiento! : Date;
     catproid! : CategoriaProducto;
     subcatproid! :subcategoriaProducto;
+    descripcion! : string;
     
     
 
