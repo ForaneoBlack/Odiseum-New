@@ -9,13 +9,7 @@ import { subcategoriaProducto } from '../Models/subcategoriaProducto';
 export class SubcategoriaproductoService {
 
   //url: string ='http://localhost:8080/api/categoriaproducto'
-<<<<<<< HEAD
   url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/subcategoriaproducto';
-=======
-
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/subcategoriaproducto';
-
->>>>>>> origin/alberto
   constructor(private http: HttpClient) { }
 
   getSubcategoria(): Observable<subcategoriaProducto[]> {
