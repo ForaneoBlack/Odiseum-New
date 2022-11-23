@@ -68,18 +68,12 @@
                                     data-bs-target="#agregarproducto" style="background: #00DA9D; color: white;">Detalles
                             </button>
                             <button class=" dropdown-item" style="background: #FF0F0F; color: white;">Eliminar</button>
-
-
                         </ul>
                     </div>
-
-
                 </td>
-
             </tr>
             </tbody>
         </table>
-
     </div>
 
     <!-- Modal -->
@@ -96,20 +90,20 @@
                     <form class="form-control" #subcategoriaForm="ngForm">
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="nombresubcate">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre de la Subcategoría "
-                                       id="nombresubcate" name="nombresubcate" required minlength="3" maxlength="25"
+                                <label for="nombresubcate">Nombre de la Subcategoría:</label>
+                                <input type="text" class="form-control"
+                                       id="nombresubcate" name="nombresubcate" required minlength="2" maxlength="70"
                                        [(ngModel)]="subcatServicio.subcatnombre" #nombresubcate="ngModel">
                                 <div class="alert alert-danger"
                                      *ngIf="nombresubcate.invalid && (nombresubcate.dirty || nombresubcate.touched)">
                                     <div *ngIf="nombresubcate?.errors?.['required']">
-                                        Digite la categoría por favor
+                                        Digite el nombre de la subcategoría por favor
                                     </div>
                                     <div *ngIf="nombresubcate?.errors?.['minlength']">
-                                        La categoría debe tener mínimo 4 caracteres
+                                        El nombre debe tener mínimo 2 caracteres
                                     </div>
                                     <div *ngIf="nombresubcate?.errors?.['maxlength']">
-                                        La categoría debe tener máximo 25 caracteres
+                                        El nombre debe tener máximo 70 caracteres
                                     </div>
 
                                 </div>
@@ -121,18 +115,18 @@
                                 <label for="subcatdescripcion">Descripción</label>
                                 <textarea class="form-control" placeholder="Descripcion de la Subcategoría"
                                           id="subcatdescripcion" name="subcatdescripcion" required minlength="25"
-                                          maxlength="100" [(ngModel)]="subcatServicio.subcatdetalle" #subcatdetalle=
+                                          maxlength="70" [(ngModel)]="subcatServicio.subcatdetalle" #subcatdetalle=
                                                   "ngModel"></textarea>
                                 <div class="alert alert-danger"
                                      *ngIf="subcatdetalle.invalid && (subcatdetalle.dirty || subcatdetalle.touched)">
                                     <div *ngIf="subcatdetalle?.errors?.['required']">
-                                        Digite la categoría por favor
+                                        Digite el detalle de la subcategoria
                                     </div>
                                     <div *ngIf="subcatdetalle?.errors?.['minlength']">
-                                        La descripción debe tener mínimo 25 caracteres
+                                        El detalle debe tener mínimo 25 caracteres
                                     </div>
                                     <div *ngIf="subcatdetalle?.errors?.['maxlength']">
-                                        La descripción debe tener máximo 100 caracteres
+                                        El detalle debe tener máximo 70 caracteres
                                     </div>
 
                                 </div>
@@ -186,18 +180,18 @@
                         <div class="col-sm">
                             <label for="nombrecateedit">Nombre</label>
                             <input type="text" class="form-control" placeholder="Nombre de la Categoría "
-                                   id="nombrecateedit" name="nombrecateedit" required minlength="3" maxlength="25"
+                                   id="nombrecateedit" name="nombrecateedit" required minlength="2" maxlength="70"
                                    [(ngModel)]="catServicio.catnombre" #nombrecateedit="ngModel">
                             <div class="alert alert-danger"
                                  *ngIf="nombrecateedit.invalid && (nombrecateedit.dirty || nombrecateedit.touched)">
                                 <div *ngIf="nombrecateedit?.errors?.['required']">
-                                    Digite la categoría por favor
+                                    Digite el nombre de la subcategoría
                                 </div>
                                 <div *ngIf="nombrecateedit?.errors?.['minlength']">
-                                    La categoría debe tener mínimo 4 caracteres
+                                    El nombre debe tener mínimo 2 caracteres
                                 </div>
                                 <div *ngIf="nombrecateedit?.errors?.['maxlength']">
-                                    La categoría debe tener máximo 25 caracteres
+                                    El nombre debe tener máximo 70 caracteres
                                 </div>
 
                             </div>
@@ -212,18 +206,18 @@
                             <label for="descripcionedit">Descripción</label>
                             <textarea class="form-control" placeholder="Descripcion de la Categoría"
                                       id="descripcionedit"
-                                      name="descripcionedit" required minlength="25" maxlength="100"
+                                      name="descripcionedit" required minlength="25" maxlength="70"
                                       [(ngModel)]="catServicio.catdetalle" #descripcionedit="ngModel"></textarea>
                             <div class="alert alert-danger"
                                  *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
                                 <div *ngIf="descripcionedit?.errors?.['required']">
-                                    Digite la categoría por favor
+                                    Digite el detalle de la subcategoria
                                 </div>
                                 <div *ngIf="descripcionedit?.errors?.['minlength']">
-                                    La descripción debe tener mínimo 25 caracteres
+                                    El detalle debe tener mínimo 25 caracteres
                                 </div>
                                 <div *ngIf="descripcionedit?.errors?.['maxlength']">
-                                    La descripción debe tener máximo 100 caracteres
+                                    El detalle debe tener máximo 70 caracteres
                                 </div>
 
                             </div>

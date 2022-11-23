@@ -16,13 +16,13 @@ export class ListausuariosComponent implements OnInit {
 
   user: Usuario = new Usuario();
   users: Usuario [] = [];
-    rol: Rol [] = [];
 
-  constructor(private modalService: NgbModal,private userService: UsuarioService,private activedRoute: ActivatedRoute,private rolService: RolService) { }
+
+  constructor(private modalService: NgbModal,private userService: UsuarioService,private activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getUsers();
-    this.getRoles();
+
     this.activedRoute.params
         .subscribe(params => {
           let usu_id: number = params['usu_id'];
@@ -35,13 +35,12 @@ export class ListausuariosComponent implements OnInit {
 
   getUsers(){
     this.userService.getUser()
-        .subscribe(response => this.users = response)
+        .subscribe(response => {
+            this.users = response
+            console.log(response) })
+
   }
 
-    getRoles() {
-        this.rolService.getRol()
-            .subscribe(response => this.rol = response);
-    }
 
   abrirmodaleditar(user: Usuario){
     this.user = {...user};
@@ -53,9 +52,12 @@ export class ListausuariosComponent implements OnInit {
             console.log('exito');
             console.log(response);
           this.users.push(response);
+            console.log( );
           document.getElementById("closeM1").click();
         })
   }
+
+
 
   cleanModal(){
     this.user = new Usuario();
