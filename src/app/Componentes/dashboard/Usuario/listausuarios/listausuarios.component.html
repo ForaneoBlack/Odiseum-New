@@ -1,155 +1,183 @@
-<br>
-<h2 class="text-center">USUARIOS</h2>
-<br>
+<div class="container-fluid text-black mt-5 text-center">
+    <h2 class="text-center">USUARIOS</h2>
+</div>
+
 
 <div class="container">
-    <div class="col order-last">
-        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarusuario">Agregar</button>
+    <div class="d-flex mt-3 mx-3 justify-content-end">
+        <button class="btn btn-color"
+                data-bs-toggle="modal"
+                data-bs-target="#agregarusuario"
+                (click)="cleanModal()"
+                style="background: #5CCB4A; color: white; border-radius: 20px; width:
+     125px">Agregar
+        </button>
     </div>
     <br>
-    <table class="table table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Nombre</th>
-                <th>Usuario</th>
-                <th>Cedula</th>
-                <th>Rol</th>
-                <th>acciones</th>
-            </tr>
-
+    <table class="table mt-3 table-striped table-hover">
+        <thead style="background: #FFA084; color: white">
+        <tr>
+            <th scope="col" class="text-center">Cedula</th>
+            <th scope="col" class="text-center">Nombre</th>
+            <th scope="col" class="text-center">Celular</th>
+            <th scope="col" class="text-center">Usuario</th>
+            <th scope="col" class="text-center">Rol</th>
+            <th scope="col" class="text-center">Acciones</th>
+        </tr>
         </thead>
         <tbody>
-
-            <tr>
-                <td>Alberto Vallejo</td>
-                <td>alberto2208</td>
-                <td>0107948333</td>
-                <td>Administrador</td>
-
-                <td style="width: 30%">
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                        data-bs-target="#agregarusuario">Editar</button>
-
-                    <button class="btn btn-danger " style="margin-left : 5px">Eliminar</button>
-
-
-                </td>
-            </tr>
-
+        <tr *ngFor="let user of users">
+            <td class="text-center">{{user.persona.cedula}}</td>
+            <td class="text-center">{{user.persona.nombre}}</td>
+            <td class="text-center">{{user.persona.celular}}</td>
+            <td class="text-center">{{user.usuusuario}}</td>
+            <td class="text-center">{{user.rol}}</td>
+            <td class="text-center">
+                <div class="btn-group ">
+                    <button class="btn btn-color dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="background: #5CCB4A; color: white;">
+                        Opciones
+                    </button>
+                    <ul class="dropdown-menu btn-color" style="border: none; background: none">
+                        <button class="btn-color dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#agregarusuario" (click)="abrirmodaleditar(user)"
+                                style="background: #FD8900; color: white;">Editar
+                        </button>
+                        <button class="btn-color dropdown-item "
+                                style="background: #FF0F0F; color: white;">Eliminar
+                        </button>
+                    </ul>
+                </div>
+            </td>
+        </tr>
         </tbody>
-
     </table>
 
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="agregarusuario" tabindex="-1" aria-labelledby="agregarusuario" aria-hidden="true"
-    style="margin-left: -12%;">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 150%">
-            <div class="modal-header">
+>
+    <div class="modal-dialog  modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header align-items-center" style="background: #42A133; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeM1"></button>
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <form class="form-control" #usuarioForm>
+                    <form class="form-control" style="border: none">
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el nombre " id="nombre"
-                                    name="nombre" required minlength="2" maxlength="25">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre"
+                                       name="nombre" required minlength="2" maxlength="25"
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       [ngModel]="user.persona?.nombre" [ngModelOptions]="{standalone: true }">
                             </div>
                             <div class="col-sm">
-                                <label for="apellido">Apellido</label>
-                                <input type="text" class="form-control" placeholder="Ingrese el apellido " id="apellido"
-                                    name="apellido" required minlength="2" maxlength="25">
+                                <label for="apellido" class="form-label">Apellido:</label>
+                                <input type="text" class="form-control"  id="apellido"
+                                       name="apellido" required minlength="2" maxlength="25"
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       [ngModel]="user.persona?.apellido" [ngModelOptions]="{standalone: true }">
                             </div>
 
                         </div>
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="cedula">Cédula</label>
+                                <label for="cedula" class="form-label">Cédula:</label>
                                 <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]"
-                                    required minlength="10" maxlength="10" placeholder="Digite su cédula sin guiones">
-
+                                       required minlength="10" maxlength="10"
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                        [ngModel]="user.persona?.cedula"
+                                       [ngModelOptions]="{standalone: true }">
                             </div>
                             <div class="col-sm">
-                                <label for="email">Email</label>
+                                <label for="email" class="form-label">Email:</label>
                                 <input type="text" class="form-control" id="email" name="email"
-                                    pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
-                                    required placeholder="Digite su Email">
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                                       required [ngModel]="user.persona?.correo"
+                                       [ngModelOptions]="{standalone: true }">
                             </div>
 
                         </div>
                         <div class="row g-3">
-                            <div class="col-sm-6">
-                                <label for="Número de celular">Celular</label>
+                            <div class="col-sm">
+                                <label for="celular" class="form-label">Celular:</label>
                                 <input type="text" class="form-control" id="celular" name="celular" pattern="[0-9]"
-                                    required minlength="10" maxlength="10" placeholder="Digite su número de celular">
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       required minlength="10" maxlength="10"
+                                       [ngModel]="user.persona?.celular"
+                                       [ngModelOptions]="{standalone: true }">
 
+                            </div>
+                            <div class="col-sm">
+                                <label for="direccion" class="form-label">Direccion:</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion"
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       required [ngModel]="user.persona?.direccion"
+                                       [ngModelOptions]="{standalone: true }">
                             </div>
                             <hr>
-
                             <div class="row g-3">
                                 <div class="col-sm">
-                                    <label for="usuario">Usuario</label>
+                                    <label for="usuario" class="form-label">Usuario:</label>
                                     <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
-                                        id="usuario" name="usuario" required minlength="2" maxlength="25">
+                                           style="background: #D9D9D9;border-radius: 0px;"
+                                           id="usuario" name="usuario"
+                                           [ngModel]="user?.usuusuario"
+                                           [ngModelOptions]="{standalone: true }">
+                                    <!--required minlength="2" maxlength="25"-->
                                 </div>
                                 <div class="col-sm">
-                                    <label for="rol" class="form-label">Rol </label>
-                                    <select id="rol" class="form-control">
+                                    <label for="rolNombre" class="form-label">Rol </label>
+                                    <select id="rolNombre" class="form-control" [ngModel]="user.rol?.rolnombre"
+                                            style="background: #D9D9D9;border-radius: 0px;"
+                                            [ngModelOptions]="{standalone: true }">
                                         <option>Administrador</option>
                                         <option>Colaborador</option>
-                                        <option>Ministro</option>
                                         <option>Emprendedor</option>
-    
                                     </select>
                                 </div>
-    
 
                             </div>
                             <div class="row g-3">
                                 <div class="col-sm">
-                                    <label>Contraseña:</label>
+                                    <label for="password" class="form-label">Contraseña:</label>
                                     <input type="password" class="form-control" id="password" name="password" required
-                                        minlength="8" maxlength="50" placeholder="Digite la contraseña">
+                                           style="background: #D9D9D9;border-radius: 0px;"
+                                           minlength="8" maxlength="50" placeholder="Digite la contraseña"
+                                           [ngModel]="user?.usu_contrasena"
+                                           [ngModelOptions]="{standalone: true }">
                                 </div>
-                                <div class="col-sm">
-                                    <label>Repetir Contraseña:</label>
-                                    <input type="password" class="form-control" id="password" name="password" required
-                                        minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez">
-    
-    
-                                </div>
-    
-
+                               <!-- <div class="col-sm">
+                                    <label for="password2" class="form-label">Repetir Contraseña:</label>
+                                    <input type="password" class="form-control" id="password2" name="password2" required
+                                           minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez"
+                                           style="background: #D9D9D9;border-radius: 0px;">
+                                </div>-->
                             </div>
-                            
-                            
-
-
-
                         </div>
                         <br>
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button class="btn btn-success">Agregar</button>
-                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
+                        <div class="container text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                            <button class="btn btn-color" (click)="agregarUser()"
+                                    style="background: #42A133; color: white">Agregar</button>
+                                </div>
+                                <div class="col-4">
+                            <button class="btn btn-color" type="button" data-bs-dismiss="modal"
+                                    style="background: #FF0000; color: white">Cancelar</button>
+                                </div>
+                            </div>
                         </div>
-
-
-
                     </form>
-
-
-
-
-
-
-
                 </div>
 
             </div>
         </div>
     </div>
+</div>

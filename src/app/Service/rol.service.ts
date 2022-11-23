@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Rol} from "../Models/rol";
-import {Categoria} from "../Models/categoria";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +28,6 @@ export class RolService {
   }
   eliminar(rol: Rol){
     const path =`${this.url}/${rol.idrol}` ;
-    return this.http.delete<Categoria>(this.url+"/eliminar/"+rol.idrol);
+    return this.http.delete<Rol>(this.url+"/eliminar/"+rol.idrol);
   }
 }

@@ -1,19 +1,17 @@
 <div class="container-fluid text-black mt-5 text-center">
-    <h2>Lista de Categorías para Empresa</h2>
+    <h1>Lista de Categorías de Productos</h1>
 </div>
 
-<br>
 
 <div class="container">
-    <div class="text-center d-flex mt-3 mx-3 justify-content-end">
+    <div class="d-flex mt-3 mx-3 justify-content-end">
         <button type="button" id="btnagregar" class="btn btn-color" data-bs-toggle="modal"
-                data-bs-target="#agregarcat" (click)="cleanModal()"
-                style="background: #5CCB4A; color: white; border-radius: 20px; width:200px">Agregar
-            Categoría
+                data-bs-target="#agregarcat" (click)="cleanModal()" style="background: #5CCB4A; color: white; border-radius: 20px; width:
+     200px">Agregar Categoría
         </button>
     </div>
     <br>
-    <table class="table text-center table-striped table-hover">
+    <table class="table mt-3 table-hover table-striped">
 
         <thead style="background: #FFA084; color: white">
         <tr>
@@ -25,10 +23,10 @@
         <tbody>
         <tr *ngFor="let categorias of categoria">
             <td class="text-center">
-                <p class="fw-semibold">{{categorias.catnombre}}</p>
+                <p class="fw-semibold">{{categorias.catpronombre}}</p>
             </td>
             <td>
-                <p class="lh-sm">{{categorias.catdescripcion}}</p>
+                <p class="lh-sm">{{categorias.catprodescripcion}}</p>
             </td>
             <td class="text-center">
                 <div class="btn-group ">
@@ -37,12 +35,12 @@
                         Opciones
                     </button>
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
-                        <button class="dropdown-item btn-color" data-bs-toggle="modal"
-                                data-bs-target="#editarcat" (click)="abrirmodaleditar(categorias)"
-                                style="background: #FD8900; color: white;">Editar
+
+                        <button class=" dropdown-item " data-bs-toggle="modal" data-bs-target="#editarcat"
+                                (click)="abrirmodaleditar(categorias)" style="background: #FD8900; color: white;">Editar
                         </button>
-                        <a class="dropdown-item " aria-current="page"
-                           [routerLink]="['/dashboard/detallescategoria',categorias.idcatemp]"
+                        <a class="dropdown-item" aria-current="page"
+                           [routerLink]="['/dashboard/detallescategoriaproductos',categorias.catproid]"
                            style="background: #00DA9D; color: white;">Detalles</a>
                         <!-- (click)="verDetallesDelaCategoria(categorias)" -->
                         <!-- aria-current="page"  -->
@@ -74,11 +72,11 @@
                 <form class="form-control" #categoriaForm="ngForm" style="border: none">
                     <div class="row g-3">
                         <div class="col-sm">
-                            <label for="nombrecate" class="form-label">Nombre de la Categoría:</label>
+                            <label for="nombrecate">Nombre de la Categoría:</label>
                             <input type="text" class="form-control"
                                    style="background: #D9D9D9;border-radius: 0px;"
                                    id="nombrecate" name="nombrecate" required minlength="3" maxlength="25"
-                                   [(ngModel)]="categorias.catnombre" #nombrecate="ngModel">
+                                   [(ngModel)]="categorias.catpronombre" #nombrecate="ngModel">
                             <div class="alert alert-danger"
                                  *ngIf="nombrecate.invalid && (nombrecate.dirty || nombrecate.touched)">
                                 <div *ngIf="nombrecate?.errors?.['required']">
@@ -90,22 +88,25 @@
                                 <div *ngIf="nombrecate?.errors?.['maxlength']">
                                     La categoría debe tener máximo 25 caracteres
                                 </div>
+
                             </div>
                         </div>
+
 
                     </div>
                     <br>
                     <div class="row g-3">
+
                         <div class="col-sm">
                             <label for="descripcion">Descripción de la Categoría:</label>
                             <textarea class="form-control" id="descripcion"
                                       name="descripcion" required minlength="25" maxlength="100"
-                                      [(ngModel)]="categorias.catdescripcion" #descripcion="ngModel"
-                                      style="background: #D9D9D9;border-radius: 0px;"></textarea>
+                                      style="background: #D9D9D9;border-radius: 0px;"
+                                      [(ngModel)]="categorias.catprodescripcion" #descripcion="ngModel"></textarea>
                             <div class="alert alert-danger"
                                  *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
                                 <div *ngIf="descripcion?.errors?.['required']">
-                                    Digite la categoría por favor
+                                    Digite la descripcion por favor
                                 </div>
                                 <div *ngIf="descripcion?.errors?.['minlength']">
                                     La descripción debe tener mínimo 25 caracteres
@@ -113,6 +114,7 @@
                                 <div *ngIf="descripcion?.errors?.['maxlength']">
                                     La descripción debe tener máximo 100 caracteres
                                 </div>
+
                             </div>
                         </div>
 
@@ -121,24 +123,24 @@
 
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <button class="btn btn-success" type="submit" [disabled]="!categoriaForm.form.valid"
-                                (click)="agregarCategoria()" style="background: #42A133; color: white">Agregar
+                                (click)="agregarCategoria()">Agregar
                         </button>
-                        <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                style="background: #FF0000; color: white">Cancelar
-                        </button>
+                        <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </div>
+
 
 <!-- Modal editar -->
 <div class="modal fade" id="editarcat" tabindex="-1" aria-labelledby="editarcat" aria-hidden="true"
 >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header " style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #42A133; color: white">
                 <h1 class="modal-title fs-3">Editar Categoria</h1>
                 <button type="button" id="closeM2" class="btn-close text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"></button>
@@ -147,11 +149,11 @@
                 <form class="form-control" ngNavigateValidate #categoriaeditForm="ngForm" style="border: none">
                     <div class="row g-3">
                         <div class="col-sm">
-                            <label for="nombrecateedit" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" placeholder="Nombre de la Categoría "
+                            <label for="nombrecateedit">Nombre de la Categoría:</label>
+                            <input type="text" class="form-control"
+                                   style="background: #D9D9D9;border-radius: 0px;"
                                    id="nombrecateedit" name="nombrecateedit" required minlength="3" maxlength="25"
-                                   [(ngModel)]="categorias.catnombre" #nombrecateedit="ngModel"
-                                   style="background: #D9D9D9;border-radius: 0px;">
+                                   [(ngModel)]="categorias.catpronombre" #nombrecateedit="ngModel">
                             <div class="alert alert-danger"
                                  *ngIf="nombrecateedit.invalid && (nombrecateedit.dirty || nombrecateedit.touched)">
                                 <div *ngIf="nombrecateedit?.errors?.['required']">
@@ -163,19 +165,22 @@
                                 <div *ngIf="nombrecateedit?.errors?.['maxlength']">
                                     La categoría debe tener máximo 25 caracteres
                                 </div>
+
                             </div>
                         </div>
+
 
                     </div>
                     <br>
                     <div class="row g-3">
+
                         <div class="col-sm">
-                            <label for="descripcionedit" class="form-label">Descripción</label>
-                            <textarea class="form-control" placeholder="Descripcion de la Categoría"
-                                      id="descripcionedit"
-                                      name="descripcionedit" required minlength="25" maxlength="100"
-                                      [(ngModel)]="categorias.catdescripcion" #descripcionedit="ngModel"
-                                      style="background: #D9D9D9; border-radius: 0px;height: 100px"></textarea>
+                            <label for="descripcionedit">Descripción de la Categoría:</label>
+                            <textarea class="form-control"
+                                      id="descripcionedit" name="descripcionedit" required minlength="25"
+                                      maxlength="100"
+                                      [(ngModel)]="categorias.catprodescripcion" #descripcionedit="ngModel"
+                                      style="background: #D9D9D9;border-radius: 0px;"></textarea>
                             <div class="alert alert-danger"
                                  *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
                                 <div *ngIf="descripcionedit?.errors?.['required']">
@@ -187,32 +192,24 @@
                                 <div *ngIf="descripcionedit?.errors?.['maxlength']">
                                     La descripción debe tener máximo 100 caracteres
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                     <br>
+
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <button class="btn btn-color" type="button" (click)="actualizarCategoria()"
                                 [disabled]="!categoriaeditForm.form.valid"
                                 style="background: #42A133; color: white">Agregar
                         </button>
-                        <button class="btn btn-color" style="background: #FF0000; color: white" type="button"
-                                data-bs-dismiss="modal">Cancelar
+                        <button class="btn btn-color" type="button" data-bs-dismiss="modal"
+                                style="background: #FF0000; color: white">Cancelar
                         </button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-

@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categoria } from 'src/app/Models/categoria';
-import { Subcategoriaempresa } from 'src/app/Models/subcategoriaempresa';
-import { CategoriaService } from 'src/app/Service/categoria.service';
-import { SubcategoriaService } from 'src/app/Service/subcategoria.service';
+import { CategoriaProducto } from 'src/app/Models/categoriaProducto';
+import { subcategoriaProducto } from 'src/app/Models/subcategoriaProducto';
+import { CategoriaproductoService } from 'src/app/Service/categoriaproducto.service';
+import { SubcategoriaproductoService } from 'src/app/Service/subcategoriaproducto.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-detallescategoriaempresa',
-  templateUrl: './detallescategoriaempresa.component.html',
-  styleUrls: ['./detallescategoriaempresa.component.css']
+  selector: 'app-detallescategoriaproducto',
+  templateUrl: './detallescategoriaproducto.component.html',
+  styleUrls: ['./detallescategoriaproducto.component.css']
 })
-export class DetallescategoriaempresaComponent implements OnInit {
-  id:number;
-  categorias: Categoria = new Categoria();
-  categoria: Categoria [] = [];
+export class DetallescategoriaproductoComponent implements OnInit {
 
-  subcategorias: Subcategoriaempresa = new Subcategoriaempresa();
-  subcategoria: Subcategoriaempresa [] = [];
-  constructor(private activedRoute: ActivatedRoute, private categoriaService:CategoriaService, private subcategoriaService: SubcategoriaService, private router: Router ) { }
+  id:number;
+  categorias: CategoriaProducto = new CategoriaProducto();
+  categoria: CategoriaProducto [] = [];
+
+  subcategorias: subcategoriaProducto = new subcategoriaProducto();
+  subcategoria: subcategoriaProducto [] = [];
+
+  constructor(private activedRoute: ActivatedRoute, private categoriaproductoService:CategoriaproductoService, private subcategoriaService: SubcategoriaproductoService, private router: Router) { }
 
   ngOnInit(): void {
     this.getSubcategorias();
@@ -27,10 +29,10 @@ export class DetallescategoriaempresaComponent implements OnInit {
 
     this.activedRoute.params
       .subscribe(params => {
-        let idcatemp: number = params['idcatemp'];
-        console.log(idcatemp)
-        if (idcatemp) {
-          this.categoriaService.obtenerCategoria(idcatemp)
+        let catproid: number = params['catproid'];
+        console.log(catproid)
+        if (catproid) {
+          this.categoriaproductoService.obtenerCategoria(catproid)
             .subscribe(response => this.categorias = response)
         }
       })
@@ -39,16 +41,15 @@ export class DetallescategoriaempresaComponent implements OnInit {
 
   }
 
-
   getCategorias() {
-    this.categoriaService.getCategoria()
+    this.categoriaproductoService.getCategoria()
       .subscribe(response => this.categoria = response);
   }
+
   getSubcategorias() {
     this.subcategoriaService.getSubcategoria()
       .subscribe(response => this.subcategoria = response);
   }
-
 
   agregarSubcategoria() {
     this.subcategoriaService.crearSubcategoria(this.subcategorias)
@@ -62,15 +63,16 @@ export class DetallescategoriaempresaComponent implements OnInit {
   }
 
   cleanModal(){
-    this.subcategorias = new Subcategoriaempresa();
+    this.subcategorias = new subcategoriaProducto();
   }
+
   actualizarCategoria() {
     this.subcategoriaService.updateSubcategoria(this.subcategorias)
       .subscribe(response => {
         console.log('actualizado');
        this.subcategoria.forEach((resp,index) => {
 
-         if(resp.idsubcatemp == response.idsubcatemp){
+         if(resp.subcatproid == response.subcatproid){
            this.subcategoria[index] = response;
          }
        });
@@ -78,13 +80,12 @@ export class DetallescategoriaempresaComponent implements OnInit {
       })
   }
 
-  abrirmodaleditar(subcategoria: Subcategoriaempresa) {
+  abrirmodaleditar(subcategoria: subcategoriaProducto) {
     this.subcategorias = {...subcategoria};
 
   }
 
-
-  public delete(subcategoria: Subcategoriaempresa): void {
+  public delete(subcategoria: subcategoriaProducto): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -95,7 +96,7 @@ export class DetallescategoriaempresaComponent implements OnInit {
 
     swalWithBootstrapButtons.fire({
       title: 'Esta seguro de eliminar!',
-      text: `la categoria : ${subcategoria.subcatnombre}`,
+      text: `la categoria : ${subcategoria.subcatpronombre}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
@@ -106,10 +107,10 @@ export class DetallescategoriaempresaComponent implements OnInit {
       if (result.isConfirmed) {
         //funcion eliminar
         this.subcategoriaService.eliminar(subcategoria).subscribe(data => {
-          this.subcategoria = this.subcategoria.filter(del => del.idsubcatemp != subcategoria.idsubcatemp)
+          this.subcategoria = this.subcategoria.filter(del => del.subcatproid != subcategoria.subcatproid)
           swalWithBootstrapButtons.fire(
             'Eliminado!',
-            `Categoría eliminada ${subcategoria.idsubcatemp}`,
+            `Categoría eliminada ${subcategoria.subcatproid}`,
             'success'
           );
 
@@ -129,13 +130,4 @@ export class DetallescategoriaempresaComponent implements OnInit {
     })
   }
 
- 
-  
-
-
-
-
-  
 }
-
-

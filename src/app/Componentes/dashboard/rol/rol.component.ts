@@ -3,7 +3,6 @@ import {Rol} from "../../../Models/rol";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {RolService} from "../../../Service/rol.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Categoria} from "../../../Models/categoria";
 import Swal from "sweetalert2";
 
 @Component({
@@ -31,7 +30,7 @@ export class RolComponent implements OnInit{
   }
 
 
-  constructor(private modalService: NgbModal, private rolService: RolService, private activedRoute: ActivatedRoute, router: Router) {
+  constructor(private modalService: NgbModal, private rolService: RolService, private activedRoute: ActivatedRoute) {
   }
 
   getRoles() {
@@ -44,7 +43,7 @@ export class RolComponent implements OnInit{
     this.rolService.crearRol(this.roles)
       .subscribe(response => {
         console.log('exito');
-        console.log(response)
+        console.log(response);
         this.rol.push(response);
         document.getElementById("closeM1").click();
 
@@ -85,7 +84,7 @@ export class RolComponent implements OnInit{
 
     swalWithBootstrapButtons.fire({
       title: 'Esta seguro de eliminar!',
-      text: `la categoria : ${rol.rol}`,
+      text: `la categoria : ${rol.rolnombre}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
@@ -99,7 +98,7 @@ export class RolComponent implements OnInit{
           this.rol = this.rol.filter(del => del.idrol != rol.idrol)
           swalWithBootstrapButtons.fire(
             'Eliminado!',
-            `Categoría eliminada ${rol.rol}`,
+            `Categoría eliminada ${rol.rolnombre}`,
             'success'
           );
 

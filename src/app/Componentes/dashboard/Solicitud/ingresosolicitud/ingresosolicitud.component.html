@@ -1,107 +1,114 @@
-<br>
-<h3 style="text-align: center">
-  <strong>
-    INGRESO SOLICITUD DE REGISTRO
-  </strong>
-</h3>
+<div class="container-fluid text-black mt-5 text-center">
+    <h2>
+        INGRESO SOLICITUD DE REGISTRO
+    </h2>
+</div>
 
 <div class="container">
-  <br>
-  <form class="form-control">
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="ruc">RUC:</label>
-        <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="2"
-          maxlength="25">
-      </div>
-      <div class="col-sm">
-        <label for="fecha">Fecha:</label>
-        <input type="date" class="form-control" placeholder="" id="fecha" name="fecha" required minlength="10"
-          maxlength="10">
-      </div>
-    </div>
 
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="rlegal">Representante Legal:</label>
-        <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal" name="rlegal">
-      </div>
-      <div class="col-sm">
-        <label for="email">Correo:</label>
-        <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email">
-      </div>
-    </div>
+    <form class="form-control">
+        <div class="container mt-2">
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="ruc">RUC:</label>
+                    <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="2"
+                           maxlength="25">
+                </div>
+                <div class="col-sm">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" class="form-control" placeholder="" id="fecha" name="fecha" required
+                           minlength="10"
+                           maxlength="10">
+                </div>
+            </div>
 
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="comercial">Nombre Comercial:</label>
-        <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial">
-      </div>
-      <div class="col-sm">
-        <div class="form-grow">
-          <label for="categoria">Categoría:</label>
-          <select id="categoria" class="form-control">
-            <option>Automotríz</option>
-          </select>
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="rlegal">Representante Legal:</label>
+                    <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal"
+                           name="rlegal">
+                </div>
+                <div class="col-sm">
+                    <label for="email">Correo:</label>
+                    <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email">
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="comercial">Nombre Comercial:</label>
+                    <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial">
+                </div>
+                <div class="col-sm">
+                    <div class="form-grow">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" class="form-control">
+                            <option>Automotríz</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="social">Razon Social:</label>
+                    <input type="text" class="form-control" placeholder="" id="social" name="social">
+                </div>
+                <div class="col-sm">
+                    <div class="form-grow">
+                        <label for="subcategoria">Subcategoría </label>
+                        <select id="subcategoria" class="form-control">
+                            <option>Mecánica</option>
+                            <option>Latonería</option>
+                            <option>Comercio</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="telefono">Telefono: </label>
+                    <input type="number" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="col-sm">
+                    <label for="direccion">Direccion:</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-sm">
+                    <label for="trabajadores">N Trabajadores:</label>
+                    <input type="text" class="form-control" id="trabajadores" name="trabajadores">
+                </div>
+                <div class="col-sm">
+                    <label for="mensual">Ingreso Mensual:</label>
+                    <input type="number" class="form-control" id="mensual" name="mensual">
+                </div>
+            </div>
+            <div class="row g-3">
+
+                <div class="col-sm">
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text" class="form-control" id="ciudad" name="ciudad">
+                </div>
+                <div class="col-sm">
+                    <label for="estado">Estado:</label>
+                    <select id="estado" class="form-control">
+                        <option>En proceso</option>
+                        <option>Desactivado</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+            <div class="mx-2 text-center ">
+                <button class="btn btn-color col-md-4" style="background: #5CCB4A; color: white; border-radius: 20px">
+                    Guardar</button>
+                <button class="btn btn-color col-md-4 offset-md-1" type="button" data-bs-dismiss="modal"
+                        style="background: #FF0F0F; color: white; border-radius: 20px">Cancelar
+                </button>
+            </div>
         </div>
-      </div>
-    </div>
-    <br>
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="social">Razon Social:</label>
-        <input type="text" class="form-control" placeholder="" id="social" name="social">
-      </div>
-      <div class="col-sm">
-        <div class="form-grow">
-          <label for="subcategoria">Subcategoría </label>
-          <select id="subcategoria" class="form-control">
-            <option>Mecánica</option>
-            <option>Latonería</option>
-            <option>Comercio</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="telefono">Telefono: </label>
-        <input type="number" class="form-control" id="telefono" name="telefono">
-      </div>
-      <div class="col-sm">
-        <label for="direccion">Direccion:</label>
-        <input type="text" class="form-control" id="direccion" name="direccion">
-      </div>
-    </div>
-    <div class="row g-3">
-      <div class="col-sm">
-        <label for="trabajadores">N Trabajadores:</label>
-        <input type="text" class="form-control" id="trabajadores" name="trabajadores">
-      </div>
-      <div class="col-sm">
-        <label for="mensual">Ingreso Mensual:</label>
-        <input type="number" class="form-control" id="mensual" name="mensual">
-      </div>
-    </div>
-    <div class="row g-3">
 
-      <div class="col-sm">
-        <label for="ciudad">Ciudad:</label>
-        <input type="text" class="form-control" id="ciudad" name="ciudad">
-      </div>
-      <div class="col-sm">
-        <label for="estado">Estado:</label>
-        <select id="estado" class="form-control">
-          <option>En proceso</option>
-          <option>Desactivado</option>
-        </select>
-      </div>
-    </div>
-
-    <br>
-    <div class="mx-2 text-center ">
-      <button class="btn btn-success col-md-4">Guardar:</button>
-      <button class="btn btn-danger col-md-4 offset-md-1" type="button" data-bs-dismiss="modal">Cancelar</button>
-    </div>
-  </form>
+    </form>
 </div>

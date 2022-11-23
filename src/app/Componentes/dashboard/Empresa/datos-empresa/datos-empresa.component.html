@@ -1,40 +1,55 @@
-<br>
-
-<h3 style="text-align: center">
+<div class="container-fluid text-black mt-5 text-center">
+<h3>
     <strong>
         INGRESO DATOS DE EMPRESA
     </strong>
 </h3>
+</div>
 
-<br>
 
 <div class="container">
     <br>
     <form class="form-control">
-        <br><strong>DATOS GENERALES ——————————————————————————————————————————————————————————</strong>
-        <br>
-        <br>
+        <div class="container-fluid text-black mt-2 text-center">
+            <h4>DATOS GENERALES</h4>
+        </div>
+    <div class="container mt-2">
         <div class="row g-3">
             <div class="col-sm">
                 <label for="ruc">RUC:</label>
-                <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="2"
-                    maxlength="25">
+                <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
+                       maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
+                <div class="alert alert-danger"
+                     *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
+                    <div *ngIf="ruc?.errors?.['required']">
+                        Digite el RUC por favor
+                    </div>
+                    <div *ngIf="ruc?.errors?.['minlength']">
+                        El RUC debe tener mínimo 10 dígitos
+                    </div>
+                    <div *ngIf="ruc?.errors?.['maxlength']">
+                        El RUC debe tener como máximo 10 dígitos
+                    </div>
+
+                </div>
             </div>
             <div class="col-sm">
                 <label for="comercial">Nombre Comercial:</label>
-                <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial">
+                <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial"
+                       [(ngModel)]="empresas.empnombre">
             </div>
         </div>
 
         <div class="row g-3">
             <div class="col-sm">
                 <label for="rlegal">Representante Legal:</label>
-                <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal"
-                    name="rlegal">
+                <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal" name="rlegal"
+                       [(ngModel)]="empresas.emprepresentante">
             </div>
             <div class="col-sm">
                 <label for="email">Correo:</label>
-                <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email">
+                <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email"
+                       [(ngModel)]="empresas.empcorreo">
             </div>
         </div>
 
@@ -44,28 +59,82 @@
         <div class="row g-3">
             <div class="col-sm">
                 <label for="social">Razon Social:</label>
-                <input type="text" class="form-control" placeholder="" id="social" name="social">
+                <input type="text" class="form-control" placeholder="" id="social" name="social"
+                       [(ngModel)]="empresas.emprazon">
             </div>
             <div class="col-sm">
                 <label for="direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion">
+                <input type="text" class="form-control" id="direccion" name="direccion"
+                       [(ngModel)]="empresas.empdireccion">
             </div>
         </div>
         <div class="row g-3">
             <div class="col-sm">
                 <label for="telefono">Telefono: </label>
-                <input type="number" class="form-control" id="telefono" name="telefono">
+                <input type="text" class="form-control" id="telefono" name="telefono"
+                       [(ngModel)]="empresas.emptelefono">
             </div>
             <div class="col-sm">
-                <!-- campo invisible -->
+                <label for="ingreso">Ingreso anual: </label>
+                <input type="number" class="form-control" id="ingreso" name="ingreso"
+                       [(ngModel)]="empresas.empingresoanual">
             </div>
 
         </div>
 
+        <div class="row g-3">
+            <div class="col-sm">
+                <label for="trabajadores">N° Trabajadores:</label>
+                <input type="number" class="form-control" id="trabajadores" name="trabajadores"
+                       [(ngModel)]="empresas.empnumtrabajadores">
+            </div>
+            <div class="col-sm">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" class="form-control" id="ciudad" name="ciudad" [(ngModel)]="empresas.empciudad">
+            </div>
+        </div>
+        <div class="row g-3">
+
+
+            <div class="col-sm">
+                <label for="usu_id" class="form-label">Usu ID:</label>
+                <select [(ngModel)]="empresas.usu_id" name="usu_id" id="usu_id" class="form-control">
+
+                    <option *ngFor="let usuarios of usuario" [ngValue]="usuarios">{{usuarios.usu_id}}</option>
+
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="empestado">Estado:</label>
+                <select [(ngModel)]="empresas.empestado" name="empestado" id="empestado" class="form-control">
+
+                    <option>Activo</option>
+                    <option>Pendiente</option>
+                    <option>Rechazado</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-sm">
+                <label for="fecha">Fecha:</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="empresas.empfecha">
+            </div>
+            <div class="col-sm">
+                <label for="observaciones">Observaciones:</label>
+                <input type="text" class="form-control" id="observaciones" name="observaciones"
+                       [(ngModel)]="empresas.empobservaciones">
+            </div>
+        </div>
+    </div>
+
+
         <br>
 
         <!-- acordeón -->
-        <div class="accordion" id="accordionExample">
+        <!-- <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -81,9 +150,9 @@
                             <div class="col-sm-10">
                                 <select id="inputState" class="form-control">
                                     <option selected>Sin asignar...</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                    <option>Cat1</option>
+                                    <option>Cat2</option>
+                                    <option>Cat3</option>
                                 </select>
                             </div>
                         </div>
@@ -95,101 +164,22 @@
                             <div class="col-sm-10">
                                 <select id="inputState" class="form-control">
                                     <option selected>Sin asignar...</option>
-                                    <option>...</option>
-                                    <option>...</option>
-                                    <option>...</option>
+                                    <option>Sub1</option>
+                                    <option>Sub2</option>
+                                    <option>Sub2</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <br>
         <div class="mx-2 text-center ">
-            <button class="btn btn-success col-md-4">Guardar</button>
-            <button class="btn btn-danger col-md-4 offset-md-1" type="button" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-color col-md-4" type="submit" (click)="agregarEmpresa()" style="background:
+            #42A133; color: white; border-radius: 20px">Guardar</button>
         </div>
+        <br>
     </form>
 </div>
-
-<!-- Modal ineservible pero lo dejo por si acaso
-<div class="modal fade" id="llenarsolicitud" tabindex="-1" aria-labelledby="agregar" aria-hidden="true"
-    style="margin-left: -8%;">
-    <div class="modal-dialog">
-        <div class="modal-content" style="width: 136.5%">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5">Llenar datos de solicitud</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="form-control">
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <label for="ruc">RUC</label>
-                            <input type="text" class="form-control" placeholder="" id="ruc" name="ruc">
-                        </div>
-                        <div class="col-sm">
-                            <label for="representante">Representante legal</label>
-                            <input type="text" class="form-control" placeholder="" id="representante"
-                                name="representante">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <label for="razon">Razón Social</label>
-                            <input type="text" class="form-control" placeholder="" id="razon" name="razon">
-                        </div>
-                        <div class="col-sm">
-                            <label for="telefono">Teléfono</label>
-                            <input type="text" class="form-control" placeholder="" id="telefono" name="telefono">
-                        </div>
-
-                    </div>
-                    <br>
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <label for="direccion">Dirección</label>
-                            <input type="text" class="form-control" placeholder="" id="direccion" name="direccion">
-                            <br>
-                        </div>
-                        <div class="col-sm">
-                            <label for="nomcomercial">Nombre Comercial</label>
-                            <input type="text" class="form-control" placeholder="" id="nomcomercial"
-                                name="nomcomercial">
-                        </div>
-
-                    </div>
-
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <label for="correo">Correo</label>
-                            <input type="text" class="form-control" placeholder="" id="correo" name="correo" required>
-                        </div>
-                        <div class="col-sm">
-                            <div class="form-grow">
-                                <label for="estado" class="form-label">Estado</label>
-                                <select id="estado" class="form-control">
-                                    <option>Activo</option>
-                                    <option>Rechazado</option>
-                                    <option>Pendiente</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row g-3">
-                        <div class="d-grid gap-2 col-5  mx-auto">
-                            <button class="btn btn-success">Guardar</button>
-                        </div>
-                        <div class="d-grid gap-2 col-5 mx-auto">
-                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
