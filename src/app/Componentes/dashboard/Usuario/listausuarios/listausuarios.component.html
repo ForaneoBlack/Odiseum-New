@@ -1,5 +1,5 @@
 <div class="container-fluid text-black mt-5 text-center">
-    <h2 class="text-center">USUARIOS</h2>
+    <h2>USUARIOS</h2>
 </div>
 
 
@@ -39,7 +39,7 @@
                     </button>
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
                         <button class="btn-color dropdown-item" data-bs-toggle="modal"
-                                data-bs-target="#agregarusuario" (click)="abrirmodaleditar(user)"
+                                data-bs-target="#editarusuario" (click)="abrirmodaleditar(user)"
                                 style="background: #FD8900; color: white;">Editar
                         </button>
                         <button class="btn-color dropdown-item "
@@ -73,7 +73,7 @@
                                 <input type="text" class="form-control" id="nombre"
                                        name="nombre" required minlength="2" maxlength="70"
                                        style="background: #D9D9D9;border-radius: 0px;" #nombrePer="ngModel"
-                                       [ngModel]="user.persona?.nombre" [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="persona.nombre" [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
                                      *ngIf="nombrePer.invalid && (nombrePer.dirty || nombrePer.touched)">
                                     <div *ngIf="nombrePer?.errors?.['required']">
@@ -92,7 +92,7 @@
                                 <input type="text" class="form-control" id="apellido"
                                        name="apellido" required minlength="2" maxlength="70"
                                        style="background: #D9D9D9;border-radius: 0px;" #apellidoPer="ngModel"
-                                       [ngModel]="user.persona?.apellido" [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="persona.apellido" [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
                                      *ngIf="apellidoPer.invalid && (apellidoPer.dirty || apellidoPer.touched)">
                                     <div *ngIf="apellidoPer?.errors?.['required']">
@@ -112,20 +112,22 @@
                             <div class="col-sm">
                                 <label for="cedula" class="form-label">Cédula:</label>
                                 <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]"
-                                       required minlength="10" maxlength="10" #cedulaPer="ngModel"
+                                       required minlength="10" maxlength="10" #cedula="ngModel"
                                        style="background: #D9D9D9;border-radius: 0px;"
-                                       [ngModel]="user.persona?.cedula"
-                                       [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="persona.cedula">
                                 <div class="alert alert-danger"
-                                     *ngIf="cedulaPer.invalid && (cedulaPer.dirty || cedulaPer.touched)">
-                                    <div *ngIf="cedulaPer?.errors?.['required']">
+                                     *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
+                                    <div *ngIf="cedula?.errors?.['required']">
                                         Digite su cedula
                                     </div>
-                                    <div *ngIf="cedulaPer?.errors?.['minlength']">
+                                    <div *ngIf="cedula?.errors?.['minlength']">
                                         La cedula debe tener mínimo 10 caracteres
                                     </div>
-                                    <div *ngIf="cedulaPer?.errors?.['maxlength']">
+                                    <div *ngIf="cedula?.errors?.['maxlength']">
                                         La cedula debe tener máximo 10 caracteres
+                                    </div>
+                                    <div *ngIf="cedula?.errors?.['pattern']">
+                                        La cedula debe tener solo numeros
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +136,7 @@
                                 <input type="text" class="form-control" id="email" name="email"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
-                                       required minlength="2" maxlength="70" [ngModel]="user.persona?.correo"
+                                       required minlength="2" maxlength="70" [(ngModel)]="persona.correo"
                                        #emailPer="ngModel"
                                        [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
@@ -144,6 +146,9 @@
                                     </div>
                                     <div *ngIf="emailPer?.errors?.['maxlength']">
                                         Su correo debe tener máximo 70 caracteres
+                                    </div>
+                                    <div *ngIf="emailPer?.errors?.['pattern']">
+                                        el Email debe tener el siguiente formato: user100@gmail.com
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +160,7 @@
                                 <input type="text" class="form-control" id="celular" name="celular" pattern="[0-9]"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        required minlength="10" maxlength="10"
-                                       [ngModel]="user.persona?.celular" #celularPer="ngModel"
+                                       [(ngModel)]="persona.celular" #celularPer="ngModel"
                                        [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
                                      *ngIf="celularPer.invalid && (celularPer.dirty || celularPer.touched)">
@@ -175,7 +180,7 @@
                                 <label for="direccion" class="form-label">Direccion:</label>
                                 <input type="text" class="form-control" id="direccion" name="direccion"
                                        style="background: #D9D9D9;border-radius: 0px;"
-                                       required minlength="2" maxlength="70" [ngModel]="user.persona?.direccion"
+                                       required minlength="2" maxlength="70" [(ngModel)]="persona.direccion"
                                        [ngModelOptions]="{standalone: true }" #direccionPer="ngModel">
                                 <div class="alert alert-danger"
                                      *ngIf="direccionPer.invalid && (direccionPer.dirty || direccionPer.touched)">
@@ -192,14 +197,53 @@
                             </div>
                             <hr>
 
-                        </div>
 
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="usuario" class="form-label">Usuario:</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       id="usuario" name="usuario"
+                                       [(ngModel)]="user.usuusuario"
+                                       [ngModelOptions]="{standalone: true }">
+
+                            </div>
+                            <div class="col-sm">
+                                <label for="rolnombre" class="form-label">Rol </label>
+                                <select id="rolnombre" class="form-control" [(ngModel)]="rol"
+                                        style="background: #D9D9D9;border-radius: 0px;"
+                                        [ngModelOptions]="{standalone: true }">
+                                    <option *ngFor=" let roles of roles"
+                                            [ngValue]="roles">{{roles.rolnombre}}</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="password" class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       minlength="8" maxlength="50" placeholder="Digite la contraseña"
+                                       [(ngModel)]="user.usu_contrasena"
+                                       [ngModelOptions]="{standalone: true }">
+                            </div>
+                            <div class="col-sm">
+                                <label for="password2" class="form-label">Repetir Contraseña:</label>
+                                <input type="password" class="form-control" id="password2" name="password2" required
+                                       minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez"
+                                       style="background: #D9D9D9;border-radius: 0px;">
+                            </div>
+                        </div>
+                        <br>
                         <div class="container text-center">
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" (click)="agregarUser()"
                                             style="background: #42A133; color: white"
-                                            [disabled]="!usuarioAgregar.form.valid">Siguiente
+                                    >Agregar
                                     </button>
                                 </div>
                                 <div class="col-4">
@@ -218,80 +262,192 @@
 </div>
 
 
-<!--<div class="modal fade" id="agregarusuario" tabindex="-1" aria-labelledby="agregarusuario" aria-hidden="true">
+<!-- Modal Editar-->
+<div class="modal fade" id="editarusuario" tabindex="-1" aria-labelledby="editarusuario" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header align-items-center" style="background: #42A133; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
                 <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"
-                        id="closeM1"></button>
+                        id="closeM2"></button>
             </div>
             <div class="modal-body">
                 <div class="modal-body">
-                    <form class="form-control" style="border: none">
+                    <form class="form-control" #usuarioEditar="ngForm" style="border: none">
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="nombre" class="form-label">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre"
-                                       name="nombre" required minlength="2" maxlength="25"
-                                       style="background: #D9D9D9;border-radius: 0px;"
-                                       [ngModel]="user.persona?.nombre" [ngModelOptions]="{standalone: true }">
+                                <label for="nombreedit" class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="nombreedit"
+                                       name="nombre" required minlength="2" maxlength="70"
+                                       style="background: #D9D9D9;border-radius: 0px;" #nombreedit="ngModel"
+                                       [(ngModel)]="persona.nombre" [ngModelOptions]="{standalone: true }">
+                                <div class="alert alert-danger"
+                                     *ngIf="nombreedit.invalid && (nombreedit.dirty || nombreedit.touched)">
+                                    <div *ngIf="nombreedit?.errors?.['required']">
+                                        Digite su nombre
+                                    </div>
+                                    <div *ngIf="nombreedit?.errors?.['minlength']">
+                                        El nombre debe tener mínimo 2 caracteres
+                                    </div>
+                                    <div *ngIf="nombreedit?.errors?.['maxlength']">
+                                        El nombre debe tener máximo 70 caracteres
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm">
-                                <label for="apellido" class="form-label">Apellido:</label>
-                                <input type="text" class="form-control" id="apellido"
-                                       name="apellido" required minlength="2" maxlength="25"
-                                       style="background: #D9D9D9;border-radius: 0px;"
-                                       [ngModel]="user.persona?.apellido" [ngModelOptions]="{standalone: true }">
+                                <label for="apellidoedit" class="form-label">Apellido:</label>
+                                <input type="text" class="form-control" id="apellidoedit"
+                                       name="apellido" required minlength="2" maxlength="70"
+                                       style="background: #D9D9D9;border-radius: 0px;" #apellidoedit="ngModel"
+                                       [(ngModel)]="persona.apellido" [ngModelOptions]="{standalone: true }">
+                                <div class="alert alert-danger"
+                                     *ngIf="apellidoedit.invalid && (apellidoedit.dirty || apellidoedit.touched)">
+                                    <div *ngIf="apellidoedit?.errors?.['required']">
+                                        Digite su apellido
+                                    </div>
+                                    <div *ngIf="apellidoedit?.errors?.['minlength']">
+                                        El apellido debe tener mínimo 2 caracteres
+                                    </div>
+                                    <div *ngIf="apellidoedit?.errors?.['maxlength']">
+                                        El apellido debe tener máximo 70 caracteres
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="cedula" class="form-label">Cédula:</label>
-                                <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]"
-                                       required minlength="10" maxlength="10"
+                                <label for="cedulaedit" class="form-label">Cédula:</label>
+                                <input type="text" class="form-control" id="cedulaedit" name="cedulaedit"
+                                       pattern="[0-9]"
+                                       required minlength="10" maxlength="10" #cedulaedit="ngModel"
                                        style="background: #D9D9D9;border-radius: 0px;"
-                                       [ngModel]="user.persona?.cedula"
-                                       [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="persona.cedula">
+                                <div class="alert alert-danger"
+                                     *ngIf="cedulaedit.invalid && (cedulaedit.dirty || cedulaedit.touched)">
+                                    <div *ngIf="cedulaedit?.errors?.['required']">
+                                        Digite su cedula
+                                    </div>
+                                    <div *ngIf="cedulaedit?.errors?.['minlength']">
+                                        La cedula debe tener mínimo 10 caracteres
+                                    </div>
+                                    <div *ngIf="cedulaedit?.errors?.['maxlength']">
+                                        La cedula debe tener máximo 10 caracteres
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm">
-                                <label for="email" class="form-label">Email:</label>
-                                <input type="text" class="form-control" id="email" name="email"
+                                <label for="emailedit" class="form-label">Email:</label>
+                                <input type="text" class="form-control" id="emailedit" name="email"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
-                                       required [ngModel]="user.persona?.correo"
+                                       required minlength="2" maxlength="70" [(ngModel)]="persona.correo"
+                                       #emailedit="ngModel"
                                        [ngModelOptions]="{standalone: true }">
+                                <div class="alert alert-danger"
+                                     *ngIf="emailedit.invalid && (emailedit.dirty || emailedit.touched)">
+                                    <div *ngIf="emailedit?.errors?.['required']">
+                                        Digite su cedula
+                                    </div>
+                                    <div *ngIf="emailedit?.errors?.['maxlength']">
+                                        Su correo debe tener máximo 70 caracteres
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                         <div class="row g-3">
                             <div class="col-sm">
-                                <label for="celular" class="form-label">Celular:</label>
-                                <input type="text" class="form-control" id="celular" name="celular" pattern="[0-9]"
+                                <label for="celularedit" class="form-label">Celular:</label>
+                                <input type="text" class="form-control" id="celularedit" name="celular"
+                                       pattern="[0-9]"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        required minlength="10" maxlength="10"
-                                       [ngModel]="user.persona?.celular"
+                                       [(ngModel)]="persona.celular" #celularedit="ngModel"
                                        [ngModelOptions]="{standalone: true }">
+                                <div class="alert alert-danger"
+                                     *ngIf="celularedit.invalid && (celularedit.dirty || celularedit.touched)">
+                                    <div *ngIf="celularedit?.errors?.['required']">
+                                        Digite su numero celular
+                                    </div>
+                                    <div *ngIf="celularedit?.errors?.['minlength']">
+                                        El numero celular debe tener mínimo 10 caracteres
+                                    </div>
+                                    <div *ngIf="celularedit?.errors?.['maxlength']">
+                                        El numero celular debe tener máximo 10 caracteres
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="col-sm">
-                                <label for="direccion" class="form-label">Direccion:</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion"
+                                <label for="direccionedit" class="form-label">Direccion:</label>
+                                <input type="text" class="form-control" id="direccionedit" name="direccion"
                                        style="background: #D9D9D9;border-radius: 0px;"
-                                       required [ngModel]="user.persona?.direccion"
-                                       [ngModelOptions]="{standalone: true }">
+                                       required minlength="2" maxlength="70" [(ngModel)]="persona.direccion"
+                                       [ngModelOptions]="{standalone: true }" #direccionedit="ngModel">
+                                <div class="alert alert-danger"
+                                     *ngIf="direccionedit.invalid && (direccionedit.dirty || direccionedit.touched)">
+                                    <div *ngIf="direccionedit?.errors?.['required']">
+                                        Digite su direccion
+                                    </div>
+                                    <div *ngIf="direccionedit?.errors?.['minlength']">
+                                        La direccion debe tener mínimo 2 caracteres
+                                    </div>
+                                    <div *ngIf="direccionedit?.errors?.['maxlength']">
+                                        La direccion debe tener máximo 70 caracteres
+                                    </div>
+                                </div>
                             </div>
                             <hr>
 
-                        </div>
 
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="usuarioedit" class="form-label">Usuario:</label>
+                                <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       id="usuarioedit" name="usuario"
+                                       [(ngModel)]="user.usuusuario"
+                                       [ngModelOptions]="{standalone: true }">
+
+                            </div>
+                            <div class="col-sm">
+                                <label for="rolnombreedit" class="form-label">Rol </label>
+                                <select id="rolnombreedit" class="form-control" [(ngModel)]="rol"
+                                        style="background: #D9D9D9;border-radius: 0px;"
+                                        [ngModelOptions]="{standalone: true }">
+                                    <option *ngFor=" let roles of roles"
+                                            [ngValue]="roles">{{roles.rolnombre}}</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-sm">
+                                <label for="passwordedit" class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" id="passwordedit" name="password" required
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       minlength="8" maxlength="50" placeholder="Digite la contraseña"
+                                       [(ngModel)]="user.usu_contrasena"
+                                       [ngModelOptions]="{standalone: true }">
+                            </div>
+                            <div class="col-sm">
+                                <label for="password2edit" class="form-label">Repetir Contraseña:</label>
+                                <input type="password" class="form-control" id="password2edit" name="password2" required
+                                       minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez"
+                                       style="background: #D9D9D9;border-radius: 0px;">
+                            </div>
+                        </div>
+                        <br>
                         <div class="container text-center">
                             <div class="row justify-content-center">
                                 <div class="col-4">
-                                    <button class="btn btn-color" (click)="agregarUser()"
-                                            style="background: #42A133; color: white">Siguiente
+                                    <button class="btn btn-color" (click)="actualizarUsuario()"
+                                            style="background: #42A133; color: white"
+                                    >Siguiente
                                     </button>
                                 </div>
                                 <div class="col-4">
@@ -307,44 +463,5 @@
             </div>
         </div>
     </div>
-</div>-->
-<!--
-
-<div class="row g-3">
-    <div class="col-sm">
-        <label for="usuario" class="form-label">Usuario:</label>
-        <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
-               style="background: #D9D9D9;border-radius: 0px;"
-               id="usuario" name="usuario"
-               [ngModel]="user?.usuusuario"
-               [ngModelOptions]="{standalone: true }">
-        &lt;!&ndash;required minlength="2" maxlength="25"&ndash;&gt;
-    </div>
-    <div class="col-sm">
-        <label for="rolnombre" class="form-label">Rol </label>
-        <select id="rolnombre" class="form-control" [ngModel]="user.rol_id?.rolnombre"
-                style="background: #D9D9D9;border-radius: 0px;"
-                [ngModelOptions]="{standalone: true }">
-            <option>Administrador</option>
-            <option>Colaborador</option>
-            <option>Emprendedor</option>
-        </select>
-    </div>
-
 </div>
-<div class="row g-3">
-    <div class="col-sm">
-        <label for="password" class="form-label">Contraseña:</label>
-        <input type="password" class="form-control" id="password" name="password" required
-               style="background: #D9D9D9;border-radius: 0px;"
-               minlength="8" maxlength="50" placeholder="Digite la contraseña"
-               [ngModel]="user?.usu_contrasena"
-               [ngModelOptions]="{standalone: true }">
-    </div>
-    &lt;!&ndash; <div class="col-sm">
-         <label for="password2" class="form-label">Repetir Contraseña:</label>
-         <input type="password" class="form-control" id="password2" name="password2" required
-                minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez"
-                style="background: #D9D9D9;border-radius: 0px;">
-     </div>&ndash;&gt;
-</div>-->
+
