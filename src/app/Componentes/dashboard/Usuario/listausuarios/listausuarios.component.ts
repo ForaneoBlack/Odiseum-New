@@ -9,6 +9,7 @@ import {Persona} from "../../../../Models/persona";
 import {PersonaService} from "../../../../Service/persona.service";
 
 
+
 @Component({
     selector: 'app-listausuarios',
     templateUrl: './listausuarios.component.html',
