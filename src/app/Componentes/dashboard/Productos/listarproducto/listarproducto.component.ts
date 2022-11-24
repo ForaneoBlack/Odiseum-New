@@ -144,13 +144,13 @@ export class ListarproductoComponent implements OnInit {
     })
   }
 
-  compararcategoria(o1: Categoria, o2: Categoria): boolean{
-    if(o1==undefined &&o2 == undefined)return true;
-    return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.idcatemp == o2.idcatemp;
+  compararcategoria(o1: CategoriaProducto, o2: CategoriaProducto): boolean{
+    if(o1==undefined && o2 == undefined)return true;
+    return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.catproid == o2.catproid;
 
   }
   compararsubcategoria(o1: subcategoriaProducto, o2: subcategoriaProducto): boolean{
-    if(o1==undefined &&o2 == undefined)return true;
+    if(o1==undefined && o2 == undefined)return true;
     return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.catsubproid == o2.catsubproid;
 
   }
