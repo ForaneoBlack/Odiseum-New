@@ -87,21 +87,6 @@
                             <div class="col-sm">
                                 <label for="nombresubcate">Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre de la Subcategoría "
-<<<<<<< HEAD
-                                    id="nombresubcate" name="nombresubcate" required minlength="3" maxlength="25" [(ngModel)]="subcategorias.subcatpronombre" #nombresubcate = "ngModel">
-                                    <div class="alert alert-danger" *ngIf="nombresubcate.invalid && (nombresubcate.dirty || nombresubcate.touched)">
-                                        <div *ngIf = "nombresubcate?.errors?.['required']">
-                                           Digite la subcategoría por favor
-                                        </div>
-                                        <div *ngIf = "nombresubcate?.errors?.['minlength']">
-                                           La subcategoría debe tener mínimo 4 caracteres
-                                        </div>
-                                        <div *ngIf = "nombresubcate?.errors?.['maxlength']">
-                                            La subcategoría debe tener máximo 25 caracteres
-                                        </div>
-    
-                                       </div>
-=======
                                        id="nombresubcate" name="nombresubcate" required minlength="3" maxlength="25"
                                        [(ngModel)]="subcategorias.subcatpronombre" #nombresubcate="ngModel">
                                 <div class="alert alert-danger"
@@ -117,7 +102,6 @@
                                     </div>
 
                                 </div>
->>>>>>> origin/juan
                             </div>
 
 
@@ -128,22 +112,6 @@
                             <div class="col-sm">
                                 <label for="subcatdescripcion">Descripción</label>
                                 <textarea class="form-control" placeholder="Descripcion de la Subcategoría"
-<<<<<<< HEAD
-                                    id="subcatdescripcion" name="subcatdescripcion" required minlength="25"
-                                    maxlength="100" [(ngModel)]="subcategorias.subcatprodescripcion" #subcatdescripcion = "ngModel"></textarea>
-                                    <div class="alert alert-danger" *ngIf="subcatdescripcion.invalid && (subcatdescripcion.dirty || subcatdescripcion.touched)">
-                                        <div *ngIf = "subcatdescripcion?.errors?.['required']">
-                                           Digite la descripción por favor
-                                        </div>
-                                        <div *ngIf = "subcatdescripcion?.errors?.['minlength']">
-                                           La descripción debe tener mínimo 25 caracteres
-                                        </div>
-                                        <div *ngIf = "subcatdescripcion?.errors?.['maxlength']">
-                                            La descripción debe tener máximo 100 caracteres
-                                        </div>
-    
-                                       </div>
-=======
                                           id="subcatdescripcion" name="subcatdescripcion" required minlength="25"
                                           maxlength="100" [(ngModel)]="subcategorias.subcatprodescripcion"
                                           #subcatdescripcion="ngModel"></textarea>
@@ -160,26 +128,18 @@
                                     </div>
 
                                 </div>
->>>>>>> origin/juan
                             </div>
 
                         </div>
                         <div class="col-sm">
                             <div class="form-grow">
                                 <label for="catproid" class="form-label">Categoría</label>
-<<<<<<< HEAD
-                                <select [(ngModel)]="subcategorias.catproid" name="catproid" id="catproid" required class="form-control" #catproid="ngModel">
-                                    
-                                    <option *ngFor="let categorias of categoria" [ngValue]="categorias">{{categorias.catpronombre}}</option>                                                          
-                
-=======
                                 <select [(ngModel)]="subcategorias.catproid" name="catproid" id="catproid"
-                                        class="form-control">
+                                        class="form-control" #catproid="ngModel">
 
                                     <option *ngFor="let categorias of categoria"
                                             [ngValue]="categorias">{{categorias.catpronombre}}</option>
 
->>>>>>> origin/juan
                                 </select>
                                 <div class="alert alert-danger" *ngIf="catproid.invalid && (catproid.dirty || catproid.touched)">
                                     <div *ngIf="catproid?.errors?.['required']">

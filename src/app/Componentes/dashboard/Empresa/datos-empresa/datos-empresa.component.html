@@ -1,16 +1,16 @@
-<div class="container-fluid text-black mt-5 text-center">
-<h3>
+<br>
+
+<h3 style="text-align: center">
     <strong>
         INGRESO DATOS DE EMPRESA
     </strong>
 </h3>
-</div>
 
+<br>
 
 <div class="container">
     <br>
-<<<<<<< HEAD
-    <form class="form-control" #datosEmpresa = "ngForm">
+    <form class="form-control" #datosEmpresa="ngForm">
         <br><strong>DATOS GENERALES ——————————————————————————————————————————————————————————</strong>
         <br>
         <br>
@@ -20,20 +20,6 @@
                 <input type="text" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
                     maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
                 <div class="alert alert-danger" *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
-=======
-    <form class="form-control">
-        <div class="container-fluid text-black mt-2 text-center">
-            <h4>DATOS GENERALES</h4>
-        </div>
-    <div class="container mt-2">
-        <div class="row g-3">
-            <div class="col-sm">
-                <label for="ruc">RUC:</label>
-                <input type="number" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
-                       maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel">
-                <div class="alert alert-danger"
-                     *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
->>>>>>> origin/juan
                     <div *ngIf="ruc?.errors?.['required']">
                         Digite el RUC por favor
                     </div>
@@ -43,13 +29,11 @@
                     <div *ngIf="ruc?.errors?.['maxlength']">
                         El RUC debe tener como máximo 10 dígitos
                     </div>
-
                 </div>
             </div>
             <div class="col-sm">
                 <label for="comercial">Nombre Comercial:</label>
                 <input type="text" class="form-control" placeholder="Empresa XYZ" id="comercial" name="comercial"
-<<<<<<< HEAD
                     required minlength="3" maxlength="50" [(ngModel)]="empresas.empnombre" #comercial="ngModel">
                 <div class="alert alert-danger" *ngIf="comercial.invalid && (comercial.dirty || comercial.touched)">
                     <div *ngIf="comercial?.errors?.['required']">
@@ -63,9 +47,6 @@
                     </div>
 
                 </div>
-=======
-                       [(ngModel)]="empresas.empnombre">
->>>>>>> origin/juan
             </div>
         </div>
 
@@ -73,45 +54,36 @@
             <div class="col-sm">
                 <label for="rlegal">Representante Legal:</label>
                 <input type="text" class="form-control" placeholder="Nombre del Representante" id="rlegal" name="rlegal"
-<<<<<<< HEAD
                     required minlength="3" maxlength="50" [(ngModel)]="empresas.emprepresentante" #rlegal="ngModel">
-                    <div class="alert alert-danger" *ngIf="rlegal.invalid && (rlegal.dirty || rlegal.touched)">
-                        <div *ngIf="rlegal?.errors?.['required']">
-                            Escriba el nombre del representante legal por favor
-                        </div>
-                        <div *ngIf="rlegal?.errors?.['minlength']">
-                            El nombre del representante legal debe tener mínimo 3 caracteres
-                        </div>
-                        <div *ngIf="rlegal?.errors?.['maxlength']">
-                            El nombre del representante legal debe tener máximo 50 caracteres
-                        </div>
-    
+                <div class="alert alert-danger" *ngIf="rlegal.invalid && (rlegal.dirty || rlegal.touched)">
+                    <div *ngIf="rlegal?.errors?.['required']">
+                        Escriba el nombre del representante legal por favor
                     </div>
-            </div>
-            <div class="col-sm">
-                <label for="email">Correo:</label>
-                <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email" required minlength="10" maxlength="50"
-                    [(ngModel)]="empresas.empcorreo" #email="ngModel">
-                    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
-                        <div *ngIf="email?.errors?.['required']">
-                            Escriba el correo por favor
-                        </div>
-                        <div *ngIf="email?.errors?.['minlength']">
-                            El correo debe tener mínimo 10 caracteres
-                        </div>
-                        <div *ngIf="email?.errors?.['maxlength']">
-                            El correo debe tener máximo 50 caracteres
-                        </div>
-    
+                    <div *ngIf="rlegal?.errors?.['minlength']">
+                        El nombre del representante legal debe tener mínimo 3 caracteres
                     </div>
-=======
-                       [(ngModel)]="empresas.emprepresentante">
+                    <div *ngIf="rlegal?.errors?.['maxlength']">
+                        El nombre del representante legal debe tener máximo 50 caracteres
+                    </div>
+
+                </div>
             </div>
             <div class="col-sm">
                 <label for="email">Correo:</label>
                 <input type="mail" class="form-control" id="email" placeholder="ejemplo@correo.com" name="email"
-                       [(ngModel)]="empresas.empcorreo">
->>>>>>> origin/juan
+                    required minlength="10" maxlength="50" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" [(ngModel)]="empresas.empcorreo" #email="ngModel">
+                <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email?.errors?.['required']">
+                        Escriba el correo por favor
+                    </div>
+                    <div *ngIf="email?.errors?.['minlength']">
+                        El correo debe tener mínimo 10 caracteres
+                    </div>
+                    <div *ngIf="email?.errors?.['maxlength']">
+                        El correo debe tener máximo 50 caracteres
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -121,93 +93,73 @@
         <div class="row g-3">
             <div class="col-sm">
                 <label for="social">Razon Social:</label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" placeholder="" id="social" name="social" required minlength="2" maxlength="25"
-                    [(ngModel)]="empresas.emprazon" #social="ngModel">
-                    <div class="alert alert-danger" *ngIf="social.invalid && (social.dirty || social.touched)">
-                        <div *ngIf="social?.errors?.['required']">
-                            Escriba la razón social por favor
-                        </div>
-                        <div *ngIf="social?.errors?.['minlength']">
-                            La razón social debe tener mínimo 2 caracteres
-                        </div>
-                        <div *ngIf="social?.errors?.['maxlength']">
-                            La razón social debe tener máximo 25 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" placeholder="" id="social" name="social" required minlength="2"
+                    maxlength="25" [(ngModel)]="empresas.emprazon" #social="ngModel">
+                <div class="alert alert-danger" *ngIf="social.invalid && (social.dirty || social.touched)">
+                    <div *ngIf="social?.errors?.['required']">
+                        Escriba la razón social por favor
                     </div>
+                    <div *ngIf="social?.errors?.['minlength']">
+                        La razón social debe tener mínimo 2 caracteres
+                    </div>
+                    <div *ngIf="social?.errors?.['maxlength']">
+                        La razón social debe tener máximo 25 caracteres
+                    </div>
+
+                </div>
             </div>
             <div class="col-sm">
                 <label for="direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" required minlength="5" maxlength="50"
-                    [(ngModel)]="empresas.empdireccion" #direccion="ngModel">
-                    <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
-                        <div *ngIf="direccion?.errors?.['required']">
-                            Escriba la dirección por favor
-                        </div>
-                        <div *ngIf="direccion?.errors?.['minlength']">
-                            La dirección debe tener mínimo 5 caracteres
-                        </div>
-                        <div *ngIf="direccion?.errors?.['maxlength']">
-                            La dirección debe tener máximo 50 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" id="direccion" name="direccion" required minlength="5"
+                    maxlength="50" [(ngModel)]="empresas.empdireccion" #direccion="ngModel">
+                <div class="alert alert-danger" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                    <div *ngIf="direccion?.errors?.['required']">
+                        Escriba la dirección por favor
                     </div>
-=======
-                <input type="text" class="form-control" placeholder="" id="social" name="social"
-                       [(ngModel)]="empresas.emprazon">
-            </div>
-            <div class="col-sm">
-                <label for="direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion"
-                       [(ngModel)]="empresas.empdireccion">
->>>>>>> origin/juan
+                    <div *ngIf="direccion?.errors?.['minlength']">
+                        La dirección debe tener mínimo 5 caracteres
+                    </div>
+                    <div *ngIf="direccion?.errors?.['maxlength']">
+                        La dirección debe tener máximo 50 caracteres
+                    </div>
+
+                </div>
             </div>
         </div>
         <div class="row g-3">
             <div class="col-sm">
                 <label for="telefono">Telefono: </label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" id="telefono" name="telefono" required minlength="10" maxlength="10"
-                    [(ngModel)]="empresas.emptelefono" #telefono="ngModel">
-                    <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
-                        <div *ngIf="telefono?.errors?.['required']">
-                            Escriba el número de teléfono por favor
-                        </div>
-                        <div *ngIf="telefono?.errors?.['minlength']">
-                            El número de teléfono debe tener mínimo 10 caracteres
-                        </div>
-                        <div *ngIf="telefono?.errors?.['maxlength']">
-                            El número de teléfono debe tener hasta 10 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" id="telefono" name="telefono" required minlength="10"
+                    maxlength="10" [(ngModel)]="empresas.emptelefono" #telefono="ngModel">
+                <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                    <div *ngIf="telefono?.errors?.['required']">
+                        Escriba el número de teléfono por favor
                     </div>
+                    <div *ngIf="telefono?.errors?.['minlength']">
+                        El número de teléfono debe tener mínimo 10 caracteres
+                    </div>
+                    <div *ngIf="telefono?.errors?.['maxlength']">
+                        El número de teléfono debe tener hasta 10 caracteres
+                    </div>
+
+                </div>
             </div>
             <div class="col-sm">
                 <label for="ingreso">Ingreso anual: </label>
-                <input type="text" class="form-control" id="ingreso" placeholder="1000" name="ingreso" required minlength="4" maxlength="10"
-                    [(ngModel)]="empresas.empingresoanual" #ingreso="ngModel">
-                    <div class="alert alert-danger" *ngIf="ingreso.invalid && (ingreso.dirty || ingreso.touched)">
-                        <div *ngIf="ingreso?.errors?.['required']">
-                            Escriba el ingreso anual por favor
-                        </div>
-                        <div *ngIf="ingreso?.errors?.['minlength']">
-                            El ingreso anual debe tener mínimo 4 caracteres
-                        </div>
-                        <div *ngIf="ingreso?.errors?.['maxlength']">
-                            El ingreso anual debe tener máximo 10 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" id="ingreso" placeholder="1000" name="ingreso" required
+                    minlength="4" maxlength="10" [(ngModel)]="empresas.empingresoanual" #ingreso="ngModel">
+                <div class="alert alert-danger" *ngIf="ingreso.invalid && (ingreso.dirty || ingreso.touched)">
+                    <div *ngIf="ingreso?.errors?.['required']">
+                        Escriba el ingreso anual por favor
                     </div>
-=======
-                <input type="text" class="form-control" id="telefono" name="telefono"
-                       [(ngModel)]="empresas.emptelefono">
-            </div>
-            <div class="col-sm">
-                <label for="ingreso">Ingreso anual: </label>
-                <input type="number" class="form-control" id="ingreso" name="ingreso"
-                       [(ngModel)]="empresas.empingresoanual">
->>>>>>> origin/juan
+                    <div *ngIf="ingreso?.errors?.['minlength']">
+                        El ingreso anual debe tener mínimo 4 caracteres
+                    </div>
+                    <div *ngIf="ingreso?.errors?.['maxlength']">
+                        El ingreso anual debe tener máximo 10 caracteres
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -215,29 +167,26 @@
         <div class="row g-3">
             <div class="col-sm">
                 <label for="trabajadores">N° Trabajadores:</label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" id="trabajadores" name="trabajadores" required minlength="1" maxlength="4"
-                    [(ngModel)]="empresas.empnumtrabajadores" #trabajadores="ngModel">
-                    <div class="alert alert-danger" *ngIf="trabajadores.invalid && (trabajadores.dirty || trabajadores.touched)">
-                        <div *ngIf="trabajadores?.errors?.['required']">
-                            Escriba el n° de trabajadores por favor
-                        </div>
-                        <div *ngIf="trabajadores?.errors?.['minlength']">
-                            El n° de trabajadores debe tener mínimo 1 caracter
-                        </div>
-                        <div *ngIf="trabajadores?.errors?.['maxlength']">
-                            El n° de trabajadores debe tener máximo 4 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" id="trabajadores" name="trabajadores" required minlength="1"
+                    maxlength="4" [(ngModel)]="empresas.empnumtrabajadores" #trabajadores="ngModel">
+                <div class="alert alert-danger"
+                    *ngIf="trabajadores.invalid && (trabajadores.dirty || trabajadores.touched)">
+                    <div *ngIf="trabajadores?.errors?.['required']">
+                        Escriba el n° de trabajadores por favor
                     </div>
-=======
-                <input type="number" class="form-control" id="trabajadores" name="trabajadores"
-                       [(ngModel)]="empresas.empnumtrabajadores">
->>>>>>> origin/juan
+                    <div *ngIf="trabajadores?.errors?.['minlength']">
+                        El n° de trabajadores debe tener mínimo 1 caracter
+                    </div>
+                    <div *ngIf="trabajadores?.errors?.['maxlength']">
+                        El n° de trabajadores debe tener máximo 4 caracteres
+                    </div>
+
+                </div>
             </div>
             <div class="col-sm">
                 <label for="ciudad">Ciudad:</label>
-                <input type="text" class="form-control" id="ciudad" name="ciudad" required minlength="3" maxlength="15" [(ngModel)]="empresas.empciudad" #ciudad="ngModel">
+                <input type="text" class="form-control" id="ciudad" name="ciudad" required minlength="3" maxlength="15"
+                    [(ngModel)]="empresas.empciudad" #ciudad="ngModel">
                 <div class="alert alert-danger" *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)">
                     <div *ngIf="ciudad?.errors?.['required']">
                         Escriba la ciudad por favor
@@ -257,7 +206,8 @@
 
             <div class="col-sm">
                 <label for="usu_id" class="form-label">Usu ID:</label>
-                <select [(ngModel)]="empresas.usu_id" name="usu_id" required id="usu_id" class="form-control" #usu_id="ngModel">
+                <select [(ngModel)]="empresas.usu_id" name="usu_id" required id="usu_id" class="form-control"
+                    #usu_id="ngModel">
 
                     <option *ngFor="let usuarios of usuario" [ngValue]="usuarios">{{usuarios.usu_id}}</option>
 
@@ -269,13 +219,9 @@
                 </div>
             </div>
             <div class="col-sm">
-<<<<<<< HEAD
                 <label for="estado">Estado:</label>
-                <select [(ngModel)]="empresas.empestado" name="empestado" required id="empestado" class="form-control" #estado="ngModel">
-=======
-                <label for="empestado">Estado:</label>
-                <select [(ngModel)]="empresas.empestado" name="empestado" id="empestado" class="form-control">
->>>>>>> origin/juan
+                <select [(ngModel)]="empresas.empestado" name="empestado" required id="empestado" class="form-control"
+                    #estado="ngModel">
 
                     <option>Activo</option>
                     <option>Pendiente</option>
@@ -294,7 +240,8 @@
 
             <div class="col-sm">
                 <label for="fecha">Fecha:</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" required [(ngModel)]="empresas.empfecha" #fecha="ngModel">
+                <input type="date" class="form-control" id="fecha" name="fecha" required [(ngModel)]="empresas.empfecha"
+                    #fecha="ngModel">
                 <div class="alert alert-danger" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
                     <div *ngIf="fecha?.errors?.['required']">
                         Ingrese la fecha por favor
@@ -303,29 +250,23 @@
             </div>
             <div class="col-sm">
                 <label for="observaciones">Observaciones:</label>
-<<<<<<< HEAD
-                <input type="text" class="form-control" id="observaciones" name="observaciones" required minlength="2" maxlength="50"
-                    [(ngModel)]="empresas.empobservaciones" #observaciones="ngModel">
-                    <div class="alert alert-danger" *ngIf="observaciones.invalid && (observaciones.dirty || observaciones.touched)">
-                        <div *ngIf="observaciones?.errors?.['required']">
-                            Escriba las observaciones por favor
-                        </div>
-                        <div *ngIf="observaciones?.errors?.['minlength']">
-                            Las observaciones deben tener mínimo 2 caracteres
-                        </div>
-                        <div *ngIf="observaciones?.errors?.['maxlength']">
-                            Las observaciones deben tener máximo 50 caracteres
-                        </div>
-    
+                <input type="text" class="form-control" id="observaciones" name="observaciones" required minlength="2"
+                    maxlength="50" [(ngModel)]="empresas.empobservaciones" #observaciones="ngModel">
+                <div class="alert alert-danger"
+                    *ngIf="observaciones.invalid && (observaciones.dirty || observaciones.touched)">
+                    <div *ngIf="observaciones?.errors?.['required']">
+                        Escriba las observaciones por favor
                     </div>
-=======
-                <input type="text" class="form-control" id="observaciones" name="observaciones"
-                       [(ngModel)]="empresas.empobservaciones">
->>>>>>> origin/juan
+                    <div *ngIf="observaciones?.errors?.['minlength']">
+                        Las observaciones deben tener mínimo 2 caracteres
+                    </div>
+                    <div *ngIf="observaciones?.errors?.['maxlength']">
+                        Las observaciones deben tener máximo 50 caracteres
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-
 
         <br>
 
@@ -373,12 +314,8 @@
 
         <br>
         <div class="mx-2 text-center ">
-<<<<<<< HEAD
-            <button class="btn btn-success col-md-4" type="submit" [disabled]="!datosEmpresa.form.valid" (click)="agregarEmpresa()">Guardar</button>
-=======
-            <button class="btn btn-color col-md-4" type="submit" (click)="agregarEmpresa()" style="background:
-            #42A133; color: white; border-radius: 20px">Guardar</button>
->>>>>>> origin/juan
+            <button class="btn btn-success col-md-4" type="submit" [disabled]="!datosEmpresa.form.valid"
+                (click)="agregarEmpresa()">Guardar</button>
         </div>
         <br>
     </form>
