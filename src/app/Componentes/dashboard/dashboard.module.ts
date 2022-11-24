@@ -22,6 +22,7 @@ import { ListacategoriaproductoComponent } from './Categorias/listacategoriaprod
 import { DetallescategoriaproductoComponent } from './Categorias/detallescategoriaproducto/detallescategoriaproducto.component';
 import { ListacategoriaservicioComponent } from './Categorias/listacategoriaservicio/listacategoriaservicio.component';
 import { DetallescategoriaservicioComponent } from './Categorias/detallescategoriaservicio/detallescategoriaservicio.component';
+import { CategorizarempresaComponent } from './Categorias/categorizarempresa/categorizarempresa.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { DetallescategoriaservicioComponent } from './Categorias/detallescategor
     DetallescategoriaproductoComponent,
     ListacategoriaservicioComponent,
     DetallescategoriaservicioComponent,
+    CategorizarempresaComponent,
   ],
   imports: [
     CommonModule,

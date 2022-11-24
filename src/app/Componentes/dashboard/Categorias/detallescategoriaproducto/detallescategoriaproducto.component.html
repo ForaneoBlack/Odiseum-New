@@ -135,12 +135,17 @@
                             <div class="form-grow">
                                 <label for="catproid" class="form-label">Categoría</label>
                                 <select [(ngModel)]="subcategorias.catproid" name="catproid" id="catproid"
-                                        class="form-control">
+                                        class="form-control" #catproid="ngModel">
 
                                     <option *ngFor="let categorias of categoria"
                                             [ngValue]="categorias">{{categorias.catpronombre}}</option>
 
                                 </select>
+                                <div class="alert alert-danger" *ngIf="catproid.invalid && (catproid.dirty || catproid.touched)">
+                                    <div *ngIf="catproid?.errors?.['required']">
+                                        Ingrese la categoría asignar en la subcategoría por favor
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <br>

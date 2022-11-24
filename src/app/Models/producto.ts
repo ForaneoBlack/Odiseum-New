@@ -11,7 +11,6 @@ export class Producto{
     nombre! : string;
     imagen : string;
     fecha_vencimiento! : Date;
-
     catproid! : CategoriaProducto;
     subcatproid! :subcategoriaProducto;
     descripcion! : string;
