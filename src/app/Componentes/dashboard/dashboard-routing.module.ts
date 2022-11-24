@@ -12,6 +12,7 @@ import { ListarServicioComponent } from './Servicio/listar-servicio/listar-servi
 import { ListausuariosComponent } from './Usuario/listausuarios/listausuarios.component';
 import { IngresosolicitudComponent } from './Solicitud/ingresosolicitud/ingresosolicitud.component';
 import { SolicitudregistroComponent } from './Solicitud/solicitudregistro/solicitudregistro.component';
+import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent, children:[
@@ -26,8 +27,6 @@ const routes: Routes = [
       {path:'listausuario',component:ListausuariosComponent},
       {path:'ingresosolicitud',component:IngresosolicitudComponent},
       {path:'solicitudregistro',component:SolicitudregistroComponent}
-
-
     ]}
 ];
 
