@@ -24,6 +24,7 @@ import {
     DetallescategoriaservicioComponent
 } from "./Categorias/detallescategoriaservicio/detallescategoriaservicio.component";
 import { CategorizarempresaComponent } from './Categorias/categorizarempresa/categorizarempresa.component';
+import { ReporteproductosComponent } from './Productos/reporteproductos/reporteproductos.component';
 
 const routes: Routes = [
     {
@@ -48,7 +49,8 @@ const routes: Routes = [
             {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent},
             {path: 'formempresa/:usu_id', component: DatosEmpresaComponent},
             {path: 'categorizarempresas', component: CategorizarempresaComponent},
-            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent}
+            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent},
+            {path: 'reporteproductos', component: ReporteproductosComponent}
 
 
         ]

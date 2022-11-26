@@ -250,7 +250,7 @@
             </div>
             <div class="col-sm">
                 <label for="observaciones">Observaciones:</label>
-                <input type="text" class="form-control" id="observaciones" name="observaciones" required minlength="2"
+                <input type="text" class="form-control" id="observaciones" name="observaciones"
                     maxlength="50" [(ngModel)]="empresas.empobservaciones" #observaciones="ngModel">
                 <div class="alert alert-danger"
                     *ngIf="observaciones.invalid && (observaciones.dirty || observaciones.touched)">
