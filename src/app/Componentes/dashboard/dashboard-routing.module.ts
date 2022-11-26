@@ -25,6 +25,7 @@ import {
 } from "./Categorias/detallescategoriaservicio/detallescategoriaservicio.component";
 import { CategorizarempresaComponent } from './Categorias/categorizarempresa/categorizarempresa.component';
 import { UsuarioguardianGuard } from '../login/usuarioguardian.guard';
+import {RankingempresaComponent} from "./Empresa/rankingempresa/rankingempresa.component";
 
 const routes: Routes = [
     {
@@ -49,7 +50,9 @@ const routes: Routes = [
             {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent, canActivate:[UsuarioguardianGuard]},
             {path: 'formempresa/:usu_id', component: DatosEmpresaComponent, canActivate:[UsuarioguardianGuard]},
             {path: 'categorizarempresas', component: CategorizarempresaComponent, canActivate:[UsuarioguardianGuard]},
-            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent, canActivate:[UsuarioguardianGuard]}
+            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'rankingempresa', component: RankingempresaComponent, canActivate:[UsuarioguardianGuard]},
+
 
 
         ]
