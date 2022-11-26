@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Credenciales } from 'src/app/Models/credenciales';
+import { Usuario } from 'src/app/Models/usuario';
+import { LoginService } from 'src/app/Service/login.service';
+import { Userlogin, rol_id } from '../../../Models/userlogin';
 
 @Component({
   selector: 'app-header',
@@ -6,11 +12,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public datos:Userlogin=new Userlogin();
+  public rol?:String="";
+  issloading=true;
+  usuario: Usuario[]=[];
+  public persona:Credenciales=new Credenciales();
+  constructor( private router:Router, private loginservice:LoginService)
+  { }
+  ngAfterViewInit(): void {
+   setTimeout(()=>{
+     this.issloading=false;
+   },1000)
+ }
 
-  rol?:String="admin"
-  constructor() { }
+ ngOnInit(): void {
+  
+   if(JSON.parse(sessionStorage['usuario'])!=""){     
+     //datos de usuario rol username
+      
+     this.datos=JSON.parse(sessionStorage['usuario']);   
+     this.rol=this.datos.rol_id.rolnombre;     
 
-  ngOnInit(): void {
-  }
+   }else{
+     window.localStorage.clear();
+     localStorage.removeItem("usuario");
+     console.log("regresar al login");
+     
+     
+   }
+ }
+ 
+ logout():void{
+  console.log("cerrando sesion")
+   sessionStorage.clear;  
+   sessionStorage.removeItem("usuario");
+   this.router.navigate(['/login']).then(() => {
+     window.location.reload();
+   });
+ }
 
 }

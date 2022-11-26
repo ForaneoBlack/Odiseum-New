@@ -24,35 +24,32 @@ import {
     DetallescategoriaservicioComponent
 } from "./Categorias/detallescategoriaservicio/detallescategoriaservicio.component";
 import { CategorizarempresaComponent } from './Categorias/categorizarempresa/categorizarempresa.component';
-import { ReporteproductosComponent } from './Productos/reporteproductos/reporteproductos.component';
-import {RankingempresaComponent} from "./Empresa/rankingempresa/rankingempresa.component";
+import { UsuarioguardianGuard } from '../login/usuarioguardian.guard';
 
 const routes: Routes = [
     {
         path: '', component: DashboardComponent, children: [
-            {path: 'inicio', component: InicioComponent},
-            {path: 'rol', component: RolComponent},
-            {path: 'listacategoria', component: ListacategoriaempresaComponent},
-            {path: 'detallescategoria', component: DetallescategoriaempresaComponent},
-            {path: 'detallescategoria/:idcatemp', component: DetallescategoriaempresaComponent},
-            {path: 'listaempresa', component: CrudEmpresaComponent},
-            {path: 'formempresa', component: DatosEmpresaComponent},
-            {path: 'listaproductos', component: ListarproductoComponent},
-            {path: 'listaservicio', component: ListarServicioComponent},
-            {path: 'listausuario', component: ListausuariosComponent},
-            {path: 'ingresosolicitud', component: IngresosolicitudComponent},
-            {path: 'solicitudregistro', component: SolicitudregistroComponent},
-            {path: 'categoriaproductos', component: ListacategoriaproductoComponent},
-            {path: 'detallescategoriaproductos', component: DetallescategoriaproductoComponent},
-            {path: 'detallescategoriaproductos/:catproid', component: DetallescategoriaproductoComponent},
-            {path: 'listacategoriaservicios', component: ListacategoriaservicioComponent},
-            {path: 'detallescategoriaservicio', component: DetallescategoriaservicioComponent},
-            {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent},
-            {path: 'formempresa/:usu_id', component: DatosEmpresaComponent},
-            {path: 'categorizarempresas', component: CategorizarempresaComponent},
-            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent},
-            {path: 'reporteproductos', component: ReporteproductosComponent},
-            {path: 'rankingempresa', component: RankingempresaComponent}
+            {path: 'inicio', component: InicioComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'rol', component: RolComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listacategoria', component: ListacategoriaempresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoria', component: DetallescategoriaempresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoria/:idcatemp', component: DetallescategoriaempresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listaempresa', component: CrudEmpresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'formempresa', component: DatosEmpresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listaproductos', component: ListarproductoComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listaservicio', component: ListarServicioComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listausuario', component: ListausuariosComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'ingresosolicitud', component: IngresosolicitudComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'solicitudregistro', component: SolicitudregistroComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'categoriaproductos', component: ListacategoriaproductoComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoriaproductos', component: DetallescategoriaproductoComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoriaproductos/:catproid', component: DetallescategoriaproductoComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'listacategoriaservicios', component: ListacategoriaservicioComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoriaservicio', component: DetallescategoriaservicioComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'detallescategoriaservicio/:idcatser', component: DetallescategoriaservicioComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'formempresa/:usu_id', component: DatosEmpresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'categorizarempresas', component: CategorizarempresaComponent, canActivate:[UsuarioguardianGuard]},
+            {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent, canActivate:[UsuarioguardianGuard]}
 
 
         ]

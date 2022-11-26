@@ -2,7 +2,7 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {Rol} from "../../../Models/rol";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {RolService} from "../../../Service/rol.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from "sweetalert2";
 
 @Component({
