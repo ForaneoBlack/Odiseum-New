@@ -25,6 +25,7 @@ import {
 } from "./Categorias/detallescategoriaservicio/detallescategoriaservicio.component";
 import { CategorizarempresaComponent } from './Categorias/categorizarempresa/categorizarempresa.component';
 import { ReporteproductosComponent } from './Productos/reporteproductos/reporteproductos.component';
+import {RankingempresaComponent} from "./Empresa/rankingempresa/rankingempresa.component";
 
 const routes: Routes = [
     {
@@ -50,7 +51,8 @@ const routes: Routes = [
             {path: 'formempresa/:usu_id', component: DatosEmpresaComponent},
             {path: 'categorizarempresas', component: CategorizarempresaComponent},
             {path: 'categorizarempresas/:iddetalle', component: CategorizarempresaComponent},
-            {path: 'reporteproductos', component: ReporteproductosComponent}
+            {path: 'reporteproductos', component: ReporteproductosComponent},
+            {path: 'rankingempresa', component: RankingempresaComponent}
 
 
         ]
