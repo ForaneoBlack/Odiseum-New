@@ -11,7 +11,7 @@
 <div class="container">
     <br>
     <form class="form-control" #datosEmpresa="ngForm">
-        <br><strong>DATOS GENERALES ——————————————————————————————————————————————————————————</strong>
+        <br><strong>DATOS GENERALES asdasdasdasd</strong>
         <br>
         <br>
         <div class="row g-3">
@@ -250,7 +250,7 @@
             </div>
             <div class="col-sm">
                 <label for="observaciones">Observaciones:</label>
-                <input type="text" class="form-control" id="observaciones" name="observaciones" required minlength="2"
+                <input type="text" class="form-control" id="observaciones" name="observaciones"
                     maxlength="50" [(ngModel)]="empresas.empobservaciones" #observaciones="ngModel">
                 <div class="alert alert-danger"
                     *ngIf="observaciones.invalid && (observaciones.dirty || observaciones.touched)">
