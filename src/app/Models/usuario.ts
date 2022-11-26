@@ -7,4 +7,5 @@ export class Usuario {
     usu_contrasena!: string;
     rol_id!: Rol;
     persona!: Persona;
+    
 }
