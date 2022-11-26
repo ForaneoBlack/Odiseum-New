@@ -11,7 +11,7 @@
 <div class="container">
     <br>
     <form class="form-control" #datosEmpresa="ngForm">
-        <br><strong>DATOS GENERALES asdasdasdasd</strong>
+        <br><strong>DATOS GENERALES:</strong>
         <br>
         <br>
         <div class="row g-3">
@@ -315,7 +315,7 @@
         <br>
         <div class="mx-2 text-center ">
             <button class="btn btn-success col-md-4" type="submit" [disabled]="!datosEmpresa.form.valid"
-                (click)="agregarEmpresa()">Guardar</button>
+                (click)="agregarEmpresa()" routerLink="/dashboard/listaempresa">Guardar</button>
         </div>
         <br>
     </form>
