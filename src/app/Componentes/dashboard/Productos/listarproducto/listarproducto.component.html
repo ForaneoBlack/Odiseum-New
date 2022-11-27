@@ -173,7 +173,7 @@
                         <div class="row g-3">
                             <div class="col-sm">
                                 <div class="form-grow">
-                                    <label for="catpronombre" class="form-label">Categoría</label>
+                                    <label for="catproid" class="form-label">Categoría</label>
                                     <select [(ngModel)]="productos.catproid" name="catproid" id="catproid"
                                             class="form-control" required
                                             style="background: #D9D9D9;border-radius: 15px;">
@@ -186,7 +186,7 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-grow">
-                                    <label for="subcatpronombre" class="form-label">Subcategoría</label>
+                                    <label for="subcatproid" class="form-label">Subcategoría</label>
                                     <select [(ngModel)]="productos.subcatproid" name="subcatproid" id="subcatproid"
                                             class="form-control" required
                                             style="background: #D9D9D9;border-radius: 15px;">
@@ -371,10 +371,11 @@
                         <div class="row g-3">
                             <div class="col-sm">
                                 <div class="form-grow">
-                                    <label for="catproid" class="form-label">Categoría</label>
+                                    <label for="catproidedit" class="form-label">Categoría</label>
                                     <select [compareWith]="compararcategoria" [(ngModel)]="productos.catproid"
-                                            name="catproid" id="catproid" class="form-control" required
-                                            style="background: #D9D9D9;border-radius: 15px;">
+                                            name="catproid" id="catproidedit" class="form-control" required
+                                            style="background: #D9D9D9;border-radius: 15px;"
+                                           >
                                         <option *ngFor="let categorias of categoria"
                                                 [ngValue]="categorias">{{categorias.catpronombre}}</option>
                                     </select>
@@ -382,9 +383,9 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-grow">
-                                    <label for="subcatproid" class="form-label">Subcategoría</label>
+                                    <label for="subcatproidedit" class="form-label">Subcategoría</label>
                                     <select [compareWith]="compararsubcategoria" [(ngModel)]="productos.subcatproid"
-                                            name="subcatproid" id="subcatproid" class="form-control" required
+                                            name="subcatproid" id="subcatproidedit" class="form-control" required
                                             style="background: #D9D9D9;border-radius: 15px;">
                                         <option *ngFor="let subcategorias of subcategoria"
                                                 [ngValue]="subcategorias">{{subcategorias.subcatpronombre}}</option>
