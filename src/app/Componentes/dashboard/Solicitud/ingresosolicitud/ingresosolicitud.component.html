@@ -6,13 +6,14 @@
 
 <div class="container">
     <br>
-    <form class="form-control" #datosSolicitud="ngForm">
+    <form class="form-control" #datosSolicitud="ngForm" style="border-radius: 25px; border-color: #195E4B">
         <br>
         <div class="row g-3">
             <div class="col-sm">
                 <label for="usuario" class="form-label">ID usuario:</label>
                 <select [(ngModel)]="solicitudes.usu_id" name="usuario" required id="usuario" class="form-control"
-                    #usu_id="ngModel">
+                    #usu_id="ngModel"
+                        style="background: #D9D9D9;border-radius: 15px;">
 
                     <option *ngFor="let usuarios of usuario" [ngValue]="usuarios">
                         {{usuarios.usu_id}}</option>
@@ -29,7 +30,7 @@
             <div class="col-sm">
                 <label for="idempresa" class="form-label">ID empresa:</label>
                 <select [(ngModel)]="solicitudes.idempresa" name="idempresa" required id="idempresa"
-                    class="form-control" #idempresa="ngModel">
+                    class="form-control" #idempresa="ngModel" style="background: #D9D9D9;border-radius: 15px;">
 
                     <option *ngFor="let empresas of empresa" [ngValue]="empresas">{{empresas.idempresa}}</option>
                 </select>
@@ -43,7 +44,8 @@
             <div class="col-sm">
                 <label for="fecha" class="form-label">Fecha Solicitud:</label>
                 <input type="date" class="form-control" id="fecha" name="fecha" required
-                    [(ngModel)]="solicitudes.sol_fecharegistro" #fecha="ngModel">
+                    [(ngModel)]="solicitudes.sol_fecharegistro" #fecha="ngModel"
+                       style="background: #D9D9D9;border-radius: 10px;">
                 <div class="alert alert-danger" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
                     <div *ngIf="fecha?.errors?.['required']">
                         Ingrese la fecha por favor
@@ -54,7 +56,9 @@
             <br>
             <div class="col-sm">
                 <label for="sol_estado" class="form-label">Estado:</label>
-                <select [(ngModel)]="solicitudes.sol_estado" name="sol_estado" required id="sol_estado" class="form-control" #estado="ngModel">
+                <select [(ngModel)]="solicitudes.sol_estado" name="sol_estado" required id="sol_estado"
+                        style="background: #D9D9D9;border-radius: 15px;"
+                        class="form-control" #estado="ngModel">
 
                     <option>Activo</option>
                     <option>Pendiente</option>
@@ -73,7 +77,8 @@
             <div class="col-sm">
                 <label for="detalle" class="form-label">Detalle Estado:</label>
                 <input type="text" class="form-control" id="detalle" name="detalle" required minlength="3" maxlength="15"
-                    [(ngModel)]="solicitudes.sol_detalleestado" #detalle="ngModel">
+                    [(ngModel)]="solicitudes.sol_detalleestado" #detalle="ngModel"
+                       style="background: #D9D9D9;border-radius: 15px;">
                 <div class="alert alert-danger" *ngIf="detalle.invalid && (detalle.dirty || detalle.touched)">
                     <div *ngIf="detalle?.errors?.['required']">
                         Escriba el detalle por favor
@@ -92,8 +97,9 @@
 
         <br>
         <div class="mx-2 text-center ">
-            <button class="btn btn-success col-md-4" type="submit"
-                [disabled]="!datosSolicitud.form.valid" (click)="agregarSolicitud()">Guardar</button>
+            <button class="btn btn-color col-md-4" type="submit"
+                [disabled]="!datosSolicitud.form.valid" (click)="agregarSolicitud()"
+                    style="background: #00DA9D; color: white; border: none">Guardar</button>
         </div>
         <br>
     </form>

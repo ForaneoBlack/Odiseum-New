@@ -6,12 +6,12 @@
     <div class="text-center d-flex mt-3 mx-3 justify-content-end">
         <button type="button" id="btnagregar" class="btn btn-color" data-bs-toggle="modal"
                 data-bs-target="#agregarcat" (click)="cleanModal()"
-                style="background: #5CCB4A; color: white; border-radius: 20px; width:200px">Agregar Categoría
+                style="background: #00DA9D; color: white; border-radius: 20px; width:200px">Agregar Categoría
         </button>
     </div>
     <br>
     <table class="table text-center table-striped table-hover">
-        <thead style="background: #FFA084; color: white">
+        <thead style="background: #195E4B; color: white">
         <tr>
             <th class="text-center">Categoria</th>
             <th class="text-center">Descripción</th>
@@ -36,13 +36,13 @@
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
                         <button class=" dropdown-item btn-color " data-bs-toggle="modal"
                                 data-bs-target="#editarcat" (click)="abrirmodaleditar(categorias)"
-                                style="background: #FD8900; color: white;">Editar
+                                style="background: #00DA9D; color: white;">Editar
                         </button>
                         <a class="dropdown-item" aria-current="page"
                            [routerLink]="['/dashboard/detallescategoriaservicio',categorias.idcatser]"
-                           style="background: #00DA9D; color: white;">Detalles</a>
+                           style="background: #FFA084; color: white;">Detalles</a>
                         <button class=" dropdown-item " (click)="delete(categorias)"
-                                style="background: #FF0F0F; color: white;">Eliminar
+                                style="background: #F33501; color: white;">Eliminar
                         </button>
 
                     </ul>
@@ -59,9 +59,9 @@
 >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-3" id="titulomodal">Agregar Categoria</h1>
-                <button id="closeM1" type="button" class="btn-close text-bg-light" data-bs-dismiss="modal"
+                <button id="closeM1" type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -118,12 +118,12 @@
                         <div class="row justify-content-center">
                             <div class="col-4">
                                 <button class="btn btn-color" type="submit" [disabled]="!categoriaForm.form.valid"
-                                        (click)="agregarCategoria()" style="background: #42A133; color: white">Agregar
+                                        (click)="agregarCategoria()" style="background: #00DA9D; color: white">Agregar
                                 </button>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                        style="background: #FF0000; color: white">Cancelar
+                                        style="background: #F33501; color: white">Cancelar
                                 </button>
                             </div>
 
@@ -142,9 +142,9 @@
     >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" >
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-3">Editar Categoria</h1>
-                <button type="button" id="closeM2" class="btn-close text-bg-light" data-bs-dismiss="modal"
+                <button type="button" id="closeM2" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -200,12 +200,12 @@
                             <div class="col-4">
                         <button class="btn btn-color" type="button" (click)="actualizarCategoria()"
                                 [disabled]="!categoriaeditForm.form.valid"
-                                style="background: #42A133; color: white">Agregar
+                                style="background: #00DA9D; color: white">Agregar
                         </button>
                             </div>
                             <div class="col-4">
                         <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                style="background: #FF0000; color: white">Cancelar</button>
+                                style="background: #F33501; color: white">Cancelar</button>
                             </div>
                         </div>
                     </div>

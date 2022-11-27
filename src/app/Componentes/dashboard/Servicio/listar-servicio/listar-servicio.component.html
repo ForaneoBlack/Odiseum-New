@@ -1,19 +1,19 @@
 <div class="container-fluid text-black mt-5 text-center">
-    <h1 class="text-center">Lista de Servicios</h1>
+    <h1>Lista de Servicios</h1>
 </div>
 
 
 <div class="container">
     <div class="d-flex mt-3 mx-3 justify-content-end">
         <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target="#agregarservicio"
-                style="background: #5CCB4A; color: white; border-radius: 20px; width:
+                style="background: #00DA9D; color: white; border-radius: 20px; width:
      200px">Agregar Servicio
         </button>
     </div>
     <br>
     <table class="table mt-3 table-hover table-striped">
 
-        <thead style="background: #FFA084; color: white">
+        <thead style="background: #195E4B; color: white">
         <tr>
             <th></th>
             <th scope="col" class="text-center">Servicio</th>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let servicios of servicio">
-            <td class="img-fluid">
+            <td class="img-fluid justify-content-center">
                 <a href="{{servicios.serimagen}}" data-fancybox>
                     <img src="{{servicios.serimagen}}" alt="" class="img-fluid"/></a>
             </td>
@@ -36,10 +36,8 @@
             <td class="text-center">
                 <div>
                     <span class="badge rounded-pill bg-ligth text-dark me-1">{{servicios.idcatser.catnombre}}</span>
-
                 </div>
                 <span class="badge rounded-pill bg-ligth text-dark me-1">{{servicios.idsubcat.subcatnombre}}</span>
-
             </td>
             <td class="text-center">
                 <p>{{servicios.serdescripcion}}</p>
@@ -54,10 +52,10 @@
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
                         <button class="btn-color dropdown-item" data-bs-toggle="modal"
                                 data-bs-target="#editarservicio"
-                                style="background: #FD8900; color: white;" (click)="abrirmodaleditar(servicios)">Editar
+                                style="background: #00DA9D; color: white;" (click)="abrirmodaleditar(servicios)">Editar
                         </button>
                         <button class="btn-color dropdown-item "
-                                style="background: #FF0F0F; color: white;" (click)="delete(servicios)">Eliminar
+                                style="background: #F33501; color: white;" (click)="delete(servicios)">Eliminar
                         </button>
                     </ul>
                 </div>
@@ -73,7 +71,7 @@
 <div class="modal fade" id="agregarservicio" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content ">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Servicio</h1>
                 <button type="button" id="closeM1" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -83,7 +81,7 @@
                         <div class="col-sm">
                             <label for="nombreservicio">Nombre del Servicio:</label>
                             <input type="text" class="form-control"
-                                   style="background: #D9D9D9;border-radius: 0px;" placeholder="Digite el nombre del servicio"
+                                   style="background: #D9D9D9;border-radius: 0px;"
                                    id="nombreservicio" name="nombreservicio" required minlength="2" maxlength="25" [(ngModel)]="servicios.sernombre" #nombreservicio="ngModel">
                                    <div class="alert alert-danger"
                                    *ngIf="nombreservicio.invalid && (nombreservicio.dirty || nombreservicio.touched)">
@@ -130,7 +128,7 @@
                         </div>
                         <div class="col-sm">
                             <label for="descripcion">Descripción del Servicio:</label>
-                            <textarea class="form-control" id="descripcion" placeholder="Digite la descripcion del servicio"
+                            <textarea class="form-control" id="descripcion"
                                       style="background: #D9D9D9;border-radius: 0px;" name="descripcion" required
                                       minlength="25" maxlength="100" [(ngModel)]="servicios.serdescripcion" #descripcion="ngModel"></textarea>
                                       <div class="alert alert-danger"
@@ -156,7 +154,7 @@
                                 <label for="catpronombre" class="form-label">Categoría</label>
                                 <select [(ngModel)]="servicios.idcatser" name="catproid" id="idcatser"
                                         class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
+                                        style="background: #D9D9D9;border-radius: 15px;">
 
                                     <option *ngFor="let categorias of categoria"
                                             [ngValue]="categorias">{{categorias.catnombre}}
@@ -169,7 +167,7 @@
                                 <label for="subcatpronombre" class="form-label">Subcategoría</label>
                                 <select [(ngModel)]="servicios.idsubcat" name="idsubcat" id="idsubcat"
                                         class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
+                                        style="background: #D9D9D9;border-radius: 15px;">
                                     <option *ngFor="let subcategorias of subcategoria"
                                             [ngValue]="subcategorias">{{subcategorias.subcatnombre}}
                                     </option>
@@ -182,7 +180,7 @@
                         <div class="col-sm">
                             <label for="url">Link de la imagen:</label>
                             <input type="url" class="form-control" placeholder="URL" id="url" name="url" required [(ngModel)]="servicios.serimagen" #url="ngModel"
-                                   style="background: #D9D9D9;border-radius: 0px;">
+                                   style="background: #D9D9D9;border-radius: 10px;">
                                    <div class="alert alert-danger"
                                    *ngIf="url.invalid && (url.dirty || url.touched)">
                                   <div *ngIf="url?.errors?.['required']">
@@ -197,7 +195,7 @@
                                 <label for="idempresa" class="form-label">Empresa:</label>
                                 <select [(ngModel)]="servicios.idempresa" name="idempresa" id="idempresa"
                                         class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
+                                        style="background: #D9D9D9;border-radius: 15px;">
 
                                     <option *ngFor="let empresas of empresa"
                                             [ngValue]="empresas">{{empresas.empnombre}}</option>
@@ -210,12 +208,12 @@
                     <div class="container text-center">
                         <div class="row justify-content-center">
                             <div class="col-5">
-                                <button class="btn btn-color"  style="background: #42A133; color: white" type="submit" [disabled]="!servicioForm.form.valid"
+                                <button class="btn btn-color"  style="background: #00DA9D; color: white" type="submit" [disabled]="!servicioForm.form.valid"
                                 (click)="agregarServicio()">Agregar</button>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-color" type="button" data-bs-dismiss="modal" style="background:
-                                #FF0000; color: white">Cancelar</button>
+                                #F33501; color: white">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -232,7 +230,7 @@
 <div class="modal fade" id="editarservicio" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content ">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Servicio</h1>
                 <button type="button" id="closeM2" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -242,7 +240,7 @@
                         <div class="col-sm">
                             <label for="nombreservicioedit">Nombre del Servicio:</label>
                             <input type="text" class="form-control"
-                                   style="background: #D9D9D9;border-radius: 0px;" placeholder="Digite el nombre del servicio"
+                                   style="background: #D9D9D9;border-radius: 0px;"
                                    id="nombreservicioedit" name="nombreservicioedit" required minlength="2" maxlength="25" [(ngModel)]="servicios.sernombre" #nombreservicioedit="ngModel">
                                    <div class="alert alert-danger"
                                    *ngIf="nombreservicioedit.invalid && (nombreservicioedit.dirty || nombreservicioedit.touched)">
@@ -292,7 +290,7 @@
                         </div>
                         <div class="col-sm">
                             <label for="descripcionedit">Descripción del Servicio:</label>
-                            <textarea class="form-control" id="descripcionedit" placeholder="Digite la descripcion del servicio"
+                            <textarea class="form-control" id="descripcionedit"
                                       style="background: #D9D9D9;border-radius: 0px;" name="descripcionedit" required
                                       minlength="25" maxlength="100" [(ngModel)]="servicios.serdescripcion" #descripcionedit="ngModel"></textarea>
                                       <div class="alert alert-danger"
@@ -318,7 +316,7 @@
                                 <label for="catpronombre" class="form-label">Categoría</label>
                                 <select [compareWith]="compararcategoria" [(ngModel)]="servicios.idcatser" name="catproid" id="idcatser"
                                         class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
+                                        style="background: #D9D9D9;border-radius: 15px;">
 
                                     <option *ngFor="let categorias of categoria"
                                             [ngValue]="categorias">{{categorias.catnombre}}
@@ -331,7 +329,7 @@
                                 <label for="subcatpronombre" class="form-label">Subcategoría</label>
                                 <select [compareWith]="compararsubcategoria" [(ngModel)]="servicios.idsubcat" name="idsubcat" id="idsubcat"
                                         class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
+                                        style="background: #D9D9D9;border-radius: 15px;">
                                     <option *ngFor="let subcategorias of subcategoria"
                                             [ngValue]="subcategorias">{{subcategorias.subcatnombre}}
                                     </option>
@@ -344,7 +342,7 @@
                         <div class="col-sm">
                             <label for="urledit">Link de la imagen:</label>
                             <input type="url" class="form-control" placeholder="URL de la imagen" id="urledit" name="urledit" required [(ngModel)]="servicios.serimagen" #urledit="ngModel"
-                                   style="background: #D9D9D9;border-radius: 0px;" maxlength="100">
+                                   style="background: #D9D9D9;border-radius: 10px;" maxlength="100">
                                    <div class="alert alert-danger"
                                    *ngIf="urledit.invalid && (urledit.dirty || urledit.touched)">
                                   <div *ngIf="urledit?.errors?.['required']">
@@ -358,12 +356,12 @@
                     <div class="container text-center">
                         <div class="row justify-content-center">
                             <div class="col-5">
-                                <button class="btn btn-color"  style="background: #42A133; color: white" type="submit" [disabled]="!servicioForm.form.valid"
+                                <button class="btn btn-color"  style="background: #00DA9D; color: white" type="submit" [disabled]="!servicioForm.form.valid"
                                 (click)="actualizarServicio()">Editar</button>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-color" type="button" data-bs-dismiss="modal" style="background:
-                                #FF0000; color: white">Cancelar</button>
+                                #F33501; color: white">Cancelar</button>
                             </div>
                         </div>
                     </div>

@@ -9,12 +9,12 @@
                 data-bs-toggle="modal"
                 data-bs-target="#agregarusuario"
                 (click)="cleanModal()"
-                style="background: #5CCB4A; color: white; border-radius: 20px; width:125px"> Agregar
+                style="background: #00DA9D; color: white; border-radius: 20px; width:125px"> Agregar
         </button>
     </div>
     <br>
     <table class="table mt-3 table-striped table-hover">
-        <thead style="background: #FFA084; color: white">
+        <thead style="background: #195E4B; color: white">
         <tr>
             <th scope="col" class="text-center">Cedula</th>
             <th scope="col" class="text-center">Nombre</th>
@@ -40,10 +40,10 @@
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
                         <button class="btn-color dropdown-item" data-bs-toggle="modal"
                                 data-bs-target="#editarusuario" (click)="abrirmodaleditar(user)"
-                                style="background: #FD8900; color: white;">Editar
+                                style="background: #00DA9D; color: white;">Editar
                         </button>
                         <button class="btn-color dropdown-item "
-                                style="background: #FF0F0F; color: white;" (click)="delete(user)">Eliminar
+                                style="background: #F33501; color: white;" (click)="delete(user)">Eliminar
                         </button>
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
 <div class="modal fade" id="agregarusuario" tabindex="-1" aria-labelledby="agregarusuario" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
                 <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"
@@ -248,13 +248,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" (click)="agregarUser()"
-                                            style="background: #42A133; color: white"
+                                            style="background: #00DA9D; color: white"
                                             [disabled]="!usuarioAgregar.form.valid">Agregar
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                            style="background: #FF0000; color: white">Cancelar
+                                            style="background: #F33501; color: white">Cancelar
                                     </button>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@
 <div class="modal fade" id="editarusuario" tabindex="-1" aria-labelledby="editarusuario" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
                 <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"
@@ -466,13 +466,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" (click)="actualizarUsuario()"
-                                            style="background: #42A133; color: white"
+                                            style="background: #00DA9D; color: white"
                                             [disabled]="!usuarioEditar.form.valid">Actualizar
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                            style="background: #FF0000; color: white">Cancelar
+                                            style="background: #F33501; color: white">Cancelar
                                     </button>
                                 </div>
                             </div>

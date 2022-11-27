@@ -1,11 +1,11 @@
 <div class="container-fluid text-black mt-5 text-center">
     <h1 class="text-center">Lista de Empresas</h1>
 </div>
-
+<br>
 <div class="container small">
 
     <table class="table mt-3 table-hover table-striped">
-        <thead style="background: #FFA084; color: white">
+        <thead style="background: #195E4B; color: white">
         <tr>
             <th class="text-center">RUC</th>
             <th class="text-center">Representante legal</th>
@@ -27,7 +27,7 @@
             <td>{{empresa.empestado}}</td>
             <td>
                 <button class="btn btn-color" type="button" data-bs-toggle="modal" data-bs-target="#detalleEmpresa"
-                        (click)="abrirdetalle(empresa)" style="background: #00DA9D; color: white;">Detalles
+                        (click)="abrirdetalle(empresa)" style="background: #FFA084; color: white;">Detalles
                 </button>
             </td>
         </tr>
@@ -40,7 +40,7 @@
 <div class="modal fade" id="detalleEmpresa" tabindex="-1" aria-labelledby="detalleEmpresa" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-4">Detalles de la empresa</h1>
                 <button type="button" class="btn-close text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"></button>
