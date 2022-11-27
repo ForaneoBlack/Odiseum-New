@@ -32,4 +32,8 @@ export class ProductoService {
     return this.http.delete<Producto>(this.url+"/eliminar/"+producto.idproducto);
   }
 
+  obtenerVenta(idempresa: number): Observable<Producto>{
+    return this.http.get<Producto>(this.url+'/listar/productosventa/'+idempresa);
+  }
+
 }
