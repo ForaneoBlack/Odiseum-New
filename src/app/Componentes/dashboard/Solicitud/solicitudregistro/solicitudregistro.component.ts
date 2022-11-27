@@ -28,7 +28,7 @@ export class SolicitudregistroComponent implements OnInit {
   solicitudes: solicitud = new solicitud();
   solicitud: solicitud [] = [];
 
-  /* categorias: Categoria = new Categoria(); */
+  categorias: Categoria = new Categoria();
   categoria: Categoria [] = [];
 
   subcategorias: Subcategoriaempresa = new Subcategoriaempresa();
@@ -98,10 +98,10 @@ export class SolicitudregistroComponent implements OnInit {
       })
   }
 
-  abrirmodalDetalle(solicitudes: solicitud) {
-    this.solicitudes = {...solicitudes};
+  abrirmodalDetalle(solicitud: solicitud) {
+    this.solicitudes = {...solicitud};
     this.empresas = this.solicitudes.idempresa;
-    /* this.categorias = this.solicitudes.idcatemp; */
+    this.categorias = this.solicitudes.idcatemp;
     this.subcategorias = this.solicitudes.idsubcatemp;
 }
 
