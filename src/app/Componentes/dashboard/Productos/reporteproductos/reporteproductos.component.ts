@@ -25,6 +25,7 @@ export class ReporteproductosComponent implements OnInit {
   ngOnInit(): void {
     this.getProducto();
     this.operacion();
+    /*this.getVenta(this.total)*/
     this.total;
     this.activedRoute.params
       .subscribe(params => {
@@ -41,13 +42,15 @@ export class ReporteproductosComponent implements OnInit {
       .subscribe(response => this.producto = response);
   }
 
-  /* getVenta(){
-    this.productoService.obtenerVenta()
-      .subscribe(response => this.producto = response);
-  } */
+  /* getVenta(id: number){
+    this.productoService.obtenerVenta(id)
+      .subscribe(response => this.productos = response);
+
+
+  }*/
 
   operacion(){
     this.productoService.getProducto()
-    this.total=this.productos.precio*this.productos.stock;
+    this.total= (this.productos.precio*this.productos.stock);
   }
 }
