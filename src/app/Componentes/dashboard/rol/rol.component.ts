@@ -2,7 +2,7 @@ import {Component, OnChanges, OnInit} from '@angular/core';
 import {Rol} from "../../../Models/rol";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {RolService} from "../../../Service/rol.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from "sweetalert2";
 
 @Component({
@@ -76,7 +76,7 @@ export class RolComponent implements OnInit{
   public delete(rol: Rol): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-success mx-3',
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -84,7 +84,7 @@ export class RolComponent implements OnInit{
 
     swalWithBootstrapButtons.fire({
       title: 'Esta seguro de eliminar!',
-      text: `la categoria : ${rol.rolnombre}`,
+      text: `El rol : ${rol.rolnombre}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Eliminar',
@@ -98,7 +98,7 @@ export class RolComponent implements OnInit{
           this.rol = this.rol.filter(del => del.idrol != rol.idrol)
           swalWithBootstrapButtons.fire(
             'Eliminado!',
-            `Categoría eliminada ${rol.rolnombre}`,
+            `Rol eliminado ${rol.idrol}`,
             'success'
           );
 

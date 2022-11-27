@@ -9,12 +9,12 @@
                 data-bs-toggle="modal"
                 data-bs-target="#agregarusuario"
                 (click)="cleanModal()"
-                style="background: #5CCB4A; color: white; border-radius: 20px; width:125px"> Agregar
+                style="background: #00DA9D; color: white; border-radius: 20px; width:125px"> Agregar
         </button>
     </div>
     <br>
     <table class="table mt-3 table-striped table-hover">
-        <thead style="background: #FFA084; color: white">
+        <thead style="background: #195E4B; color: white">
         <tr>
             <th scope="col" class="text-center">Cedula</th>
             <th scope="col" class="text-center">Nombre</th>
@@ -40,10 +40,10 @@
                     <ul class="dropdown-menu btn-color" style="border: none; background: none">
                         <button class="btn-color dropdown-item" data-bs-toggle="modal"
                                 data-bs-target="#editarusuario" (click)="abrirmodaleditar(user)"
-                                style="background: #FD8900; color: white;">Editar
+                                style="background: #00DA9D; color: white;">Editar
                         </button>
                         <button class="btn-color dropdown-item "
-                                style="background: #FF0F0F; color: white;">Eliminar
+                                style="background: #F33501; color: white;" (click)="delete(user)">Eliminar
                         </button>
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
 <div class="modal fade" id="agregarusuario" tabindex="-1" aria-labelledby="agregarusuario" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
                 <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"
@@ -72,8 +72,8 @@
                                 <label for="nombre" class="form-label">Nombre:</label>
                                 <input type="text" class="form-control" id="nombre"
                                        name="nombre" required minlength="2" maxlength="70"
-                                       style="background: #D9D9D9;border-radius: 0px;" #nombrePer="ngModel"
-                                       [(ngModel)]="persona.nombre" [ngModelOptions]="{standalone: true }">
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       [(ngModel)]="persona.nombre" #nombrePer="ngModel" [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
                                      *ngIf="nombrePer.invalid && (nombrePer.dirty || nombrePer.touched)">
                                     <div *ngIf="nombrePer?.errors?.['required']">
@@ -91,8 +91,8 @@
                                 <label for="apellido" class="form-label">Apellido:</label>
                                 <input type="text" class="form-control" id="apellido"
                                        name="apellido" required minlength="2" maxlength="70"
-                                       style="background: #D9D9D9;border-radius: 0px;" #apellidoPer="ngModel"
-                                       [(ngModel)]="persona.apellido" [ngModelOptions]="{standalone: true }">
+                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       [(ngModel)]="persona.apellido" #apellidoPer="ngModel" [ngModelOptions]="{standalone: true }">
                                 <div class="alert alert-danger"
                                      *ngIf="apellidoPer.invalid && (apellidoPer.dirty || apellidoPer.touched)">
                                     <div *ngIf="apellidoPer?.errors?.['required']">
@@ -111,9 +111,9 @@
                         <div class="row g-3">
                             <div class="col-sm">
                                 <label for="cedula" class="form-label">Cédula:</label>
-                                <input type="text" class="form-control" id="cedula" name="cedula" pattern="[0-9]"
+                                <input type="text" class="form-control" id="cedula" name="cedula" pattern="^((\\+91-?)|0)?[0-9]{10}$"
                                        required minlength="10" maxlength="10" #cedula="ngModel"
-                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       style="background: #D9D9D9;border-radius: 0px;" [ngModelOptions]="{standalone: true }"
                                        [(ngModel)]="persona.cedula">
                                 <div class="alert alert-danger"
                                      *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)">
@@ -126,19 +126,16 @@
                                     <div *ngIf="cedula?.errors?.['maxlength']">
                                         La cedula debe tener máximo 10 caracteres
                                     </div>
-                                    <div *ngIf="cedula?.errors?.['pattern']">
-                                        La cedula debe tener solo numeros
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <label for="email" class="form-label">Email:</label>
                                 <input type="text" class="form-control" id="email" name="email"
-                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       style="background: #D9D9D9;border-radius: 0px;" [ngModelOptions]="{standalone: true }"
                                        pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
                                        required minlength="2" maxlength="70" [(ngModel)]="persona.correo"
-                                       #emailPer="ngModel"
-                                       [ngModelOptions]="{standalone: true }">
+                                       #emailPer="ngModel">
                                 <div class="alert alert-danger"
                                      *ngIf="emailPer.invalid && (emailPer.dirty || emailPer.touched)">
                                     <div *ngIf="emailPer?.errors?.['required']">
@@ -157,11 +154,11 @@
                         <div class="row g-3">
                             <div class="col-sm">
                                 <label for="celular" class="form-label">Celular:</label>
-                                <input type="text" class="form-control" id="celular" name="celular" pattern="[0-9]"
+                                <input type="text" class="form-control" id="celular" name="celular"
+                                       pattern="^((\\+91-?)|0)?[0-9]{10}$" [ngModelOptions]="{standalone: true }"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        required minlength="10" maxlength="10"
-                                       [(ngModel)]="persona.celular" #celularPer="ngModel"
-                                       [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="persona.celular" #celularPer="ngModel" >
                                 <div class="alert alert-danger"
                                      *ngIf="celularPer.invalid && (celularPer.dirty || celularPer.touched)">
                                     <div *ngIf="celularPer?.errors?.['required']">
@@ -179,9 +176,9 @@
                             <div class="col-sm">
                                 <label for="direccion" class="form-label">Direccion:</label>
                                 <input type="text" class="form-control" id="direccion" name="direccion"
-                                       style="background: #D9D9D9;border-radius: 0px;"
+                                       style="background: #D9D9D9;border-radius: 0px;" [ngModelOptions]="{standalone: true }"
                                        required minlength="2" maxlength="70" [(ngModel)]="persona.direccion"
-                                       [ngModelOptions]="{standalone: true }" #direccionPer="ngModel">
+                                        #direccionPer="ngModel">
                                 <div class="alert alert-danger"
                                      *ngIf="direccionPer.invalid && (direccionPer.dirty || direccionPer.touched)">
                                     <div *ngIf="direccionPer?.errors?.['required']">
@@ -203,20 +200,30 @@
                             <div class="col-sm">
                                 <label for="usuario" class="form-label">Usuario:</label>
                                 <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
-                                       style="background: #D9D9D9;border-radius: 0px;"
-                                       id="usuario" name="usuario"
-                                       [(ngModel)]="user.usuusuario"
-                                       [ngModelOptions]="{standalone: true }">
+                                       style="background: #D9D9D9;border-radius: 0px;" required minlength="2"
+                                       maxlength="15" #usuario="ngModel"
+                                       id="usuario" name="usuario" [ngModelOptions]="{standalone: true }"
+                                       [(ngModel)]="user.usuusuario">
+                                <div class="alert alert-danger"
+                                     *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">
+                                    <div *ngIf="usuario?.errors?.['required']">
+                                        Ingrese un nombre de usuario
+                                    </div>
+                                    <div *ngIf="usuario?.errors?.['minlength']">
+                                        El nombre de usuario debe tener minimo 2 caracteres
+                                    </div>
+                                    <div *ngIf="usuario?.errors?.['maxlength']">
+                                        El nombre de usuario debe tener maximo 15 caracteres
+                                    </div>
 
+                                </div>
                             </div>
                             <div class="col-sm">
                                 <label for="rolnombre" class="form-label">Rol </label>
                                 <select id="rolnombre" class="form-control" [(ngModel)]="rol"
-                                        style="background: #D9D9D9;border-radius: 0px;"
-                                        [ngModelOptions]="{standalone: true }">
+                                        style="background: #D9D9D9;border-radius: 0px;" [ngModelOptions]="{standalone: true }">
                                     <option *ngFor=" let roles of roles"
                                             [ngValue]="roles">{{roles.rolnombre}}</option>
-
                                 </select>
                             </div>
 
@@ -227,14 +234,13 @@
                                 <input type="password" class="form-control" id="password" name="password" required
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        minlength="8" maxlength="50" placeholder="Digite la contraseña"
-                                       [(ngModel)]="user.usu_contrasena"
-                                       [ngModelOptions]="{standalone: true }">
+                                       [(ngModel)]="user.usu_contrasena" [ngModelOptions]="{standalone: true }">
                             </div>
                             <div class="col-sm">
                                 <label for="password2" class="form-label">Repetir Contraseña:</label>
                                 <input type="password" class="form-control" id="password2" name="password2" required
                                        minlength="8" maxlength="50" placeholder="Digite la contraseña otra vez"
-                                       style="background: #D9D9D9;border-radius: 0px;">
+                                       style="background: #D9D9D9;border-radius: 0px;" >
                             </div>
                         </div>
                         <br>
@@ -242,13 +248,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" (click)="agregarUser()"
-                                            style="background: #42A133; color: white"
-                                    >Agregar
+                                            style="background: #00DA9D; color: white"
+                                            [disabled]="!usuarioAgregar.form.valid">Agregar
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                            style="background: #FF0000; color: white">Cancelar
+                                            style="background: #F33501; color: white">Cancelar
                                     </button>
                                 </div>
                             </div>
@@ -266,7 +272,7 @@
 <div class="modal fade" id="editarusuario" tabindex="-1" aria-labelledby="editarusuario" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header align-items-center" style="background: #42A133; color: white">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Agregar Usuario</h1>
                 <button type="button" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
                         aria-label="Close"
@@ -320,7 +326,7 @@
                             <div class="col-sm">
                                 <label for="cedulaedit" class="form-label">Cédula:</label>
                                 <input type="text" class="form-control" id="cedulaedit" name="cedulaedit"
-                                       pattern="[0-9]"
+                                       pattern="^((\\+91-?)|0)?[0-9]{10}$"
                                        required minlength="10" maxlength="10" #cedulaedit="ngModel"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        [(ngModel)]="persona.cedula">
@@ -361,7 +367,7 @@
                             <div class="col-sm">
                                 <label for="celularedit" class="form-label">Celular:</label>
                                 <input type="text" class="form-control" id="celularedit" name="celular"
-                                       pattern="[0-9]"
+                                       pattern="^((\\+91-?)|0)?[0-9]{10}$"
                                        style="background: #D9D9D9;border-radius: 0px;"
                                        required minlength="10" maxlength="10"
                                        [(ngModel)]="persona.celular" #celularedit="ngModel"
@@ -407,15 +413,29 @@
                             <div class="col-sm">
                                 <label for="usuarioedit" class="form-label">Usuario:</label>
                                 <input type="text" class="form-control" placeholder="Ingrese el nombre de usuario "
-                                       style="background: #D9D9D9;border-radius: 0px;"
-                                       id="usuarioedit" name="usuario"
+                                       style="background: #D9D9D9;border-radius: 0px;" required minlength="2"
+                                       maxlength="15"
+                                       id="usuarioedit" name="usuario"  #usuarioedit="ngModel"
                                        [(ngModel)]="user.usuusuario"
                                        [ngModelOptions]="{standalone: true }">
+                                <div class="alert alert-danger"
+                                     *ngIf="usuarioedit.invalid && (usuarioedit.dirty || usuarioedit.touched)">
+                                    <div *ngIf="usuarioedit?.errors?.['required']">
+                                        Ingrese un nombre de usuario
+                                    </div>
+                                    <div *ngIf="usuarioedit?.errors?.['minlength']">
+                                        El nombre de usuario debe tener minimo 2 caracteres
+                                    </div>
+                                    <div *ngIf="usuarioedit?.errors?.['maxlength']">
+                                        El nombre de usuario debe tener maximo 15 caracteres
+                                    </div>
 
+                                </div>
                             </div>
                             <div class="col-sm">
                                 <label for="rolnombreedit" class="form-label">Rol </label>
-                                <select id="rolnombreedit" class="form-control" [(ngModel)]="rol"
+                                <select [compareWith]="compararrol" [(ngModel)]="rol.idrol"
+                                        id="rolnombreedit" class="form-control" [(ngModel)]="rol"
                                         style="background: #D9D9D9;border-radius: 0px;"
                                         [ngModelOptions]="{standalone: true }">
                                     <option *ngFor=" let roles of roles"
@@ -446,13 +466,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" (click)="actualizarUsuario()"
-                                            style="background: #42A133; color: white"
-                                    >Siguiente
+                                            style="background: #00DA9D; color: white"
+                                            [disabled]="!usuarioEditar.form.valid">Actualizar
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                            style="background: #FF0000; color: white">Cancelar
+                                            style="background: #F33501; color: white">Cancelar
                                     </button>
                                 </div>
                             </div>

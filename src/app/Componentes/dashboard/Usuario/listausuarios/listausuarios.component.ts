@@ -7,6 +7,8 @@ import {RolService} from "../../../../Service/rol.service";
 import {Rol} from "../../../../Models/rol";
 import {Persona} from "../../../../Models/persona";
 import {PersonaService} from "../../../../Service/persona.service";
+import Swal from "sweetalert2";
+
 
 
 
@@ -93,24 +95,72 @@ export class ListausuariosComponent implements OnInit {
                 this.personas.forEach((resp,index) => {
                     if(resp.idpersona == response.idpersona){
                         this.user.persona[index] = response;
+
                     }
+
                 })
 
-                /*this.userService.updateUser(this.user)
+
+                this.userService.updateUser(this.user)
                     .subscribe(res => {
                         console.log('exito');
                         console.log(res);
-                        this.user.
-                       /!*if(){
+                        this.users.forEach((r, index2) =>{
+                            if(r.usu_id == res.usu_id){
+                                this.user[index2] = res;
+                            }
+                        })
 
-                       }
-
-
-                        document.getElementById("closeM2").click();*!/
-                    })*/
+                        this.users.push(res);
+                        document.getElementById("closeM2").click();
+                    })
             })
     }
 
+    public delete(user: Usuario): void {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-3',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Esta seguro de eliminar!',
+            text: `El usuario : ${user.usuusuario}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar!',
+            reverseButtons: true
+        }).then((result) => {
+            console.log(result)
+            if (result.isConfirmed) {
+                //funcion eliminar
+                this.userService.eliminarUser(user).subscribe(data => {
+                    this.users = this.users.filter(del => del.usu_id != user.usu_id)
+                    swalWithBootstrapButtons.fire(
+                        'Eliminado!',
+                        `El usuario eliminado ${user.usuusuario}`,
+                        'success'
+                    );
+
+                })
+
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    ' ',
+                    'error'
+                )
+            }
+        })
+    }
 
     cleanModal() {
         this.user = new Usuario();
@@ -118,5 +168,12 @@ export class ListausuariosComponent implements OnInit {
         this.persona = new Persona();
         this.rol = new Rol();
     }
+
+    compararrol(r1: Rol, r2: Rol): boolean{
+        if(r1==undefined && r2 == undefined)return true;
+        return r1 == null || r2 ==null || r1 == undefined || r2 == undefined ? false : r1.idrol == r2.idrol;
+
+    }
+
 
 }
