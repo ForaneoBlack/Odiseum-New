@@ -8,6 +8,9 @@
                 data-bs-target="#agregarcat" (click)="cleanModal()"
                 style="background: #00DA9D; color: white; border-radius: 20px; width:200px">Agregar Categoría
         </button>
+        <button class="dropdown-item" aria-current="page"
+                           [routerLink]="['/dashboard/detallescategoriaservicio']"
+                           style="background: #FFA084; color: white; border-radius: 20px; width:200px">Ver detalles</button>
     </div>
     <br>
     <table class="table text-center table-striped table-hover">
@@ -38,9 +41,7 @@
                                 data-bs-target="#editarcat" (click)="abrirmodaleditar(categorias)"
                                 style="background: #00DA9D; color: white;">Editar
                         </button>
-                        <a class="dropdown-item" aria-current="page"
-                           [routerLink]="['/dashboard/detallescategoriaservicio',categorias.idcatser]"
-                           style="background: #FFA084; color: white;">Detalles</a>
+                        
                         <button class=" dropdown-item " (click)="delete(categorias)"
                                 style="background: #F33501; color: white;">Eliminar
                         </button>
