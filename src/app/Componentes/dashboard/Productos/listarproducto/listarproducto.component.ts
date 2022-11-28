@@ -21,8 +21,10 @@ import { EmpresaLogin } from '../../../../Models/empresalogin';
 export class ListarproductoComponent implements OnInit {
   public datos:EmpresaLogin=new EmpresaLogin();
   id:number;
+  idemp:number;
   public nombre: string;
   productos: Producto = new Producto();
+  empresas: empresa = new empresa();
   
   producto: Producto [] = [];
   productofil: Producto [] = [];
@@ -33,16 +35,19 @@ export class ListarproductoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.obetenerproducto
+    
     this.getSubcategorias();
     this.getCategorias();
     this.getEmpresas();
     this.datos=JSON.parse(sessionStorage['usuario']);
     this.id=this.datos.idempresa;
-    this.nombre=this.datos.usu_id.usuusuario;
-    console.log(this.nombre);
+    this.idemp=this.datos.usu_id.usu_id;
+    this.nombre=this.datos.empnombre;
+    this.obetenerempresa( this.id);
+    
+    
     this.obetenerproducto( this.id);
-    console.log(this.obetenerproducto(this.id));
+    
 
     this.activedRoute.params
       .subscribe(params => {
@@ -61,6 +66,14 @@ export class ListarproductoComponent implements OnInit {
     this.empresaService.getEmpresa()
       .subscribe(response => this.empresa = response);
   }
+  obetenerempresa(idempresa: number){
+    this.empresaService.obtenerEmpresa(idempresa)
+    .subscribe(response => {
+        this.empresas = response
+        console.log(response)
+    });
+
+}
   obetenerproducto(usu_id: number){
     this.productoService.obtenerProductoempresa(usu_id)
     .subscribe(response => {

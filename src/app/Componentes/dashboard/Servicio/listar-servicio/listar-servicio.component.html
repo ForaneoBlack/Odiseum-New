@@ -192,14 +192,14 @@
                         </div>
                         <div class="col-sm">
                             <div class="form-grow">
-                                <label for="idempresa" class="form-label">Empresa:</label>
-                                <select [(ngModel)]="servicios.idempresa" name="idempresa" id="idempresa"
+                                <label for="idemp" class="form-label">Empresa </label>
+                                <select [(ngModel)]="servicios.idempresa" name="idemp" id="idemp"
                                         class="form-control" required
                                         style="background: #D9D9D9;border-radius: 15px;">
-
-                                    <option *ngFor="let empresas of empresa"
-                                            [ngValue]="empresas">{{empresas.empnombre}}</option>
-
+                
+                                    <option 
+                                            [ngValue]="empresas">{{nombre}}
+                                    </option>
                                 </select>
                             </div>
                         </div>

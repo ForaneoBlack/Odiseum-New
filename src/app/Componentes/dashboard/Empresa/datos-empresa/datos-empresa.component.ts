@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UsuarioService } from "src/app/Service/usuario.service";
 import { Usuario } from "src/app/Models/usuario";
 import { Userlogin } from "src/app/Models/userlogin";
+import { EmpresaLogin } from '../../../../Models/empresalogin';
 
 @Component({
   selector: "app-datos-empresa",
@@ -12,7 +13,7 @@ import { Userlogin } from "src/app/Models/userlogin";
   styleUrls: ["./datos-empresa.component.css"],
 })
 export class DatosEmpresaComponent implements OnInit {
-  public datos:Userlogin=new Userlogin();
+  public datos:EmpresaLogin=new EmpresaLogin();
   id:number;
   public nombre: string;
 
@@ -29,8 +30,8 @@ export class DatosEmpresaComponent implements OnInit {
     this.getUsuarios();
    
     this.datos=JSON.parse(sessionStorage['usuario']);
-    this.id=this.datos.usu_id;
-    this.nombre=this.datos.usuusuario;
+    this.id=this.datos.usu_id.usu_id;
+    this.nombre=this.datos.usu_id.usuusuario;
     console.log(this.nombre);
     this.obetenerusuario( this.id);
     console.log(this.obetenerusuario(this.id));

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Categoriaservicio } from 'src/app/Models/categoriaservicio';
 import { empresa } from 'src/app/Models/empresa';
+import { EmpresaLogin } from 'src/app/Models/empresalogin';
 import { Servicio } from 'src/app/Models/servicio';
 import { Subcategoriaservicio } from 'src/app/Models/subcategoriaservicio';
 import { CategoriaservicioService } from 'src/app/Service/categoriaservicio.service';
@@ -18,9 +19,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listar-servicio.component.css']
 })
 export class ListarServicioComponent implements OnInit {
-
+  public datos:EmpresaLogin=new EmpresaLogin();
+  id:number;
+  idemp:number;
+  public nombre: string;
   servicios: Servicio = new Servicio();
   servicio: Servicio [] = [];
+  empresas: empresa = new empresa();
 
   categoria: Categoriaservicio [] = [];
   subcategoria: Subcategoriaservicio [] = [];
@@ -28,10 +33,18 @@ export class ListarServicioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getServicio();
+    
     this.getSubcategorias();
     this.getCategorias();
     this.getEmpresas();
+    this.datos=JSON.parse(sessionStorage['usuario']);
+    this.id=this.datos.idempresa;
+    this.idemp=this.datos.usu_id.usu_id;
+    this.nombre=this.datos.empnombre;
+    this.obetenerempresa( this.id);
+    console.log(this.nombre);
+    this.obetenerservicio( this.id);
+    console.log(this.obetenerservicio(this.id));
 
     this.activedRoute.params
       .subscribe(params => {
@@ -50,11 +63,25 @@ export class ListarServicioComponent implements OnInit {
     this.empresaService.getEmpresa()
       .subscribe(response => this.empresa = response);
   }
+  obetenerempresa(idempresa: number){
+    this.empresaService.obtenerEmpresa(idempresa)
+    .subscribe(response => {
+        this.empresas = response
+        console.log(response)
+    });
 
-  getServicio() {
-    this.servicioservice.getServicio()
-      .subscribe(response => this.servicio = response);
-  }
+}
+
+  obetenerservicio(usu_id: number){
+    this.servicioservice.obtenerServicioempresa(usu_id)
+    .subscribe(response => {
+        this.servicio = response
+        console.log(response)
+    });
+
+}
+
+  
   getCategorias() {
     this.categoriaService.getServicio()
       .subscribe(response => this.categoria = response);
