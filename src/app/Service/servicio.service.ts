@@ -8,7 +8,9 @@ import { Servicio } from '../Models/servicio';
 })
 export class ServicioService {
 
-  url: string = 'http://localhost:9898/api/servicio';
+  
+
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/servicio';
 
   constructor(private http: HttpClient) { }
 
