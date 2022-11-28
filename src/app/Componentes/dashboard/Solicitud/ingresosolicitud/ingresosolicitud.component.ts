@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { empresa } from 'src/app/Models/empresa';
+import { Servicio } from 'src/app/Models/servicio';
 import { solicitud } from 'src/app/Models/solicitud';
 import { Userlogin } from 'src/app/Models/userlogin';
 import { Usuario } from 'src/app/Models/usuario';
 import { EmpresaService } from 'src/app/Service/empresa.service';
 import { SolicitudService } from 'src/app/Service/solicitud.service';
 import { UsuarioService } from 'src/app/Service/usuario.service';
+import { EmpresaLogin } from '../../../../Models/empresalogin';
 
 @Component({
   selector: 'app-ingresosolicitud',
@@ -16,9 +18,12 @@ import { UsuarioService } from 'src/app/Service/usuario.service';
 export class IngresosolicitudComponent implements OnInit {
 
   
-  public datos:Userlogin=new Userlogin();
+  public datos:EmpresaLogin=new EmpresaLogin();
   id:number;
   public nombre: string;
+  public nombreemp: string;
+  idemp:number;
+  servicios: Servicio = new Servicio();
   empresas: empresa = new empresa();
   empresa: empresa [] = [];
 
@@ -35,10 +40,13 @@ export class IngresosolicitudComponent implements OnInit {
     this.getUsuarios();
     console.log()
     this.datos=JSON.parse(sessionStorage['usuario']);
-    this.id=this.datos.usu_id;
-    this.nombre=this.datos.usuusuario;
+    this.id=this.datos.usu_id.usu_id;
+    this.nombre=this.datos.usu_id.usuusuario;
+    this.nombreemp=this.datos.empnombre;
+    this.idemp=this.datos.idempresa;
     console.log(this.nombre);
     this.obetenerusuario( this.id);
+    this.obetenerempresa(this.idemp);
     console.log(this.obetenerusuario(this.id));
     
     this.activedRoute.params
@@ -51,7 +59,14 @@ export class IngresosolicitudComponent implements OnInit {
         }
       })
   }
+  obetenerempresa(idempresa: number){
+    this.empresaService.obtenerEmpresa(idempresa)
+    .subscribe(response => {
+        this.empresas = response
+        console.log(response)
+    });
 
+}
   obetenerusuario(usu_id: number){
     this.usuarioService.obtenerUser(usu_id)
     .subscribe(response => {

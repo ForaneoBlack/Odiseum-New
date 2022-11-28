@@ -12,7 +12,7 @@
             <div class="col-sm">
                 <div class="form-grow">
                     <label for="usu_id" class="form-label">Usuario </label>
-                    <select [(ngModel)]="empresas.usu_id" name="usu_id" id="usu_id"
+                    <select [(ngModel)]="solicitudes.usu_id" name="usu_id" id="usu_id"
                             class="form-control" required #idusuario="ngModel"
                             style="background: #D9D9D9;border-radius: 15px;">
     
@@ -30,16 +30,16 @@
             </div>
             <br>
             <div class="col-sm">
-                <label for="idempresa" class="form-label">ID empresa:</label>
-                <select [(ngModel)]="solicitudes.idempresa" name="idempresa" required id="idempresa"
-                    class="form-control" #idempresa="ngModel" style="background: #D9D9D9;border-radius: 15px;">
-
-                    <option *ngFor="let empresas of empresa" [ngValue]="empresas">{{empresas.idempresa}}</option>
-                </select>
-                <div class="alert alert-danger" *ngIf="idempresa.invalid && (idempresa.dirty || idempresa.touched)">
-                    <div *ngIf="idempresa?.errors?.['required']">
-                        Ingrese la empresa a asignar en la solicitud por favor
-                    </div>
+                <div class="form-grow">
+                    <label for="idemp" class="form-label">Empresa </label>
+                    <select [(ngModel)]="solicitudes.idempresa" name="idemp" id="idemp"
+                            class="form-control" required
+                            style="background: #D9D9D9;border-radius: 15px;">
+    
+                        <option 
+                                [ngValue]="empresas">{{nombreemp}}
+                        </option>
+                    </select>
                 </div>
             </div>
             <br>
@@ -101,7 +101,7 @@
         <div class="mx-2 text-center ">
             <button class="btn btn-color col-md-4" type="submit"
                 [disabled]="!datosSolicitud.form.valid" (click)="agregarSolicitud()"
-                    style="background: #00DA9D; color: white; border: none" routerLink="/dashboard/solicitudregistro">Guardar</button>
+                    style="background: #00DA9D; color: white; border: none" routerLink="/dashboard/inicio">Guardar</button>
         </div>
         <br>
     </form>
