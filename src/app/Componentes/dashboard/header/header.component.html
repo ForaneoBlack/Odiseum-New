@@ -1,109 +1,225 @@
 <section>
-  <nav class="navbar navbar-expand-lg align-content-between">
+  <nav class="navbar navbar-expand-lg align-content-between ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="assets/images/Logo.png" style="width: 80px" />
-        <img src="assets/images/Logo2.png" style="width: 80px" />
+      <a class="navbar-brand" aria-current="page" routerLink="/dashboard/inicio">
+        <img src="assets/images/Logo.png" style="width: 80px">
+        <img src="assets/images/Logo2.png" style="width: 80px">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
       <div class="navbar">
         <div class="collapse navbar-collapse align-content-center" id="navbarScroll">
-          <!--control de roles-->
-          <div [ngSwitch]="rol">
-            <div *ngSwitchCase="'admin'">
-              <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
-                <li class="nav-item">
-                  <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/inicio">Inicio</a>
-                </li>
 
-                <li class="nav-item">
-                  <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/listausuario">Usuarios</a>
-                </li>
+          <!--roles-->
+          <ng-container>
 
-                <li class="nav-item">
-                  <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/rol">Roles</a>
-                </li>
+            <div [ngSwitch]="rol">
 
-                <li class="nav-item">
-                  <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/listaproductos">Productos</a>
-                </li>
+              <div *ngSwitchCase="'Administrador'">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/inicio">Inicio</a>
+                  </li>
 
-                <li class="nav-item">
-                  <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/listaservicio">Servicios</a>
-                </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page"
+                      routerLink="/dashboard/listausuario">Usuarios</a>
+                  </li>
 
-                
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Empresas
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/dashboard/listaempresa">Lista</a></li>
-                    <li><a class="dropdown-item" href="/dashboard/formempresa">Datos</a></li>
-                    <li><a class="dropdown-item" href="/dashboard/listacategoria">Categoria</a></li>
-                    <li><a class="dropdown-item" href="/dashboard/detallescategoria">Detalle</a></li>
-                  </ul>
-                </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/rol">Roles</a>
+                  </li>
 
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Solicitud
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/dashboard/ingresosolicitud">Ingreso</a></li>
-                    <li><a class="dropdown-item" href="/dashboard/solicitudregistro">Registro</a></li>
-                  </ul>
-                </li>
-                
-              </ul>
+
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Empresas
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/listaempresa">Lista</a></li>
+
+
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Categorias
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/listacategoria">Empresa</a></li>
+                      <li><a class="dropdown-item" href="/dashboard/categoriaproductos">Producto</a></li>
+                      <li><a class="dropdown-item" href="/dashboard/listacategoriaservicios">Servicio</a></li>
+
+                    </ul>
+                  </li>
+
+
+                </ul>
+              </div>
+              <div *ngSwitchCase="'Colaborador'">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/inicio">Inicio</a>
+                  </li>
+
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Empresas
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/listaempresa">Lista</a></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Solicitud
+                    </a>
+                    <ul class="dropdown-menu">
+
+                      <li><a class="dropdown-item" href="/dashboard/solicitudregistro">Lista</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Categorias
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/listacategoria">Empresa</a></li>
+
+
+                    </ul>
+                  </li>
+
+                </ul>
+              </div>
+              <div *ngSwitchCase="'Empresario'">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/inicio">Inicio</a>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page"
+                      routerLink="/dashboard/listaproductos">Productos</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page"
+                      routerLink="/dashboard/listaservicio">Servicios</a>
+                  </li>
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Empresas
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/formempresa">Registrar empresa</a></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Solicitud
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/ingresosolicitud">Enviar solicitud</a></li>
+
+                    </ul>
+                  </li>
+
+                </ul>
+              </div>
+              <div *ngSwitchCase="'Ministro'">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+                  <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" routerLink="/dashboard/inicio">Inicio</a>
+                  </li>
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Empresas
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/listaempresa">Lista</a></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Solicitud
+                    </a>
+                    <ul class="dropdown-menu">
+
+                      <li><a class="dropdown-item" href="/dashboard/solicitudregistro">Lista</a></li>
+                    </ul>
+                  </li>
+
+                </ul>
+              </div>
+
             </div>
-            <div *ngSwitchCase="'prueba'">
-              <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Productos
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria</a></li>
-                    <li><a class="dropdown-item" href="#">Subcategoria</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Servicios
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria</a></li>
-                    <li><a class="dropdown-item" href="#">Subcategoria</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Empresa
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria</a></li>
-                    <li><a class="dropdown-item" href="#">Subcategoria</a></li>
-                    <li><a class="dropdown-item" href="#">Solicitud</a></li>
-                  </ul>
-                </li>
+
+
+          </ng-container>
+
+
+          <!-- aqui-->
+
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Salir
+              </a>
+              <ul class="dropdown-menu">
+
+                <li><a class="dropdown-item" (click)="logout()">Cerrar sesion</a></li>
               </ul>
-            </div>
-          </div>
-          <!---->
+            </li>
+          </ul>
+
+
+
+
+
         </div>
       </div>
+      
+      
       <div>
-        <img class="btn btn-outline-dark" src="assets/images/Logo.png" style="width: 70px" />
+        <div>
+          <div>
+            <span class="badge rounded-pill bg-ligth text-ligth me-1" [textContent]="rol"></span>
+            
+          </div>
+          <span class="badge rounded-pill bg-ligth text-ligth me-1" [textContent]="nombre"></span>
+    
+        </div>
+
+        
       </div>
+      
     </div>
   </nav>
 
@@ -112,8 +228,6 @@
       <router-outlet></router-outlet>
     </main>
   </div>
-
-  <!--contenedor routing-->
-
-  <app-footer></app-footer>
 </section>
+<!--contenedor routing-->
+<!-- <app-footer></app-footer> -->

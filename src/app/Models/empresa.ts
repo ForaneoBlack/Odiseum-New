@@ -1,3 +1,5 @@
+import { Usuario } from "./usuario";
+
 export class empresa{
     
     idempresa!: number;
@@ -14,5 +16,6 @@ export class empresa{
     empingresoanual!: number;
     empobservaciones!: string;
     empfecha!: Date;
+    usu_id!: Usuario;
 
 }

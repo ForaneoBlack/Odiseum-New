@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Categoria } from 'src/app/Models/categoria';
 import { CategoriaService } from 'src/app/Service/categoria.service';
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listacategoriaempresa',
@@ -10,85 +11,101 @@ import swal from 'sweetalert2';
   styleUrls: ['./listacategoriaempresa.component.css']
 })
 export class ListacategoriaempresaComponent implements OnInit {
-  id_categoria:number;
-  categorias : Categoria = new Categoria();
-  categoria:Categoria[] =[];
-  constructor(private categoriaServicio:CategoriaService, private router:Router,private route:ActivatedRoute) { }
+  categorias: Categoria = new Categoria();
+  categoria: Categoria [] = [];
 
   ngOnInit(): void {
-    this.obtenerCategorias();
-  }
-  private obtenerCategorias(){
-    this.categoriaServicio.obtenerListaDeCategoria().subscribe(dato => {
-      this.categoria = dato;
-    });
-  }
-  guardarCategoria(){
-    this.categoriaServicio.registrarCategoria(this.categorias).subscribe(dato => {
-      console.log(dato)
-      window.location.reload()
 
-    },error => console.log(error));
+    this.getCategorias();
+
+    this.activedRoute.params
+      .subscribe(params => {
+        let idcatemp: number = params['idcatemp'];
+        if (idcatemp) {
+          this.categoriaService.obtenerCategoria(idcatemp)
+            .subscribe(response => this.categorias = response)
+        }
+      })
   }
-  public Editar(): void {
-    this.categoriaServicio.editar(this.categorias).subscribe(dato => {
-      console.log(dato)
 
 
-    },error => console.log(error));
-  }
-  onSubmit(){
-    this.guardarCategoria();
-
-  }
-  abrirmodaleditar(categoria:Categoria){
-    this.categorias=categoria;
+  constructor(private modalService: NgbModal, private categoriaService: CategoriaService, private activedRoute: ActivatedRoute, private router: Router) {
   }
 
-  abrirmodalagregar(categoria:Categoria){
-    this.categorias=null;
+  getCategorias() {
+    this.categoriaService.getCategoria()
+      .subscribe(response => this.categoria = response);
+  }
+
+
+  agregarCategoria() {
+    this.categoriaService.crearCategoria(this.categorias)
+      .subscribe(response => {
+        console.log('exito');
+        console.log(response)
+        this.categoria.push(response);
+        document.getElementById("closeM1").click();
+
+      });
+  }
+
+  cleanModal(){
+    this.categorias = new Categoria();
+  }
+  actualizarCategoria() {
+    this.categoriaService.updateCategoria(this.categorias)
+      .subscribe(response => {
+        console.log('actualizado');
+       this.categoria.forEach((resp,index) => {
+
+         if(resp.idcatemp == response.idcatemp){
+           this.categoria[index] = response;
+         }
+       });
+        document.getElementById("closeM2").click();
+      })
+  }
+
+  abrirmodaleditar(categoria: Categoria) {
+    this.categorias = {...categoria};
 
   }
-  cargarDatos(): void{
-    this.id_categoria = this.route.snapshot.params['id_categoria'];
-    this.categoriaServicio.getcategoriaporid(this.id_categoria).subscribe(dato =>{
-      this.categorias = dato;
-    },error => console.log(error));
-  }
-/*
-  eliminarcategoria(categoria:Categoria):void{
-    swal({
-      title: '¿Estas seguro?',
-      text: "la categoria : ${categoria.catnombre}",
-      type: 'warning',
+
+
+  public delete(categoria: Categoria): void {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Esta seguro de eliminar!',
+      text: `la categoria : ${categoria.catnombre}`,
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
       confirmButtonText: 'Eliminar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: true
+      cancelButtonText: 'Cancelar!',
+      reverseButtons: true
     }).then((result) => {
-      if(result.value){
-        this.categoriaServicio.eliminarcategoria(this.categorias).subscribe(dato => {
-
-          console.log(dato);
-
-          swal(
-            'Empleado eliminado',
-            'El empleado ha sido eliminado con exito',
+      console.log(result)
+      if (result.isConfirmed) {
+        //funcion eliminar
+        this.categoriaService.eliminar(categoria).subscribe(data => {
+          this.categoria = this.categoria.filter(del => del.idcatemp != categoria.idcatemp)
+          swalWithBootstrapButtons.fire(
+            'Eliminado!',
+            `Categoría eliminada ${categoria.idcatemp}`,
             'success'
-          )
+          );
 
         })
 
-        console.log('llega');
-        //window.location.reload()
-                  console.log('pasoo');
 
       } else if (
-
+        /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
@@ -98,6 +115,11 @@ export class ListacategoriaempresaComponent implements OnInit {
         )
       }
     })
-*/
+  }
+
+  verDetallesDelaCategoria(categoria: Categoria){
+    this.router.navigate(['/dashboard/detallescategoria',categoria.idcatemp]);
+  }
+
   }
 

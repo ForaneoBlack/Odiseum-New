@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -8,37 +8,32 @@ import { Categoria } from '../Models/categoria';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private baseURL = 'http://localhost:9898/api/categoriaempresa'; 
-  
+  private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
+    //url: string ='http://localhost:8080/api/categoriaempresa'
 
-  constructor(private httpClient: HttpClient) { }
+  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaempresa';
 
-//este metodo nos sirve para obtener las categorias
-obtenerListaDeCategoria():Observable<Categoria[]>{
-  return this.httpClient.get<Categoria[]>(`${this.baseURL}`+'/listar');
-}
+  constructor(private http: HttpClient) { }
 
-  //este metodo nos sirve para registrar una categoria
-  registrarCategoria(categoria:Categoria) : Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}`+'/crear',categoria);
+  getCategoria(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.url+'/listar',{headers: this.HttpHeaders});
   }
 
-  getcategoriaporid(id:number):Observable<Categoria>{
-    return this.httpClient.get<Categoria>(`${this.baseURL}/editar/${id}`);
-  }
-  editar(categoria:Categoria){
-    console.log(categoria)
-    return this.httpClient.put<Categoria>(`${this.baseURL}`+'/editar/',categoria)
+  crearCategoria(categoria: Categoria): Observable<Categoria>{
+    return this.http.post<Categoria>(this.url+'/crear',categoria,{headers: this.HttpHeaders});
   }
 
-  eliminarcategoria(categoria:Categoria): Observable<Categoria>{
-    return this.httpClient.delete(`${this.baseURL}/eliminar/${categoria.id_categoria}`);
+  obtenerCategoria(idcatemp: number): Observable<Categoria>{
+    return this.http.get<Categoria>(this.url+'/listar id/'+idcatemp,{headers: this.HttpHeaders});
   }
-  
-  // eliminarcategoria(categoria:Categoria){
-  //   const path =`${this.baseURL}/eliminar/${categoria.id_categoria}` ;
-  //   return this.httpClient.delete<Categoria>(this.baseURL+"/eliminar/"+categoria.id_categoria);
-  // }
+ 
+  updateCategoria(categoria: Categoria): Observable<Categoria>{
+    return this.http.put<Categoria>(this.url+'/editar/'+categoria.idcatemp,categoria,{headers: this.HttpHeaders});
+  }
+  eliminar(categoria: Categoria){
+    const path =`${this.url}/${categoria.idcatemp}` ;
+    return this.http.delete<Categoria>(this.url+"/eliminar/"+categoria.idcatemp,{headers: this.HttpHeaders});
+  }
 
 }
 

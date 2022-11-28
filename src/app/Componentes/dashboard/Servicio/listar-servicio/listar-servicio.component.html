@@ -1,150 +1,374 @@
-<body>
-    <br>
-    <h2 class="text-center">Lista de Servicios</h2>
-    <br>
+<div class="container-fluid text-black mt-5 text-center">
+    <h1>Lista de Servicios</h1>
+</div>
 
-    <div class="container">
-        <div class="text-center">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarproducto">Agregar Servicio</button>
-        </div>
-        <br>
-        <table class="table table-hover" >
-            
-            <thead class="table-dark">
-                <tr>
-                    <th></th>
-                    <th class="text-center">Producto</th>
-                    <th class="text-center">Categoria</th>
-                    <th class="text-center">Descripción</th>
-                    <th class="text-center">Configuración</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr >
-                    <td style=" width:150px">
-                        <a href="data:image/jpeg;base64,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" data-fancybox>
-                        <img src="data:image/jpeg;base64,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" alt="" class="img-thumbnail w-100"/></a>
-                    </td>
-                  
-                    <td class="text-center">
-                        <div class="fs-5 fw-bold">Arreglo de chasis</div> 
-                        <p class="text-muted small" >$12,99</p>
-                    </td>
-                    <td class="text-center">
-                        <div>
-                        <span class="badge rounded-pill bg-ligth text-dark me-1" >Automotriz</span>
-                           
-                        </div>
-                        <span class="badge rounded-pill bg-ligth text-dark me-1">Reparacion</span>
-                        
-                    </td>
-                    <td >
-                        <p>El chasis es el principal elemento de la estructura de un vehículo si se daña se jodió</p>
-                    </td>
-                    
-                    <td class="text-end">
-                        <button  style="width:75%" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarproducto">Editar</button>
-                        <button  style="width:75%" class="btn btn-danger ms-3" >Eliminar</button>
-                        
-                    </td>
-                    
-                </tr>
-            </tbody>
-        </table>
 
+<div class="container">
+    <div class="d-flex mt-3 mx-3 justify-content-end">
+        <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target="#agregarservicio"
+                style="background: #00DA9D; color: white; border-radius: 20px; width:
+     200px">Agregar Servicio
+        </button>
     </div>
+    <br>
+    <table class="table mt-3 table-hover table-striped">
 
-   
+        <thead style="background: #195E4B; color: white">
+        <tr>
+            <th></th>
+            <th scope="col" class="text-center">Servicio</th>
+            <th scope="col" class="text-center">Categoria</th>
+            <th scope="col" class="text-center">Descripción</th>
+            <th scope="col" class="text-center">Configuración</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let servicios of servicio">
+            <td class="img-fluid justify-content-center">
+                <a href="{{servicios.serimagen}}" data-fancybox >
+                    <img src="{{servicios.serimagen}}" alt="" class="img-fluid img-thumbnail"/></a>
+            </td>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="agregarproducto" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true"
-        style="margin-left: -12%;">
-        <div class="modal-dialog">
-            <div class="modal-content" style="width: 150%">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5">Agregar Servicio</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <td class="text-center">
+                <div class="fs-5 fw-bold">{{servicios.sernombre}}</div>
+                <p class="text-muted small">$ {{servicios.serprecio}}</p>
+            </td>
+            <td class="text-center">
+                <div>
+                    <span class="badge rounded-pill bg-ligth text-dark me-1">{{servicios.idcatser.catnombre}}</span>
                 </div>
-                <div class="modal-body">
-                    <form class="form-control" #productoForm>
-                        <div class="row g-3">
-                            <div class="col-sm">
-                                <label for="nombreservicio">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre del Servicio " id="nombreservicio" name="nombreservicio" required minlength="2" maxlength="25">
-                            </div>
-                            <div class="col-sm">
-                                <label for="duracion">Duracion</label>
-                                <input type="text" class="form-control" placeholder="Duracion del Servicio" id="duracion" name="duracion" required  maxlength="10" >
-                            </div>
+                <span class="badge rounded-pill bg-ligth text-dark me-1">{{servicios.idsubcat.subcatnombre}}</span>
+            </td>
+            <td class="text-center">
+                <p>{{servicios.serdescripcion}}</p>
+            </td>
 
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-sm">
-                                <label for="precio">Precio</label>
-                                <input type="number" class="form-control" placeholder="0,00" id="precio" name="precio" required  >
-                            </div>
-                            <div class="col-sm">
-                                <label for="descripcion">Descripción</label>
-                                <textarea class="form-control" placeholder="Descripcion del Servicio" id="descripcion" name="descripcion" required minlength="25" maxlength="500"></textarea>
-                            </div>
-
-                        </div>
-                       
-                        <div class="row g-3">
-                            <div class="col-sm">                                
-                                <div class="form-grow">
-                                    <label for="categoria" class="form-label">Categoría </label>
-                                    <select id="categoria" class="form-control" disabled>
-                                        <option>Automotríz</option>                                                          
-                    
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm">
-                                <div class="form-grow">
-                                    <label for="categoria" class="form-label">Subcategoría </label>
-                                    <select id="categoria" class="form-control" >
-                                        <option>Reparación</option>      
-                                        <option>Pintura</option> 
-                                        <option>Tunear</option>                                                     
-                    
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-sm">
-                                <label for="url">Link de la imagen</label>
-                                <input type="url" class="form-control" placeholder="URL" id="url" name="url" required >
-                            </div>
-                            
-
-                        </div>
-                        
-                        <br>
-                        <div class="d-grid gap-2 col-3 mx-auto">
-                            <button class="btn btn-success">Agregar Servicio</button>                            
-                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancelar</button>
-                          </div>
-                        
-                        
-
-                    </form>
-
-
-
-
-
-
-
+            <td class="text-center">
+                <div class="btn-group ">
+                    <button class="btn btn-color dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="background: #5CCB4A; color: white;">
+                        Opciones
+                    </button>
+                    <ul class="dropdown-menu btn-color" style="border: none; background: none">
+                        <button class="btn-color dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#editarservicio"
+                                style="background: #00DA9D; color: white;" (click)="abrirmodaleditar(servicios)">Editar
+                        </button>
+                        <button class="btn-color dropdown-item "
+                                style="background: #F33501; color: white;" (click)="delete(servicios)">Eliminar
+                        </button>
+                    </ul>
                 </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="agregarservicio" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
+                <h1 class="modal-title fs-5">Agregar Servicio</h1>
+                <button type="button" id="closeM1" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-control" #servicioForm="ngForm" style="border: none">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="nombreservicio">Nombre del Servicio:</label>
+                            <input type="text" class="form-control"
+                                   style="background: #D9D9D9;border-radius: 0px;"
+                                   id="nombreservicio" name="nombreservicio" required minlength="2" maxlength="25" [(ngModel)]="servicios.sernombre" #nombreservicio="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="nombreservicio.invalid && (nombreservicio.dirty || nombreservicio.touched)">
+                                  <div *ngIf="nombreservicio?.errors?.['required']">
+                                      Digite el nombre del servicio por favor
+                                  </div>
+                                  <div *ngIf="nombreservicio?.errors?.['minlength']">
+                                      El nombre debe tener mínimo 2 caracteres
+                                  </div>
+                                  <div *ngIf="nombreservicio?.errors?.['maxlength']">
+                                      El nombre debe tener máximo 25 caracteres
+                                  </div>
+
+                              </div>       
+                        </div>
+                        <div class="col-sm">
+                            <label for="duracion">Duracion del Servicio:</label>
+                            <input type="text" class="form-control" id="duracion"
+                                   style="background: #D9D9D9;border-radius: 0px;"
+                                   name="duracion" required maxlength="10" placeholder="Ingrese la duracion en horas" [(ngModel)]="servicios.serduracion" #duracion="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)">
+                                  <div *ngIf="duracion?.errors?.['required']">
+                                      Digite la duración del servicio por favor
+                                  </div>                                  
+
+                              </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="precio">Precio:</label>
+                            <input type="text" class="form-control" placeholder="0,00" id="precio" name="precio"
+                                   style="background: #D9D9D9;border-radius: 0px;" required maxlength="7" [(ngModel)]="servicios.serprecio" #precio="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                                  <div *ngIf="precio?.errors?.['required']">
+                                      Digite el precio del servicio por favor
+                                  </div>
+                                  
+
+                              </div>
+                        </div>
+                        <div class="col-sm">
+                            <label for="descripcion">Descripción del Servicio:</label>
+                            <textarea class="form-control" id="descripcion"
+                                      style="background: #D9D9D9;border-radius: 0px;" name="descripcion" required
+                                      minlength="25" maxlength="100" [(ngModel)]="servicios.serdescripcion" #descripcion="ngModel"></textarea>
+                                      <div class="alert alert-danger"
+                                      *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                                     <div *ngIf="descripcion?.errors?.['required']">
+                                         Digite la descripción del servicio por favor
+                                     </div>
+                                     <div *ngIf="descripcion?.errors?.['minlength']">
+                                         La descripcion debe tener mínimo 25 caracteres
+                                     </div>
+                                     <div *ngIf="descripcion?.errors?.['maxlength']">
+                                         La descripcion debe tener máximo 100 caracteres
+                                     </div>
+ 
+                                 </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <div class="form-grow">
+                                <label for="catpronombre" class="form-label">Categoría</label>
+                                <select [(ngModel)]="servicios.idcatser" name="catproid" id="idcatser"
+                                        class="form-control" required
+                                        style="background: #D9D9D9;border-radius: 15px;">
+
+                                    <option *ngFor="let categorias of categoria"
+                                            [ngValue]="categorias">{{categorias.catnombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-grow">
+                                <label for="subcatpronombre" class="form-label">Subcategoría</label>
+                                <select [(ngModel)]="servicios.idsubcat" name="idsubcat" id="idsubcat"
+                                        class="form-control" required
+                                        style="background: #D9D9D9;border-radius: 15px;">
+                                    <option *ngFor="let subcategorias of subcategoria"
+                                            [ngValue]="subcategorias">{{subcategorias.subcatnombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="url">Link de la imagen:</label>
+                            <input type="url" class="form-control" placeholder="URL" id="url" name="url" required [(ngModel)]="servicios.serimagen" #url="ngModel"
+                                   style="background: #D9D9D9;border-radius: 10px;">
+                                   <div class="alert alert-danger"
+                                   *ngIf="url.invalid && (url.dirty || url.touched)">
+                                  <div *ngIf="url?.errors?.['required']">
+                                      Digite el nombre del producto por favor
+                                  </div>
+                                 
+
+                              </div>       
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-grow">
+                                <label for="idemp" class="form-label">Empresa </label>
+                                <select [(ngModel)]="servicios.idempresa" name="idemp" id="idemp"
+                                        class="form-control" required
+                                        style="background: #D9D9D9;border-radius: 15px;">
+                
+                                    <option 
+                                            [ngValue]="empresas">{{nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <button class="btn btn-color"  style="background: #00DA9D; color: white" type="submit" [disabled]="!servicioForm.form.valid"
+                                (click)="agregarServicio()">Agregar</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-color" type="button" data-bs-dismiss="modal" style="background:
+                                #F33501; color: white">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 
 
-</body>
+
+<!-- Modal Editar-->
+<div class="modal fade" id="editarservicio" tabindex="-1" aria-labelledby="agregarproducto" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header align-items-center" style="background: #195E4B; color: white">
+                <h1 class="modal-title fs-5">Agregar Servicio</h1>
+                <button type="button" id="closeM2" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-control" #servicioForm="ngForm" style="border: none">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="nombreservicioedit">Nombre del Servicio:</label>
+                            <input type="text" class="form-control"
+                                   style="background: #D9D9D9;border-radius: 0px;"
+                                   id="nombreservicioedit" name="nombreservicioedit" required minlength="2" maxlength="25" [(ngModel)]="servicios.sernombre" #nombreservicioedit="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="nombreservicioedit.invalid && (nombreservicioedit.dirty || nombreservicioedit.touched)">
+                                  <div *ngIf="nombreservicioedit?.errors?.['required']">
+                                      Digite el nombre del servicio por favor
+                                  </div>
+                                  <div *ngIf="nombreservicioedit?.errors?.['minlength']">
+                                      El nombre debe tener mínimo 2 caracteres
+                                  </div>
+                                  <div *ngIf="nombreservicioedit?.errors?.['maxlength']">
+                                      El nombre debe tener máximo 25 caracteres
+                                  </div>
+
+                              </div>       
+                        </div>
+                        <div class="col-sm">
+                            <label for="duracionedit">Duracion del Servicio:</label>
+                            <input type="text" class="form-control" id="duracionedit"
+                                   style="background: #D9D9D9;border-radius: 0px;"
+                                   name="duracionedit" required maxlength="10" placeholder="Ingrese la duracion en horas" [(ngModel)]="servicios.serduracion" minlength="2" #duracionedit="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="duracionedit.invalid && (duracionedit.dirty || duracionedit.touched)">
+                                  <div *ngIf="duracionedit?.errors?.['required']">
+                                      Digite la duración del servicio por favor
+                                  </div>    
+                                  <div *ngIf="duracionedit?.errors?.['minlength']">
+                                      La duracion debe tener mínimo 2 digitos
+                                </div>                              
+
+                              </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="precioedit">Precio:</label>
+                            <input type="text" class="form-control" placeholder="0,00" id="precioedit" name="precioedit"
+                                   style="background: #D9D9D9;border-radius: 0px;" required maxlength="7" [(ngModel)]="servicios.serprecio" #precioedit="ngModel">
+                                   <div class="alert alert-danger"
+                                   *ngIf="precioedit.invalid && (precioedit.dirty || precioedit.touched)">
+                                  <div *ngIf="precioedit?.errors?.['required']">
+                                      Digite el precio del servicio por favor
+                                  </div>
+                                  
+
+                              </div>
+                        </div>
+                        <div class="col-sm">
+                            <label for="descripcionedit">Descripción del Servicio:</label>
+                            <textarea class="form-control" id="descripcionedit"
+                                      style="background: #D9D9D9;border-radius: 0px;" name="descripcionedit" required
+                                      minlength="25" maxlength="100" [(ngModel)]="servicios.serdescripcion" #descripcionedit="ngModel"></textarea>
+                                      <div class="alert alert-danger"
+                                      *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
+                                     <div *ngIf="descripcionedit?.errors?.['required']">
+                                         Digite la descripción del servicio por favor
+                                     </div>
+                                     <div *ngIf="descripcionedit?.errors?.['minlength']">
+                                         La descripcion debe tener mínimo 25 caracteres
+                                     </div>
+                                     <div *ngIf="descripcionedit?.errors?.['maxlength']">
+                                         La descripcion debe tener máximo 100 caracteres
+                                     </div>
+ 
+                                 </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <div class="form-grow">
+                                <label for="catpronombre" class="form-label">Categoría</label>
+                                <select [compareWith]="compararcategoria" [(ngModel)]="servicios.idcatser" name="catproid" id="idcatser"
+                                        class="form-control" required
+                                        style="background: #D9D9D9;border-radius: 15px;">
+
+                                    <option *ngFor="let categorias of categoria"
+                                            [ngValue]="categorias">{{categorias.catnombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-grow">
+                                <label for="subcatpronombre" class="form-label">Subcategoría</label>
+                                <select [compareWith]="compararsubcategoria" [(ngModel)]="servicios.idsubcat" name="idsubcat" id="idsubcat"
+                                        class="form-control" required
+                                        style="background: #D9D9D9;border-radius: 15px;">
+                                    <option *ngFor="let subcategorias of subcategoria"
+                                            [ngValue]="subcategorias">{{subcategorias.subcatnombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <label for="urledit">Link de la imagen:</label>
+                            <input type="url" class="form-control" placeholder="URL de la imagen" id="urledit" name="urledit" required [(ngModel)]="servicios.serimagen" #urledit="ngModel"
+                                   style="background: #D9D9D9;border-radius: 10px;" maxlength="100">
+                                   <div class="alert alert-danger"
+                                   *ngIf="urledit.invalid && (urledit.dirty || urledit.touched)">
+                                  <div *ngIf="urledit?.errors?.['required']">
+                                      Digite el nombre del producto por favor
+                                  </div>   
+                              </div>       
+                        </div>
+           
+                    </div>
+                    <br>
+                    <div class="container text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-5">
+                                <button class="btn btn-color"  style="background: #00DA9D; color: white" type="submit" [disabled]="!servicioForm.form.valid"
+                                (click)="actualizarServicio()">Editar</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-color" type="button" data-bs-dismiss="modal" style="background:
+                                #F33501; color: white">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
