@@ -18,7 +18,7 @@
             <div class="col-sm">
                 <label for="ruc">RUC:</label>
                 <input type="text" class="form-control" placeholder="" id="ruc" name="ruc" required minlength="3"
-                    maxlength="10" [(ngModel)]="empresas.empruc" #ruc="ngModel"
+                    maxlength="15" [(ngModel)]="empresas.empruc" #ruc="ngModel"
                        style="background: #D9D9D9;border-radius: 0px;">
                 <div class="alert alert-danger" *ngIf="ruc.invalid && (ruc.dirty || ruc.touched)">
                     <div *ngIf="ruc?.errors?.['required']">
@@ -213,22 +213,29 @@
             </div>
         </div>
         <div class="row g-3">
-
+           
+          
 
             <div class="col-sm">
-                <label for="usu_id" class="form-label">Usu ID:</label>
-                <select [(ngModel)]="empresas.usu_id" name="usu_id" required id="usu_id" class="form-control"
-                    #usu_id="ngModel"
+                <label for="usu_id">Usuarios</label>
+                <input [innerText]="nombre" type="text" class="form-control" id="usu_id" name="usu_id" required minlength="3" maxlength="15"
+                [(ngModel)]="empresas.usu_id" [value]="usuarios.usu_id"
+                       style="background: #D9D9D9;border-radius: 0px;">
+
+
+
+               
+            </div>
+            <div class="form-grow">
+                <label for="usu_id" class="form-label">Usuario </label>
+                <select [(ngModel)]="empresas.usu_id" name="usu_id" id="usu_id"
+                        class="form-control" required
                         style="background: #D9D9D9;border-radius: 15px;">
 
-                    <option *ngFor="let usuarios of usuario" [ngValue]="usuarios">{{usuarios.usu_id}}</option>
-
+                    <option 
+                            [ngValue]="usuarios">{{nombre}}
+                    </option>
                 </select>
-                <div class="alert alert-danger" *ngIf="usu_id.invalid && (usu_id.dirty || usu_id.touched)">
-                    <div *ngIf="usu_id?.errors?.['required']">
-                        Ingrese el usuario a asignar en la empresa por favor
-                    </div>
-                </div>
             </div>
             <div class="col-sm">
                 <label for="empestado">Estado:</label>
@@ -329,7 +336,7 @@
 
         <br>
         <div class="mx-2 text-center ">
-            <button class="btn btn-color col-md-4" type="submit" [disabled]="!datosEmpresa.form.valid"
+            <button class="btn btn-color col-md-4" type="submit" 
                 (click)="agregarEmpresa()"
                     style="background: #00DA9D; color: white; border: none" routerLink="/dashboard/listaempresa">Guardar</button>
         </div>

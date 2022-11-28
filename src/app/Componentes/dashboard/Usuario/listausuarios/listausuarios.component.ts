@@ -51,6 +51,14 @@ export class ListausuariosComponent implements OnInit {
             })
 
     }
+    obetenerusuario(usu_id: number){
+        this.userService.obtenerUser(usu_id)
+        .subscribe(response => {
+            this.user = response
+            console.log(response)
+        });
+
+    }
 
     getRoles() {
         this.rolService.getRol()

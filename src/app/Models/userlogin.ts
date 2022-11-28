@@ -1,7 +1,14 @@
 import { Rol } from "./rol";
 
 export class Userlogin{
-
+    
+  
+    
+    
+    
+    
+    
+    usu_id!: number;
     usuusuario!: string;
     usu_contrasena!: string;
     rol_id?: rol_id;

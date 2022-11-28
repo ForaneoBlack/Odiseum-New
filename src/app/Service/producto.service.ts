@@ -8,7 +8,8 @@ import { Producto } from '../Models/producto';
 })
 export class ProductoService {
 
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/prodcuto';
+  //url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/prodcuto';
+  url: string = 'http://localhost:9898/api/prodcuto';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,10 @@ export class ProductoService {
   obtenerProducto(idproducto: number): Observable<Producto>{
     return this.http.get<Producto>(this.url+'/listar id/'+idproducto);
   }
+
+  obtenerProductoempresa(idempresa: number): Observable<Producto[]>{
+    return this.http.get<Producto[]>(this.url+'/listar/empresa/'+idempresa);
+  }
  
   updateProducto(producto: Producto): Observable<Producto>{
     return this.http.put<Producto>(this.url+'/editar/'+producto.idproducto,producto);
@@ -32,8 +37,5 @@ export class ProductoService {
     return this.http.delete<Producto>(this.url+"/eliminar/"+producto.idproducto);
   }
 
-  obtenerVenta(idempresa: number): Observable<Producto>{
-    return this.http.get<Producto>(this.url+'/listar/productosventa/'+idempresa);
-  }
 
 }
