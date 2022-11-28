@@ -33,4 +33,8 @@ export class SubcategoriaservicioService {
     const path =`${this.url}/${subcategoria.idsubcat}` ;
     return this.http.delete<Subcategoriaservicio>(this.url+"/eliminar/"+subcategoria.idsubcat);
   }
+
+  obtenerServicioSubcat(idcatser: number): Observable<Subcategoriaservicio>{
+    return this.http.get<Subcategoriaservicio>(this.url+'/listar/categoria/'+idcatser);
+  }
 }

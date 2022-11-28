@@ -1,10 +1,4 @@
 <div class="container-fluid text-black mt-5 text-center">
-    <br>
-    <h2>{{catServicio.catnombre}}</h2>
-    <br>
-    <h4 class="lh-sm"><b>Descripcion: </b>{{catServicio.catdetalle}}</h4>
-</div>
-<div class="container-fluid text-black mt-5 text-center">
     <h2>Subcategorías</h2>
 
     <div class="container">
@@ -12,17 +6,17 @@
             <div class="col-sm">
                 <div class="text-start">
                     <button type="button" class="btn btn-color" aria-current="page"
-                            routerLink="/dashboard/listacategoriaservicios"
-                            style="background-color: #F33501;border-radius: 20px; color: white">Regresar
+                        routerLink="/dashboard/listacategoriaservicios"
+                        style="background-color: #F33501;border-radius: 20px; color: white">Regresar
                     </button>
                 </div>
 
             </div>
             <div class="col-sm">
                 <div class="text-end">
-                    <button type="button" class="btn btn-color" data-bs-toggle="modal"
-                            data-bs-target="#agregarsubcat" (click)="cleanModal()"
-                            style="background: #00DA9D; color: white; border-radius: 20px; width:220px">Agregar
+                    <button type="button" class="btn btn-color" data-bs-toggle="modal" data-bs-target="#agregarsubcat"
+                        (click)="cleanModal()"
+                        style="background: #00DA9D; color: white; border-radius: 20px; width:220px">Agregar
                         Subcategoría
                     </button>
                 </div>
@@ -34,43 +28,49 @@
         <table class="table text-center table-striped table-hover">
 
             <thead style="background: #195E4B; color: white">
-            <tr>
-                <th class="text-center">Subcategoria</th>
-                <th class="text-center">Detalle</th>
-                <th class="text-center">Configuración</th>
-            </tr>
+                <tr>
+                    <th class="text-center">Subcategoria</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Configuración</th>
+                </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let subcategorias of subcatServicios">
+                <tr *ngFor="let subcategorias of subcatServicios">
 
-                <td class="text-center">
-                    <p class="fw-semibold">{{subcategorias.subcatnombre}}</p>
-                </td>
+                    <td class="text-center">
+                        <p class="fw-semibold">{{subcategorias.subcatnombre}}</p>
+                    </td>
 
-                <td class="text-center">
-                    <p class="lh-sm"> {{subcategorias.subcatdetalle}}</td>
+                    <td class="text-center">
+                        <p class="lh-sm"> {{subcategorias.subcatdetalle}}
+                    </td>
 
-                <td class="text-center">
-                    <div class="btn-group ">
-                        <button class="btn btn-color dropdown-toggle" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false"
-                                style="background: #5CCB4A; color: white;">
-                            Opciones
-                        </button>
-                        <ul class="dropdown-menu " style="border: none; background: none">
+                    <td class="text-center">
+                        <p class="lh-sm"> {{subcategorias.idcatser.catnombre}}
+                    </td>
 
-                            <button class=" dropdown-item " data-bs-toggle="modal"
-                                    data-bs-target="#editarcat" style="background: #00DA9D; color: white;">Editar
+                    <td class="text-center">
+                        <div class="btn-group ">
+                            <button class="btn btn-color dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="background: #5CCB4A; color: white;">
+                                Opciones
                             </button>
-                            <!--<button class=" dropdown-item " data-bs-toggle="modal"
+                            <ul class="dropdown-menu " style="border: none; background: none">
+
+                                <button class=" dropdown-item " data-bs-toggle="modal" data-bs-target="#editarcat"
+                                    style="background: #00DA9D; color: white;">Editar
+                                </button>
+                                <!--<button class=" dropdown-item " data-bs-toggle="modal"
                                     data-bs-target="#agregarproducto" style="background: #FFA084; color: white;">
                                 Detalles
                             </button>-->
-                            <button class=" dropdown-item" style="background: #FF0F0F; color: white;">Eliminar</button>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
+                                <button class=" dropdown-item"
+                                    style="background: #FF0F0F; color: white;">Eliminar</button>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -82,19 +82,18 @@
                 <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                     <h1 class="modal-title fs-5">Agregar Subcategoría </h1>
                     <button type="button" id="closeM1" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form class="form-control" #subcategoriaForm="ngForm" style="border: none">
                         <div class="row g-3">
                             <div class="col-sm">
                                 <label for="nombresubcate">Nombre de la Subcategoría:</label>
-                                <input type="text" class="form-control"
-                                       style="background: #D9D9D9;border-radius: 0px;"
-                                       id="nombresubcate" name="nombresubcate" required minlength="2" maxlength="70"
-                                       [(ngModel)]="subcatServicio.subcatnombre" #nombresubcate="ngModel">
+                                <input type="text" class="form-control" style="background: #D9D9D9;border-radius: 0px;"
+                                    id="nombresubcate" name="nombresubcate" required minlength="2" maxlength="70"
+                                    [(ngModel)]="subcatServicio.subcatnombre" #nombresubcate="ngModel">
                                 <div class="alert alert-danger"
-                                     *ngIf="nombresubcate.invalid && (nombresubcate.dirty || nombresubcate.touched)">
+                                    *ngIf="nombresubcate.invalid && (nombresubcate.dirty || nombresubcate.touched)">
                                     <div *ngIf="nombresubcate?.errors?.['required']">
                                         Digite el nombre de la subcategoría por favor
                                     </div>
@@ -112,13 +111,12 @@
                         <div class="row g-3">
                             <div class="col-sm">
                                 <label for="subcatdescripcion">Descripción de la Subcategoría:</label>
-                                <textarea class="form-control"
-                                          style="background: #D9D9D9;border-radius: 0px;"
-                                          id="subcatdescripcion" name="subcatdescripcion" required minlength="25"
-                                          maxlength="70" [(ngModel)]="subcatServicio.subcatdetalle" #subcatdetalle=
-                                                  "ngModel"></textarea>
+                                <textarea class="form-control" style="background: #D9D9D9;border-radius: 0px;"
+                                    id="subcatdescripcion" name="subcatdescripcion" required minlength="25"
+                                    maxlength="70" [(ngModel)]="subcatServicio.subcatdetalle"
+                                    #subcatdetalle="ngModel"></textarea>
                                 <div class="alert alert-danger"
-                                     *ngIf="subcatdetalle.invalid && (subcatdetalle.dirty || subcatdetalle.touched)">
+                                    *ngIf="subcatdetalle.invalid && (subcatdetalle.dirty || subcatdetalle.touched)">
                                     <div *ngIf="subcatdetalle?.errors?.['required']">
                                         Digite el detalle de la subcategoria
                                     </div>
@@ -136,10 +134,9 @@
                             <div class="form-grow">
                                 <label for="idcatemp" class="form-label">Categoría</label>
                                 <select [(ngModel)]="subcatServicio.idcatser" name="idcatemp" id="idcatemp"
-                                        style="background: #D9D9D9;border-radius: 15px;"
-                                        class="form-control">
-                                    <option *ngFor="let categorias of catServicios"
-                                            [ngValue]="categorias">{{categorias.catnombre}}</option>
+                                    style="background: #D9D9D9;border-radius: 15px;" class="form-control">
+                                    <option *ngFor="let categorias of catServicios" [ngValue]="categorias">
+                                        {{categorias.catnombre}}</option>
 
                                 </select>
                             </div>
@@ -150,14 +147,13 @@
                             <div class="row justify-content-center">
                                 <div class="col-4">
                                     <button class="btn btn-color" type="submit"
-                                            [disabled]="!subcategoriaForm.form.valid"
-                                            (click)="agregarSubcategoria()"
-                                            style="background: #00DA9D; color: white; border: none">Agregar
+                                        [disabled]="!subcategoriaForm.form.valid" (click)="agregarSubcategoria()"
+                                        style="background: #00DA9D; color: white; border: none">Agregar
                                     </button>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                            style="background: #F33501; color: white; border: none">Cancelar
+                                        style="background: #F33501; color: white; border: none">Cancelar
                                     </button>
                                 </div>
                             </div>
@@ -175,26 +171,24 @@
 
 
 <!-- Modal editar -->
-<div class="modal fade" id="editarcat" tabindex="-1" aria-labelledby="editarcat" aria-hidden="true"
->
+<div class="modal fade" id="editarcat" tabindex="-1" aria-labelledby="editarcat" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header align-items-center" style="background: #195E4B; color: white">
                 <h1 class="modal-title fs-5">Editar Subcategoria</h1>
                 <button type="button" id="closeM2" class="btn-close bg-light text-bg-light" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="form-control" ngNavigateValidate #categoriaeditForm="ngForm" style="border: none">
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="nombrecateedit">Nombre de la Categoría:</label>
-                            <input type="text" class="form-control"
-                                   style="background: #D9D9D9;border-radius: 0px;"
-                                   id="nombrecateedit" name="nombrecateedit" required minlength="2" maxlength="70"
-                                   [(ngModel)]="catServicio.catnombre" #nombrecateedit="ngModel">
+                            <input type="text" class="form-control" style="background: #D9D9D9;border-radius: 0px;"
+                                id="nombrecateedit" name="nombrecateedit" required minlength="2" maxlength="70"
+                                [(ngModel)]="catServicio.catnombre" #nombrecateedit="ngModel">
                             <div class="alert alert-danger"
-                                 *ngIf="nombrecateedit.invalid && (nombrecateedit.dirty || nombrecateedit.touched)">
+                                *ngIf="nombrecateedit.invalid && (nombrecateedit.dirty || nombrecateedit.touched)">
                                 <div *ngIf="nombrecateedit?.errors?.['required']">
                                     Digite el nombre de la subcategoría
                                 </div>
@@ -215,12 +209,12 @@
 
                         <div class="col-sm">
                             <label for="descripcionedit">Descripción de la Categoría:</label>
-                            <textarea class="form-control"
-                                      id="descripcionedit" style="background: #D9D9D9;border-radius: 0px;"
-                                      name="descripcionedit" required minlength="25" maxlength="70"
-                                      [(ngModel)]="catServicio.catdetalle" #descripcionedit="ngModel"></textarea>
+                            <textarea class="form-control" id="descripcionedit"
+                                style="background: #D9D9D9;border-radius: 0px;" name="descripcionedit" required
+                                minlength="25" maxlength="70" [(ngModel)]="catServicio.catdetalle"
+                                #descripcionedit="ngModel"></textarea>
                             <div class="alert alert-danger"
-                                 *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
+                                *ngIf="descripcionedit.invalid && (descripcionedit.dirty || descripcionedit.touched)">
                                 <div *ngIf="descripcionedit?.errors?.['required']">
                                     Digite el detalle de la subcategoria
                                 </div>
@@ -241,13 +235,13 @@
                         <div class="row justify-content-center">
                             <div class="col-4">
                                 <button class="btn btn-color" type="button" (click)="actualizarCategoria()"
-                                        [disabled]="!categoriaeditForm.form.valid"
-                                        style="background: #00DA9D; color: white; border: none">Agregar
+                                    [disabled]="!categoriaeditForm.form.valid"
+                                    style="background: #00DA9D; color: white; border: none">Agregar
                                 </button>
                             </div>
                             <div class="col-4">
                                 <button class="btn btn-color" type="button" data-bs-dismiss="modal"
-                                        style="background: #F33501; color: white; border: none">Cancelar
+                                    style="background: #F33501; color: white; border: none">Cancelar
                                 </button>
                             </div>
                         </div>
