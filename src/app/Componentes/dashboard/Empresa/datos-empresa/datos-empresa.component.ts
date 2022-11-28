@@ -4,6 +4,7 @@ import { empresa } from "src/app/Models/empresa";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsuarioService } from "src/app/Service/usuario.service";
 import { Usuario } from "src/app/Models/usuario";
+import { Userlogin } from "src/app/Models/userlogin";
 
 @Component({
   selector: "app-datos-empresa",
@@ -11,12 +12,13 @@ import { Usuario } from "src/app/Models/usuario";
   styleUrls: ["./datos-empresa.component.css"],
 })
 export class DatosEmpresaComponent implements OnInit {
-  
+  public datos:Userlogin=new Userlogin();
   id:number;
+  public nombre: string;
 
   usuarios: Usuario = new Usuario();
   usuario: Usuario [] = [];
-
+  
   empresas: empresa = new empresa();
   empresa: empresa [] = [];
 
@@ -25,18 +27,34 @@ export class DatosEmpresaComponent implements OnInit {
   ngOnInit(): void {
     this.getEmpresas();
     this.getUsuarios();
-    console.log()
+   
+    this.datos=JSON.parse(sessionStorage['usuario']);
+    this.id=this.datos.usu_id;
+    this.nombre=this.datos.usuusuario;
+    console.log(this.nombre);
+    this.obetenerusuario( this.id);
+    console.log(this.obetenerusuario(this.id));
     
     this.activedRoute.params
       .subscribe(params => {
+        
+        console.log(this.id);
         let usu_id: number = params['usu_id'];
         console.log(usu_id)
         if (usu_id) {
-          this.usuarioService.obtenerUser(usu_id)
+          this.usuarioService.obtenerUser(this.id)
             .subscribe(response => this.usuarios = response)
         }
       })
   }
+  obetenerusuario(usu_id: number){
+    this.usuarioService.obtenerUser(usu_id)
+    .subscribe(response => {
+        this.usuarios = response
+        console.log(response)
+    });
+
+}
 
   getUsuarios() {
     this.usuarioService.getUser()
@@ -58,5 +76,10 @@ export class DatosEmpresaComponent implements OnInit {
 
   cleanModal(){
     this.empresas = new empresa();
+  }
+  compararusuarios(o1: Userlogin, o2: Userlogin): boolean{
+    if(o1==undefined && o2 == undefined)return true;
+    return o1 == null || o2 ==null || o1 == undefined || o2 == undefined ? false : o1.usu_id == o2.usu_id;
+
   }
 }

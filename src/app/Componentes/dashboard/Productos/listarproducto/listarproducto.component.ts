@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { Producto } from '../../../../Models/producto';
 import { empresa } from '../../../../Models/empresa';
 import { EmpresaService } from '../../../../Service/empresa.service';
+import { EmpresaLogin } from '../../../../Models/empresalogin';
 
 @Component({
   selector: 'app-listarproducto',
@@ -18,9 +19,13 @@ import { EmpresaService } from '../../../../Service/empresa.service';
   styleUrls: ['./listarproducto.component.css']
 })
 export class ListarproductoComponent implements OnInit {
-
+  public datos:EmpresaLogin=new EmpresaLogin();
+  id:number;
+  public nombre: string;
   productos: Producto = new Producto();
+  
   producto: Producto [] = [];
+  productofil: Producto [] = [];
 
   categoria: CategoriaProducto [] = [];
   subcategoria: subcategoriaProducto [] = [];
@@ -28,17 +33,23 @@ export class ListarproductoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getProducto();
+    this.obetenerproducto
     this.getSubcategorias();
     this.getCategorias();
     this.getEmpresas();
+    this.datos=JSON.parse(sessionStorage['usuario']);
+    this.id=this.datos.idempresa;
+    this.nombre=this.datos.usu_id.usuusuario;
+    console.log(this.nombre);
+    this.obetenerproducto( this.id);
+    console.log(this.obetenerproducto(this.id));
 
     this.activedRoute.params
       .subscribe(params => {
         let idproducto: number = params['idproducto'];
         if (idproducto) {
-          this.productoService.obtenerProducto(idproducto)
-            .subscribe(response => this.productos = response)
+          this.productoService.obtenerProductoempresa(idproducto)
+            .subscribe(response => this.producto = response)
         }
       })
   }
@@ -50,11 +61,15 @@ export class ListarproductoComponent implements OnInit {
     this.empresaService.getEmpresa()
       .subscribe(response => this.empresa = response);
   }
+  obetenerproducto(usu_id: number){
+    this.productoService.obtenerProductoempresa(usu_id)
+    .subscribe(response => {
+        this.producto = response
+        console.log(response)
+    });
 
-  getProducto() {
-    this.productoService.getProducto()
-      .subscribe(response => this.producto = response);
-  }
+}
+  
   getCategorias() {
     this.categoriaproductoService.getCategoria()
       .subscribe(response => this.categoria = response);
