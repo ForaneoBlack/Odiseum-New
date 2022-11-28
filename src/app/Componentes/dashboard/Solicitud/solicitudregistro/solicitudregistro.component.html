@@ -84,39 +84,16 @@
                                    style="background: #D9D9D9;border-radius: 0px;"
                                    name="comercial" disabled [(ngModel)]="empresas.empnombre">
                         </div>
-                        <div class="col-sm">
-                            <div class="form-grow">
-                                <label for="categoria" class="form-label">Categoría</label>
-                                <select [compareWith]="compararcategoria" [(ngModel)]="solicitudes.idcatemp"
-                                        name="categoria" id="categoria"
-                                        class="form-control" required
-                                        style="background: #D9D9D9;border-radius: 0px;">
-
-                                    <option *ngFor="let categorias of categoria"
-                                            [ngValue]="categorias">{{categorias.catnombre}}
-                                    </option>
-                                </select>
+                        
+                            <div class="col-sm">
+                                <label for="social">Razon Social:</label>
+                                <input type="text" class="form-control" placeholder="" id="social" name="social" disabled
+                                       [(ngModel)]="empresas.emprazon">
                             </div>
-                        </div>
+                        
                     </div>
                     <br>
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <label for="social">Razon Social:</label>
-                            <input type="text" class="form-control" placeholder="" id="social" name="social" disabled
-                                   [(ngModel)]="empresas.emprazon">
-                        </div>
-                        <div class="col-sm">
-                            <div class="form-grow">
-                                <label for="subcategoria">Subcategoría </label>
-                                <select id="subcategoria" class="form-control">
-                                    <option>Mecánica</option>
-                                    <option>Latonería</option>
-                                    <option>Comercio</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row g-3">
                         <div class="col-sm">
                             <label for="telefono">Telefono: </label>
