@@ -11,7 +11,7 @@ import { EmpresaLogin } from '../Models/empresalogin';
 export class LoginService {
 
   private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/usuario';
+  url: string = 'https://bryantenemea.com/api/usuario';
  //url: string = 'http://localhost:9898/api/usuario'
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})

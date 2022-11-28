@@ -9,7 +9,7 @@ import {Categoriaservicio} from "../Models/categoriaservicio";
 export class CategoriaservicioService {
 
     private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-    url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/categoriaservicio';
+    url: string = 'https://bryantenemea.com/api/categoriaservicio';
 
     constructor(private http: HttpClient) {
     }

@@ -10,7 +10,7 @@ export class SubcategoriaService {
   private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
   //url: string ='http://localhost:8080/api/categoriaempresa'
 
-   url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/subcategoriaempresa';
+   url: string = 'https://bryantenemea.com/api/subcategoriaempresa';
 
   constructor(private http: HttpClient) { }
 

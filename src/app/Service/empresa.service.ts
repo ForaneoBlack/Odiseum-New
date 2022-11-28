@@ -8,7 +8,7 @@ import { empresa } from '../Models/empresa';
 })
 export class EmpresaService {
   private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/empresa';
+  url: string = 'https://bryantenemea.com/api/empresa';
 
   constructor(private http: HttpClient) {}
 

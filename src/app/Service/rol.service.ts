@@ -8,7 +8,7 @@ import {Rol} from "../Models/rol";
 })
 export class RolService {
   private HttpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-  url: string = 'http://apiemprendimientos-env.eba-d95suqjg.us-east-1.elasticbeanstalk.com/api/rol';
+  url: string = 'https://bryantenemea.com/api/rol';
 
   constructor(private http: HttpClient) { }
 
